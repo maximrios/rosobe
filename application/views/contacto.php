@@ -4,7 +4,7 @@
 	<?=$vcMsjSrv;?>
 	<form action="home/contacto" method="post" class="contacto" accept-charset="utf-8">
 		<li>
-			<label for="txtnombre">Nombre</label>
+			<label for="txtnombre">Nombres</label>
 			<input id="nombre" type="text" name="txtnombre" tabindex="1" title="Ingrese el nombre completo" placeholder="Nombre completo" required>
 		</li>
 		<li>
