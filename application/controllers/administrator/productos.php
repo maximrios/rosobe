@@ -137,6 +137,7 @@ class Productos extends Ext_crud_Controller {
         		} 
         		else {
 	            	$data = $this->upload->data();
+                    $this->_create_thumbnail($data['file_name'], 150, 150);
 	            	$this->productos->guardarImagen(
 	            		array(
 	            			0
@@ -195,6 +196,19 @@ class Productos extends Ext_crud_Controller {
         	}
 		}  
 	}
+    function _create_thumbnail($filename, $width, $height){
+        $config['image_library'] = 'gd2';
+        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+        $config['source_image'] = 'assets/images/productos/'.$filename;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+        $config['new_image']='assets/images/productos/';
+        $config['width'] = $width;
+        $config['height'] = $height;
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+    }
 }
 
 /* End of file personas.php */
