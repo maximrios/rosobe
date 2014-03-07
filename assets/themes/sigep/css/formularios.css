@@ -1,0 +1,19 @@
+form li {
+	list-style: none;
+	margin: 0.5em auto;
+}
+form li label, form li span {
+	display: block;
+}
+form li label {
+	margin-bottom: -0.4em;
+}
+form li span {
+	font-size: 0.8em;
+}
+form li[class^="content-"] {
+	display: inline-block;
+}
+form li.content-50 {
+	width: 49.5%;
+}

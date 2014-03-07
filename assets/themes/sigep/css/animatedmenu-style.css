@@ -1,0 +1,71 @@
+/**
+.menu_head{
+display: block;
+width: 250px;
+cursor: pointer;
+
+color: #13596C;
+font: normal 12px Arial, tahoma;
+overflow: hidden;
+}
+.menu_head span{
+display: inline-block;
+
+float: left;
+}
+.menu_head .menu_icon{
+
+width: 32px;
+height: 32px;
+background: url(../images/sprite-navigate.png) 0 0 no-repeat;
+}
+
+.menu_head .menu_arrow{
+width: 32px;
+height: 32px;
+background: url(../images/sprite-navigate.png) 0 -64px no-repeat;
+
+}
+
+.menu_head .menu_text{
+width: 180px;
+height: 12px;
+padding: 10px 0px 10px 0px;
+background: url(../images/sprite-navigate.png) 0 -32px repeat-x;
+}
+
+.menu_body{
+position: relative;
+left: 54px;
+margin: 0;
+padding: 0;
+display:none;
+width:184px;
+border-right:1px solid #998675;
+border-bottom:1px solid #998675;
+border-left:1px solid #998675;
+list-style: none;
+z-index: 10;
+}
+
+.menu_body li{
+margin: 0;
+padding: 0;
+background:#ccc;
+}
+
+.menu_body li.alt{
+background:#eee;
+}
+
+.menu_body li a{
+color:#666;
+text-decoration:none;
+padding:10px;
+display:block;
+}
+
+.menu_body li a:hover{
+text-decoration:underline;
+}
+/**/

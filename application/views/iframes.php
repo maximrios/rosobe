@@ -1,0 +1,2 @@
+
+  <?= $vcMainContent; ?>    
