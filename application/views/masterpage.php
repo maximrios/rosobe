@@ -90,9 +90,9 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
 }
 
 #sidebar-wrapper {
-    margin-left: -150px;
+    margin-left: -185px;
     left: 70px;
-    width: 150px;
+    width: 180px;
     background: #222;
     position: fixed;
     height: 100%;
@@ -115,10 +115,10 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
     height: auto;
 }
 #wrapper.active {
-    padding-left: 150px;
+    padding-left: 190px;
 }
 #wrapper.active #sidebar-wrapper {
-    left: 150px;
+    left: 185px;
 }
 
 #page-content-wrapper {
@@ -128,9 +128,10 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
 #sidebar_menu li a, .sidebar-nav li a {
     color: #999;
     display: block;
+    outline: none;
     float: left;
     text-decoration: none;
-    width: 150px;
+    width: 180px;
     background: #252525;
     border-top: 1px solid #373737;
     border-bottom: 1px solid #1A1A1A;
@@ -220,7 +221,7 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
 }
 #wrapper.active #sidebar-wrapper {
     left: 150px;
-    width: 150px;
+    width: 160px;
     transition: all .4s ease 0s;
 }
 }
@@ -235,7 +236,8 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
            <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
       </ul>
         <ul class="sidebar-nav" id="sidebar">     
-          <li class="active"><a href="administrator/categorias">Categorias</a></li>
+          <li><a href="administrator/dashboard">Dashboard<span class="sub_icon glyphicon glyphicon-bookmark"></span></a></li>
+          <li><a href="administrator/categorias">Categorias</a></li>
           <li><a href="administrator/productos">Productos<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
           <li><a href="administrator/pruebas">Pruebas<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
         </ul>

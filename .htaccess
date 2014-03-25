@@ -506,7 +506,7 @@ Options -Indexes
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ /rosobe2/index.php/$l [L]
+    RewriteRule ^(.*)$ /rosobe/index.php/$l [L]
 </IfModule>
 
 

@@ -16,6 +16,13 @@
     		<label for="descripcionProducto">Descripcion del Producto</label>
 			<input type="text" id="descripcionProducto" name="descripcionProducto" tabindex="1" class="form-control" placeholder="Nombre del Producto." value="<?php echo $Reg['descripcionProducto']?>" autofocus>
     	</div>
+        <div class="form-group col-lg-12">
+            <label for="descripcionProducto">Categorias</label>
+            <select id="prueba" name="prueba" multiple>
+                <option value="0">Prueba 1</option>
+                <option value="1">Prueba 2</option>
+            </select>
+        </div>
     	<div class="form-group col-lg-12">
     		<label for="descripcionProducto">Imagenes</label>
     		<input type="file" name="userfile[]" id="userfile" multiple/>
@@ -29,12 +36,39 @@
 </div>
     <?php if ($imagenes) { ?>
         <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Imagenes asociadas al producto</div>
+                <div class="panel-body">
         <?php foreach ($imagenes as $imagen) { ?>
-            <img class="img-thumbnail" src="<?=$imagen['pathProductoImagen']?>">
+                <img class="img-thumbnail" src="<?=$imagen['pathProductoImagen']?>">
     <?php } ?>
+                </div>
+            </div>
         </div>
     <?php } ?>
 
+</div>
+<div class="row">
+    <div class="col-lg-6">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        titulo
+    </div>
+    <div class="panel-body">
+        aca 
+    </div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        titulo
+    </div>
+    <div class="panel-body">
+        aca 
+    </div>
+</div>
+</div>
 </div>
 <script>
 function fileSelect(evt) {

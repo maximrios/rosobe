@@ -211,7 +211,7 @@ $config['js_array_admin'] = array(
     'assets/libraries/jquery.file.upload/jquery.fileupload.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-process.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',
-    
+    'assets/libraries/chosen/chosen.jquery.js',
     
 );
 $config['css_array_admin'] = array(
@@ -221,6 +221,7 @@ $config['css_array_admin'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',
     $config['ext_base_url_plantilla_elegida'].'css/jqueryvalidation-validationEngine.jquery.css',
     $config['ext_base_url_plantilla_elegida'].'css/jquery.fileupload.css',
+    'assets/libraries/chosen/chosen.jquery.js',
 );
 // Array de JS
 $config['js_array'] = array(
