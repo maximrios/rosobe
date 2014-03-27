@@ -59,28 +59,6 @@
     <?php } ?>
 
 </div>
-<div class="row">
-    <div class="col-lg-6">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        titulo
-    </div>
-    <div class="panel-body">
-        aca 
-    </div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        titulo
-    </div>
-    <div class="panel-body">
-        aca 
-    </div>
-</div>
-</div>
-</div>
 <script>
     $('figcaption > input').on('click', function() {
         $('figcaption > input[type=checkbox]').prop('checked', '');

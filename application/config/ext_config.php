@@ -4,7 +4,7 @@
 /**
  * Configuracion extendida para el sistema
  */
-
+$config['ext_base_url'] = 'http://www.industriasrosobe.com.ar';
 /**
  * Creando name spaces
  */

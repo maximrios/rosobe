@@ -72,13 +72,11 @@ class Aut extends Ext_Controller {
             $this->session->unset_userdata(array('message'=>''));
 		}
 		$data['vcMainContent'] = $this->load->view('administrator/hits/usuarios/formulario_login',$dataView,true);
-		//$data['mensajes'] = $this->layout_model->mensajesNuevos($this->lib_autenticacion->idPersona());
-        //$data['vcIncludesGlobales']='<link href="'.config_item('ext_base_url_plantilla_elegida').'css/layout.login.identificarse.css" rel="stylesheet" type="text/css"/>';
         $data['vcMenu']='';
 		if(!$this->_responseAjax){
 			$data['SiteInfo'] = $this->_siteInfo();
 			$data['PanelInfo'] = $this->_PanelInfo;
-			$this->load->view('masterpage',$data);
+			$this->load->view('administrator/hits/usuarios/principal',$data);
 		}
 		else {
 			echo $data['vcAutContent'];
@@ -205,7 +203,8 @@ class Aut extends Ext_Controller {
 	public function logout($redirect='si')
 	{
 		$this->lib_autenticacion->logout();
-		if ($redirect=='si') redirect(base_url(),'location');
+		//if ($redirect=='si') redirect(base_url(),'location');
+		if ($redirect=='si') redirect(config_item('lib_autenticacion_login_uri'),'location');
 	}
 }
 ?>
