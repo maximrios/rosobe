@@ -2,8 +2,8 @@
 	$vcFormName = antibotHacerLlave();
 	$vcMsjSrv = (!empty($vcMsjSrv))? $vcMsjSrv: '';
 ?>
+<h3 style="margin:0 auto;text-align:center;margin-top:50px;">Iniciar Sesión</h3>
 <div class="center-block" style="width:300px;">
-    
 	<form id="form-login-access" method="post" enctype="application/x-www-form-urlencoded" action="aut/autenticar" target="srv-resp">
 		<div class="form-group">
 			<label for="nombreUsuario">Usuario</label>
@@ -12,6 +12,7 @@
     	<div class="form-group">
 			<label for="passwordUsuario">Contaseña</label>
         	<input type="password" id="passwordUsuario" name="passwordUsuario" class="form-control" placeholder="Contraseña" required>
+            <span class="pull-right" style="font-size:0.7em;"><a href="#">Recuperar contraseña</a></span>
     	</div>
     	<div class="checkbox">
 	    	<label>

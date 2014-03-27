@@ -84,6 +84,10 @@ class Dashboard extends Ext_crud_Controller {
     function consulta() {
         echo "macondo";
     }
+    function slider() {
+        $this->_vcContentPlaceHolder = $this->load->view('administrator/rosobe/slider/principal', array(), true);
+        parent::index();
+    }
 	function buscador() {
 		$aData['Reg'] = $this->_inicReg($this->input->post('vcForm'));
         $aData['vcFrmAction'] = 'administrator/productos/guardar';

@@ -8,16 +8,20 @@
     <?= $vcMsjSrv; ?>
     <form id="proba" name="<?= $vcFormName; ?>" action="<?= $vcFrmAction; ?>" method="post" target="contenido-abm">
         <div class="form-group col-lg-12">
-            <label for="nombreGaleria">Titulo de la Imagen</label>
-            <input type="text" id="nombreGaleria" name="nombreGaleria" tabindex="1" class="form-control" placeholder="Titulo de la Imagen." value="<?php echo $Reg['nombreGaleria']?>" autofocus>
+            <label for="tituloSlider">Titulo del Slider</label>
+            <input type="text" id="tituloSlider" name="tituloSlider" tabindex="1" class="form-control" placeholder="Titulo del Slider." value="<?php echo $Reg['tituloSlider']?>" autofocus>
         </div>
-        <div class="form-group col-lg-12">
-            <label for="descripcionGaleria">Descripcion de la Imagen</label>
-            <input type="text" id="descripcionGaleria" name="descripcionGaleria" tabindex="1" class="form-control" placeholder="Descripcion de la Imagen." value="<?php echo $Reg['descripcionGaleria']?>">
+        <div class="form-group col-lg-6">
+            <label for="linkSlider">Link del Slider</label>
+            <input type="text" id="linkSlider" name="linkSlider" tabindex="1" class="form-control" placeholder="Link del Slider." value="<?php echo $Reg['linkSlider']?>">
         </div>
-        <div class="form-group col-lg-12">
-            <label for="estadoGaleria">Estado de la Imagen</label>
-            <input type="checkbox" id="estadoGaleria" name="estadoGaleria" class="form-control" value="1">
+        <div class="form-group col-lg-3">
+            <label for="vigenciaDesde">Vigencia Desde</label>
+            <input type="text" id="vigenciaDesde" name="vigenciaDesde" tabindex="1" class="form-control" placeholder="dd/mm/yyyy." value="<?php echo $Reg['vigenciaDesde']?>">
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="vigenciaHasta">Vigencia Hasta</label>
+            <input type="text" id="vigenciaHasta" name="vigenciaHasta" tabindex="1" class="form-control" placeholder="dd/mm/yyyy." value="<?php echo $Reg['vigenciaHasta']?>">
         </div>
         <div class="form-group col-lg-12">
             <label for="">Imagen</label>
@@ -26,9 +30,7 @@
             <output id="filesInfo"></output>
         </div>
         <input type="submit" id="uploadFilesBt" class="btn btn-primary btn-accion" value="Guardar" name="btnvo"/>
-        <input type="hidden" id="idGaleria" name="idGaleria" value="<?php echo $Reg['idGaleria']?>">
-        <input type="hidden" id="pathGaleria" name="pathGaleria" value="<?php echo $Reg['pathGaleria']?>">
-        <input type="hidden" id="thumbGaleria" name="thumbGaleria" value="<?php echo $Reg['thumbGaleria']?>">
+        <input type="hidden" id="idSlider" name="idSlider" value="<?php echo $Reg['idSlider']?>">
         <input type="hidden" id="vcForm" name="vcForm" value="<?= $vcFormName; ?>" />
     </form>
 </div>

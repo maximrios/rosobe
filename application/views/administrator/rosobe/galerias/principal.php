@@ -7,17 +7,13 @@
  */
 	$vcMsjSrv = (!empty($vcMsjSrv))? $vcMsjSrv: ''; 
 ?>
-	<div class="full-content">
-		<div class="box-normal-100">
-	  		<h2 class="fontface-arimo-titulo">Administración galería de trabajos</h2>
-	  		<p>En esta sección podrá administrar las imagenes almacenadas en el sistema para mostrar en la galeria.</p>
-		</div> 
-		<section class="box-normal-100">
-	  		<?= $vcMsjSrv; ?>
+	<div class="panel panel-default">
+  		<div class="panel-heading">Administración de Galeria de Trabajos<a data-toggle="collapse" href="#prueba"><span class="glyphicon glyphicon-minus pull-right"></span></a></div>
+  		<div id="prueba" class="panel-body panel-collapse">
+  			<?= $vcMsjSrv; ?>
 	  		<div id="contenido-abm" class="container-gridview"></div>
-		</section>
-	</div>
-	<div class="clearfloat">&nbsp;</div>
+  		</div>
+  	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#contenido-abm').gridviewHandler({'url': 'administrator/galerias/listado'});

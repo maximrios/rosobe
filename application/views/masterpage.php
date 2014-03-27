@@ -37,8 +37,8 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
 <?php
 # Para garantizar que los archivos CSS se descarguen en paralelo,
 # incluya siempre los recursos CSS externos antes que los recursos JavaScript externos
-  print incluirjscss_stylecss('_admin');
-  print incluirjscss_linkjs('_admin');
+    print incluirjscss_stylecss('_admin');
+    print incluirjscss_linkjs('_admin');
 ?>
 <!-- Scripts for any page -->
 
@@ -63,14 +63,13 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
                     <ul class="dropdown-menu">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Mis datos</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Configuracion</a></li>
-                        <li><a href="http://localhost/rosobe2" target="_blank"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Ver mi web</a></li>
+                        <li><a href="<?php echo config_item('ext_base_url');?>" target="_blank"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Ver mi web</a></li>
                         <li class="divider"></li>
                         <li><a href="aut/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-
     </nav>
     <header>
     </header>
@@ -228,62 +227,31 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
 
 </style>
     <div id="wrapper" class="active">
-      
-      <!-- Sidebar -->
-            <!-- Sidebar -->
-      <div id="sidebar-wrapper" class="sidebar-holder">
-      <ul id="sidebar_menu" class="sidebar-nav">
-           <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
-      </ul>
-        <ul class="sidebar-nav" id="sidebar">     
-          <li><a href="administrator/dashboard">Dashboard<span class="sub_icon glyphicon glyphicon-bookmark"></span></a></li>
-          <li><a href="administrator/categorias">Categorias</a></li>
-          <li><a href="administrator/productos">Productos<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-          <li><a href="administrator/pruebas">Pruebas<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-        </ul>
-      </div>
-          
-      <!-- Page content -->
-      <div id="page-content-wrapper">
-        <!-- Keep all page content within the page-content inset div! -->
-        <div class="page-content inset">
-          <div class="row">
-              <div class="col-md-12" style="padding-top:5px;">
-                <ol class="breadcrumb" style="background:none;margin:0px;">
-                  <li><a href="#">Administración</a></li>
-                  <li><a href="#">Productos</a></li>
-                </ol>
-
-                <?= $vcMainContent; ?>          
-            </div>
-          </div>
+        <div id="sidebar-wrapper" class="sidebar-holder">
+            <ul id="sidebar_menu" class="sidebar-nav">
+                <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+            </ul>
+            <ul class="sidebar-nav" id="sidebar">     
+                <li><a href="administrator/dashboard">Dashboard<span class="sub_icon glyphicon glyphicon-home"></span></a></li>
+                <li><a href="administrator/categorias">Categorias<span class="sub_icon glyphicon glyphicon-tags"></span></a></li>
+                <li><a href="administrator/productos">Productos<span class="sub_icon glyphicon glyphicon-bookmark"></span></a></li>
+                <li><a href="administrator/galerias">Galeria<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>
+            </ul>
         </div>
-      </div>
-      
+        <div id="page-content-wrapper">
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top:5px;">
+                        <ol class="breadcrumb" style="background:none;margin:0px;">
+                            <li><a href="#">Administración</a></li>
+                            <li><a href="#">Productos</a></li>
+                        </ol>
+                        <?= $vcMainContent; ?>          
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <?php
-    if($this->session->userdata('Lib_Aut_Usuario')) { ?>
-    <!--<div id="navbar-vertical" class="container">
-        <div class="row">
-            <div class="col-md-3 col-lg-3">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="admin"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
-                    <li><a href="administrator/personas"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Datos de Contacto</a></li>
-                    <li><a href="administrator/categorias"><span class="glyphicon glyphicon-bookmark"></span>&nbsp;&nbsp;Categorias</a></li>
-                    <li><a href="administrator/productos"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;Productos</a></li>
-                    <li><a href="administrator/galerias"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Galeria</a></li>
-                    <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Servicios</a></li>
-                </ul>
-            </div>
-            <div class="col-md-9 col-lg-9">-->
-                
-    <?php } ?>
-    
-    <?php if($this->session->userdata('Lib_Aut_Usuario')) { ?>
-            <!--</div>
-        </div>
-    </div>-->
-    <?php } ?>
     <script type="text/javascript">
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

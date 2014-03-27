@@ -60,7 +60,7 @@ class Categorias extends Ext_crud_Controller {
         $this->gridview->addColumn('nombreCategoria', 'Nombre', 'text');
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
         $controles = '<a href="administrator/categorias/formulario/{idCategoria}" title="Mostrar detalle de {nombreCategoria}" class="btn-accion" rel="{\'idCategoria\': {idCategoria}}">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;</a>';
-        $controles .= '<a href="administrator/categorias/formulario/{idCategoria}" title="Mostrar detalle de {nombreCategoria}" class="btn-accion" rel="{\'idCategoria\': {idCategoria}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
+        $controles .= '<a href="administrator/categorias/eliminar/{idCategoria}" title="Eliminar {nombreCategoria}" class="btn-accion" rel="{\'idCategoria\': {idCategoria}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
         $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones', 'style' => 'width:64px;'));
         $this->_rsRegs = $this->categorias->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
         $this->load->view('administrator/rosobe/categorias/listado'
@@ -92,7 +92,6 @@ class Categorias extends Ext_crud_Controller {
 		antibotCompararLlave($this->input->post('vcForm'));
         $this->_inicReglas();
         if ($this->_validarReglas()) {
-        	echo "entro en el if";
             $this->_inicReg((bool) $this->input->post('vcForm'));
 			$this->_aEstadoOper['status'] = $this->categorias->guardar(
 				array(
@@ -102,7 +101,6 @@ class Categorias extends Ext_crud_Controller {
 			);
         }
         else {
-        	echo "entro en el else";
             $this->_aEstadoOper['status'] = 0;
             $this->_aEstadoOper['message'] = validation_errors();
         }
@@ -115,9 +113,22 @@ class Categorias extends Ext_crud_Controller {
 		$this->_aEstadoOper['message'] = $this->messages->do_message(array('message'=>$this->_aEstadoOper['message'],'type'=> ($this->_aEstadoOper['status'] > 0)?'success':'alert'));
 		if($this->_aEstadoOper['status'] > 0) {
 			$this->listado();
-		} else {
+		} 
+		else {
 			$this->formulario();
 		}
+	}
+	public function eliminar() {
+		antibotCompararLlave($this->input->post('vcForm'));
+    	$this->_aEstadoOper['status'] = $this->categorias->eliminar($this->input->post('idCategoria'));
+	   	if($this->_aEstadoOper['status'] > 0) {
+			$this->_aEstadoOper['message'] = 'El registro fue eliminado con exito.';
+	   	} 
+	   	else {
+			$this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
+	   	}
+		$this->_aEstadoOper['message'] = $this->messages->do_message(array('message'=>$this->_aEstadoOper['message'],'type'=> ($this->_aEstadoOper['status'] > 0)?'success':'alert'));		
+       	$this->listado();
 	}
 	function obtener() {
         $data = $this->productos->obtenerUno($this->input->post('idProducto'));
