@@ -4,6 +4,10 @@ class Rosobe_model extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
+	function obtenerSlider() {
+		$sql = 'SELECT * FROM rosobe_slider WHERE activoSlider = 1 AND NOW() BETWEEN vigenciaDesde AND vigenciaHasta';
+		return $this->db->query($sql)->result_array();
+	}
 	function obtener_galeria() {
 		$sql = 'SELECT * FROM hits_galeria WHERE estadoGaleria = 1';
 		return $this->db->query($sql)->result_array();

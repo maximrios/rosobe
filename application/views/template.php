@@ -21,7 +21,7 @@
         <meta name="author" content="<?= $SiteInfo['author'];?>">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
-        <!--<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <?php
             # Para garantizar que los archivos CSS se descarguen en paralelo,
             # incluya siempre los recursos CSS externos antes que los recursos JavaScript externos
@@ -108,14 +108,14 @@
         <section class="container">
             <?=$vcMainContent; ?>
         </section>
-        <section class="container footer">
+        <section class="container footer" style="background:#E36F35;">
             <footer class="content">
                 <div class="div-15">
-                    <h5>Menú</h5>
+                    <h5>MENU</h5>
                     <?=$vcMenu;?>
                 </div>
                 <div class="div-35">
-                    <h5>Contactanos</h5>
+                    <h5>CONTACTANOS</h5>
                     <ul>
                         <li>(0387) 4010107 - 4290826</li>
                         <li><a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
@@ -124,7 +124,7 @@
                     </ul>
                 </div>
                 <div class="div-25">
-                    <h5>Encontranos tambien en</h5>
+                    <h5>REDES SOCIALES</h5>
                     <ul class="sociales">
                         <li><a href="#" class="redes_sociales facebook"></a></li>
                         <li><a href="#" class="redes_sociales twitter"></a></li>
@@ -132,10 +132,14 @@
                     </ul>
                 </div>
                 <div class="div-25" style="text-align:center;">
+                    <h5>DATA FISCAL</h5>
                     <img src="assets/themes/base/img/fiscal.png" alt="" width="75">
                 </div>
             </footer>
         </section>
+        <div class="col-lg-12" style="background:#393737;padding:0.9em 0;text-align:center;font-size:0.8em;color:#FFF;">
+            Industrias y Servicios Ro.So.Be. - Todos los derechos reservados &copy; 2014
+        </div>
         <script>
             jQuery(document).ready(function(){
     $(".dropdown").hover(

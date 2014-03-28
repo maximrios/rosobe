@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
 				"file_nam",
 				"file_name_thumb"
 			],
@@ -28,66 +36,10 @@
 	"buffers":
 	[
 		{
-			"file": "application/controllers/administrator/galerias.php",
+			"file": "rosobe.sql",
 			"settings":
 			{
-				"buffer_size": 10586,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/administrator/productos.php",
-			"settings":
-			{
-				"buffer_size": 11966,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/masterpage.php",
-			"settings":
-			{
-				"buffer_size": 8036,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/administrator/rosobe/galerias/principal.php",
-			"settings":
-			{
-				"buffer_size": 743,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/administrator/rosobe/galerias/listado.php",
-			"settings":
-			{
-				"buffer_size": 536,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/administrator/rosobe/productos/listado.php",
-			"settings":
-			{
-				"buffer_size": 1375,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/administrator/rosobe/galerias/formulario.php",
-			"settings":
-			{
-				"buffer_size": 4185,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/rosobe/galerias_model.php",
-			"settings":
-			{
-				"buffer_size": 2216,
+				"buffer_size": 89946,
 				"line_ending": "Windows"
 			}
 		}
@@ -168,6 +120,23 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/rosobe/application/views/productos.php",
+		"/C/xampp/htdocs/rosobe/application/controllers/administrator/productos.php",
+		"/C/xampp/htdocs/rosobe/application/views/contacto.php",
+		"/C/xampp/htdocs/rosobe/application/views/template.php",
+		"/C/xampp/htdocs/rosobe/assets/themes/base/css/rosobe.css",
+		"/C/xampp/htdocs/rosobe/assets/themes/base/css/hits.css",
+		"/C/xampp/htdocs/rosobe/application/models/rosobe/rosobe_model.php",
+		"/C/xampp/htdocs/rosobe/application/controllers/inicio.php",
+		"/C/xampp/htdocs/rosobe/application/views/inicio.php",
+		"/C/xampp/htdocs/rosobe/application/config/ext_config.php",
+		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/galerias/formulario.php",
+		"/C/xampp/htdocs/rosobe/application/controllers/administrator/galerias.php",
+		"/C/xampp/htdocs/rosobe/application/views/masterpage.php",
+		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/galerias/principal.php",
+		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/galerias/listado.php",
+		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/productos/listado.php",
+		"/C/xampp/htdocs/rosobe/application/models/rosobe/galerias_model.php",
 		"//131.107.3.14/informatica Sigep/Maximiliano/hospital/DB/todos.sql",
 		"//131.107.3.14/sigep/intra/application/views/admin/auth/login.php",
 		"/C/xampp/htdocs/rosobe/application/models/rosobe/slider_model.php",
@@ -181,16 +150,13 @@
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/slider.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/slider/formulario.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/agentes.php",
-		"/C/xampp/htdocs/rosobe/application/views/masterpage.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/aut.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/hits/usuarios/principal.php",
-		"/C/xampp/htdocs/rosobe/application/config/ext_config.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/hits/usuarios/formulario_login.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/dashboard/principal.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/slider/principal.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/dashboard.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/slider/listado.php",
-		"/C/xampp/htdocs/rosobe/application/controllers/administrator/productos.php",
 		"/C/Users/informatica/Downloads/chosen_v1.1.0/index.html",
 		"/C/Users/informatica/.ssh/id_rsa.pub",
 		"/C/xampp/htdocs/rosobe/application/controllers/admin.php",
@@ -230,6 +196,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"slider",
+			"content",
+			"figure",
 			"mayo",
 			"function _obtenerMensajeErrorDB",
 			"'ext_base_url'",
@@ -259,225 +228,31 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/administrator/galerias.php",
+					"file": "rosobe.sql",
 					"settings":
 					{
-						"buffer_size": 10586,
+						"buffer_size": 89946,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7789,
-								7789
+								77364,
+								77370
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/SQL/SQL.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 435.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/controllers/administrator/productos.php",
-					"settings":
-					{
-						"buffer_size": 11966,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7945,
-								8173
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2025.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/masterpage.php",
-					"settings":
-					{
-						"buffer_size": 8036,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7153,
-								7153
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3420.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/views/administrator/rosobe/galerias/principal.php",
-					"settings":
-					{
-						"buffer_size": 743,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								222,
-								222
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/views/administrator/rosobe/galerias/listado.php",
-					"settings":
-					{
-						"buffer_size": 536,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								508,
-								508
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/views/administrator/rosobe/productos/listado.php",
-					"settings":
-					{
-						"buffer_size": 1375,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/views/administrator/rosobe/galerias/formulario.php",
-					"settings":
-					{
-						"buffer_size": 4185,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								760,
-								760
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "application/models/rosobe/galerias_model.php",
-					"settings":
-					{
-						"buffer_size": 2216,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								790,
-								790
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
+						"translation.y": 19397.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

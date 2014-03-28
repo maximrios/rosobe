@@ -1,15 +1,20 @@
-<div id="sombra" class="content" style="margin-bottom: 1em;margin-top:0.5em;">
-    <div id="slider" class="nivoSlider" style="box-shadow: rgba(0, 0, 0, 0.7) 0em 0.4em 0.4em;">
-        <img src="assets/images/slider/imagen1.jpg" alt="" />
-        <img src="assets/images/slider/imagen2.jpg" alt="" />
-        <img src="assets/images/slider/imagen3.jpg" alt="" />
-        <img src="assets/images/slider/imagen4.jpg" alt="" />
+<div class="content">
+    <div id="slider" class="nivoSlider">
+        <?php foreach ($slider as $imagen) { ?>
+            <a href="<?=$imagen['linkSlider']?>" target="<?=$imagen['targetSlider']?>"><img src="<?=$imagen['pathSlider']?>" alt="<?=$imagen['tituloSlider']?>"/></a>
+        <?php } ?>
     </div>
-    <hr>
 </div>
 <section class="content">
     <div class="row" style="margin:0;">
-        <h4 class="caja-titulo">Atencion: Productos x Mayor !!!</h4>
+        <div class="col-lg-12" style="background:blue;padding:0;font-size: 1.4em;text-align:center;min-height:90px;">
+            <div class="col-lg-9" style="background:#E36F35;vertical-align:middle;">
+                Muebles al por mayor en serie para mayoristas. La mejor calidad en el menor tiempo y costo.
+            </div>
+            <div class="col-lg-3" style="background:#393737;color:#FFF;">
+                Nuevo
+            </div>
+        </div>
         <div class="col-lg-4"><span class="icono-atencion">Design</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
         <div class="col-lg-4"><span class="icono-atencion">Time</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
         <div class="col-lg-4"><span class="icono-atencion">Gear</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
@@ -52,7 +57,7 @@
 //$(window).load(function() {
     $('#slider').nivoSlider({
         directionNav: false,             // Next & Prev navigation
-        //controlNav: true,
+        controlNav: false,
         effect: 'fade',               // 1,2,3... navigation
     });
 //});

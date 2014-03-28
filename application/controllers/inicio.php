@@ -25,9 +25,9 @@ class Inicio extends Ext_Controller {
     }
 	public function index() {
 		$aData = array();
+		$aData['slider'] = $this->layout->obtenerSlider();
 		$this->_SiteInfo['title'] .= ' - Inicio';
 		$this->_menu = 'inicio';
-
 		$this->_vcContentPlaceHolder = $this->load->view('inicio', $aData, true);
 		parent::index();
 	}
