@@ -101,11 +101,12 @@ class Inicio extends Ext_Controller {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Productos';
 		$this->_menu = 'productos';
+		$aData['productos'] = $this->layout->obtenerProductos();
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
 	}
 
-	public function ver_producto($slug) {
+	public function producto($slug) {
 		$this->load->model('rosobe/productos_model', 'productos');
 		$producto = $this->productos->obtenerUnoSlug($slug);
 		if(!$producto) {

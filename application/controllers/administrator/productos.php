@@ -16,7 +16,7 @@ class Productos extends Ext_crud_Controller {
             ,array(
                 'field'   => 'nombreProducto',
                 'label'   => 'Nombre del Producto',
-                'rules'   => 'trim|xss_clean|required'
+                'rules'   => 'trim|xss_clean|required|strtoupper'
             )
             ,array(
                 'field'   => 'descripcionProducto',
