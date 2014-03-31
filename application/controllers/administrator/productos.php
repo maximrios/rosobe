@@ -16,7 +16,7 @@ class Productos extends Ext_crud_Controller {
             ,array(
                 'field'   => 'nombreProducto',
                 'label'   => 'Nombre del Producto',
-                'rules'   => 'trim|xss_clean|required'
+                'rules'   => 'trim|xss_clean|required|strtoupper'
             )
             ,array(
                 'field'   => 'descripcionProducto',
@@ -123,19 +123,13 @@ class Productos extends Ext_crud_Controller {
             /*
              * Aca comienza el codigo del do_upload que posteriormente deberia de hacerlo mas generico.
              */
+            $band = TRUE;
             $cant = count($_FILES['userfile']['name']);
             $config['upload_path'] = 'assets/images/productos/';
             $config['allowed_types'] = 'jpg';
             $config['max_size'] = '30000';
             $this->load->library('upload', $config);
             $this->load->library('image_lib');
-            $configa['image_library'] = 'gd2';
-            $configa['create_thumb'] = TRUE;
-            $configa['maintain_ratio'] = TRUE;
-            //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-            $configa['new_image']='assets/images/productos/';
-            $configa['width'] = 150;
-            $configa['height'] = 150;
             $upload_files = $_FILES;
             for($i = 0; $i < count($upload_files['userfile']['name']); $i++) {
                 $_FILES['userfile'] = array(
@@ -151,20 +145,55 @@ class Productos extends Ext_crud_Controller {
                 } 
                 else {
                     $data = $this->upload->data();
-                    //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+                    //$configa['image_library'] = 'gd2';
+                    $configa['create_thumb'] = TRUE;
+                    $configa['maintain_ratio'] = TRUE;
+                    $configa['new_image']='assets/images/productos/';
                     $configa['source_image'] = 'assets/images/productos/'.$data['file_name'];
+                    $configa['thumb_marker'] = '_thumb_detail';
+                    $configa['width'] = 80;
+                    $configa['height'] = 1;
+                    $configa['master_dim'] = 'width';
+                    $this->image_lib->initialize($configa);
+                    $this->image_lib->resize();
+                    $configa = array();
+                    $configa['create_thumb'] = TRUE;
+                    $configa['maintain_ratio'] = TRUE;
+                    $configa['new_image']='assets/images/productos/';
+                    $configa['source_image'] = 'assets/images/productos/'.$data['file_name'];
+                    $configa['thumb_marker'] = '_thumb';
+                    $configa['width'] = 170;
+                    $this->image_lib->initialize($configa);
+                    $this->image_lib->resize();
+                    $configa = array();
+                    $configa['create_thumb'] = TRUE;
+                    $configa['maintain_ratio'] = TRUE;
+                    $configa['new_image']='assets/images/productos/';
+                    $configa['source_image'] = 'assets/images/productos/'.$data['file_name'];
+                    $configa['thumb_marker'] = '_detail';
+                    $configa['width'] = 300;
                     $this->image_lib->initialize($configa);
                     $this->image_lib->resize();
                     $this->image_lib->clear();
+                    if($data['file_name']) {
+                        $dato = explode('.', $data['file_name']);
+                        $thumb = $dato[0].'_thumb.'.$dato[1];
+                        $thumbdetail = $dato[0].'_thumb_detail.'.$dato[1];
+                        $detail = $dato[0].'_detail.'.$dato[1];
+                    }
                     $this->productos->guardarImagen(
                         array(
                             0
                             , ($this->_reg['idProducto'] != '' && $this->_reg['idProducto'] != 0)? $this->_reg['idProducto'] : $this->_aEstadoOper['status']
                             , $config['upload_path'].$data['file_name']
-                            , 0
+                            , $config['upload_path'].$thumb
+                            , $config['upload_path'].$detail
+                            , $config['upload_path'].$thumbdetail
+                            , ($band==TRUE)? 1:0
                         )
                     );
                 }
+                $band = FALSE;
             }
             $this->_reg['idProducto'] = ($this->_reg['idProducto'] != '' && $this->_reg['idProducto'] != 0)? $this->_reg['idProducto'] : $this->_aEstadoOper['status'];
             $this->categorias->eliminarCategoriasProducto($this->_reg['idProducto']);

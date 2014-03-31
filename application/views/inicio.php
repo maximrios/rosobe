@@ -21,15 +21,19 @@
     </div>
     <hr>
     <div class="row" style="margin:0;margin-top:1em;">
-        <h4>Productos destacados</h4>
-        <?php
-        $i = 1;
-        for($i=1;$i<=4;$i++) { ?>
-        <div class="col-lg-3">
-            <img src="assets/images/productos/imagen<?=$i?>_thumb.jpg" style="margin:0!important;padding:0!important;border:none!important;">
-        </div>
-        <?php } ?>
-
+        <h5>Productos destacados</h5>
+        <ul>
+            <?php foreach ($productos as $producto) { ?>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <figure style="text-align:center;padding: 0.4em 0;margin:0.3em;background:white;border: 1px solid #D9D9D9;min-height:180px;">
+                    <a href="producto/<?=$producto['uriProducto']?>" title="<?=$producto['nombreProducto']?>" alt="<?=$producto['nombreProducto']?>"><img width="170" src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
+                    <figcaption>
+                        <label style="margin:0.5em 0;"><?=$producto['nombreProducto']?></label>
+                    </figcaption>
+                </figure>
+            </li>
+            <?php } ?>  
+        </ul>
     </div>
     <hr>
     <div class="row" style="margin:2em 0!important;">

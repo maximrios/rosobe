@@ -241,6 +241,7 @@ $config['js_array'] = array(
     'assets/libraries/jquery.lavalamp.min.js',
     'assets/themes/base/js/jquery.nivo.slider.pack.js',
     'assets/themes/base/js/jquery.prettyPhoto.js',
+    'assets/themes/base/js/jquery.jqzoom-core.js',
     //'assets/libraries/jquery-ui-1.10.3.custom.js',
     //'assets/libraries/jquery/jquery.cookie.js',
     //'assets/libraries/modernizr-2.0.6/modernizr-2.0.6.min.js',
@@ -276,5 +277,6 @@ $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/rosobe.css',
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
     $config['ext_base_url_plantilla_elegida'].'css/prettyPhoto.css',
+    $config['ext_base_url_plantilla_elegida'].'css/jquery.jqzoom.css',
     //$config['ext_base_url_plantilla_elegida'].'css/jquery.vegas.css',
 );
