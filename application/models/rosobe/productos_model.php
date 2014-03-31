@@ -19,7 +19,8 @@ class Productos_model extends CI_Model {
         $sql = 'SELECT *
             FROM rosobe_view_productos
             WHERE nombreProducto LIKE ? 
-            ORDER BY nombreProducto ASC  
+            GROUP BY idProducto
+            ORDER BY nombreProducto ASC 
             limit ? offset ? ;';
         return $this->db->query($sql, array('%' . strtolower((string) $vcBuscar) . '%', (double) $offset, (double) $limit))->result_array();
     }
@@ -53,7 +54,7 @@ class Productos_model extends CI_Model {
     }
 
     public function guardarImagen($aParms) {
-        $sql = 'SELECT rosobe_sp_productos_imagenes_guardar(?, ?, ?, ?) AS result;';
+        $sql = 'SELECT rosobe_sp_productos_imagenes_guardar(?, ?, ?, ?, ?, ?, ?) AS result;';
         $result = $this->db->query($sql, $aParms)->result_array();
         return $result[0]['result'];
     }

@@ -13,6 +13,14 @@ class Rosobe_model extends CI_Model {
 		$sql = 'SELECT * FROM rosobe_view_productos WHERE checkProductoImagen = 1 '.$and.' GROUP BY idProducto';
 		return $this->db->query($sql)->result_array();
 	}
+	function obtenerDestacados() {
+		$sql = 'SELECT * FROM rosobe_view_productos GROUP BY idProducto LIMIT 0, 4';
+		return $this->db->query($sql)->result_array();
+	}
+	function obtenerRelacionados($producto=0) {
+		$sql = 'SELECT * FROM rosobe_view_productos GROUP BY idProducto LIMIT 0, 3';
+		return $this->db->query($sql)->result_array();
+	}
 	function obtener_galeria() {
 		$sql = 'SELECT * FROM hits_galeria WHERE estadoGaleria = 1';
 		return $this->db->query($sql)->result_array();
