@@ -7,17 +7,24 @@
 </div>
 <section class="content">
     <div class="row" style="margin:0;">
-        <div class="col-lg-12" style="background:blue;padding:0;font-size: 1.4em;text-align:center;min-height:90px;">
-            <div class="col-lg-9" style="background:#E36F35;vertical-align:middle;">
-                Muebles al por mayor en serie para mayoristas. La mejor calidad en el menor tiempo y costo.
+        <div class="col-lg-12 anuncio" style="background:blue;padding:0;font-size: 1.4em;text-align:center;min-height:90px;">
+            <div class="col-lg-9" style="background:#E36F35;min-height:90px;">
+                <span>Muebles al por mayor en serie para mayoristas. La mejor calidad en el menor tiempo y costo.</span>
             </div>
-            <div class="col-lg-3" style="background:#393737;color:#FFF;">
-                Nuevo
+            <div class="col-lg-3" style="background:#393737;color:#FFF;min-height:90px;">
+                <span class="nuevo">Nuevo !!!</span>
             </div>
         </div>
-        <div class="col-lg-4"><span class="icono-atencion">Design</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
-        <div class="col-lg-4"><span class="icono-atencion">Time</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
-        <div class="col-lg-4"><span class="icono-atencion">Gear</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+        <h5>Productos destacados</h5>
+        <br>
+        <div class="col-lg-4"><span class="icono-atencion">Design</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, ullam, ea, minus, iure laboriosam voluptates amet omnis iusto quibusdam consequuntur sit doloribus expedita dolores? A aliquid aperiam quae asperiores molestiae.</div>
+        <div class="col-lg-4"><span class="icono-atencion">Time</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, dignissimos iure ipsam sit odio pariatur amet asperiores in beatae rerum sunt aut. Quidem, quam, asperiores at architecto sint nisi laborum.</div>
+        <div class="col-lg-4"><span class="icono-atencion">Gear</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ipsa inventore totam atque modi quae quo vitae ullam consequuntur eaque repudiandae nobis saepe labore doloribus sint. Vel tenetur assumenda voluptas!</div>
+        </div>
     </div>
     <hr>
     <div class="row" style="margin:0;margin-top:1em;">

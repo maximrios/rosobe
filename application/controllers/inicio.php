@@ -132,7 +132,7 @@ class Inicio extends Ext_Controller {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Servicios';
 		$this->_menu = 'servicios';
-		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
+		$this->_vcContentPlaceHolder = $this->load->view('servicios', $aData, true);
 		parent::index();
 	}
 

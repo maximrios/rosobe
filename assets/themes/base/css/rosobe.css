@@ -102,6 +102,15 @@ nav {
   width: auto;
   margin-bottom: 0!important;
 }
+.anuncio {
+    color: #FFF;
+}
+.anuncio div {
+    padding-top: 15px;
+}
+span.nuevo {
+    font-size: 1.4em;
+}
 /*nav ul {
   margin: 0 auto;
   text-align: center;
@@ -336,6 +345,9 @@ div[class^='div-'] {
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
   -moz-box-shadow: 0 10px 20px rgba(0,0,0,.7);
         box-shadow: 0 10px 20px rgba(0,0,0,.7);
+}
+.galeria_thumbs img {
+    margin: 0.5em;
 }
 
 .descripcion {

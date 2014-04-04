@@ -4,8 +4,20 @@
 		"selected_items":
 		[
 			[
+				"list",
+				"list-style"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
 				"fon",
-				"font-weight"
+				"font-size"
+			],
+			[
+				"pad",
+				"padding-top"
 			],
 			[
 				"font",
@@ -39,7 +51,63 @@
 			"file": "rosobe.sql",
 			"settings":
 			{
-				"buffer_size": 89946,
+				"buffer_size": 99588,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/inicio.php",
+			"settings":
+			{
+				"buffer_size": 4189,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/themes/base/css/rosobe.css",
+			"settings":
+			{
+				"buffer_size": 55800,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/template.php",
+			"settings":
+			{
+				"buffer_size": 8044,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/galeria.php",
+			"settings":
+			{
+				"buffer_size": 1208,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/servicios.php",
+			"settings":
+			{
+				"buffer_size": 3583,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/inicio.php",
+			"settings":
+			{
+				"buffer_size": 6504,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/administrator/productos.php",
+			"settings":
+			{
+				"buffer_size": 13656,
 				"line_ending": "Windows"
 			}
 		}
@@ -120,12 +188,13 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/rosobe/assets/themes/base/css/hits.css",
+		"/C/xampp/htdocs/rosobe/rosobe.sql",
 		"/C/xampp/htdocs/rosobe/application/views/productos.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/productos.php",
 		"/C/xampp/htdocs/rosobe/application/views/contacto.php",
 		"/C/xampp/htdocs/rosobe/application/views/template.php",
 		"/C/xampp/htdocs/rosobe/assets/themes/base/css/rosobe.css",
-		"/C/xampp/htdocs/rosobe/assets/themes/base/css/hits.css",
 		"/C/xampp/htdocs/rosobe/application/models/rosobe/rosobe_model.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/inicio.php",
 		"/C/xampp/htdocs/rosobe/application/views/inicio.php",
@@ -196,6 +265,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"content",
+			"footer",
+			"view_pro",
 			"slider",
 			"content",
 			"figure",
@@ -228,7 +300,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -236,23 +308,221 @@
 					"file": "rosobe.sql",
 					"settings":
 					{
-						"buffer_size": 89946,
+						"buffer_size": 99588,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								77364,
-								77370
+								94612,
+								95351
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/SQL/SQL.tmLanguage"
 						},
+						"translation.x": 50.0,
+						"translation.y": 25187.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/inicio.php",
+					"settings":
+					{
+						"buffer_size": 4189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								975,
+								975
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
 						"translation.x": 0.0,
-						"translation.y": 19397.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/themes/base/css/rosobe.css",
+					"settings":
+					{
+						"buffer_size": 55800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6021,
+								6021
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4464.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/views/template.php",
+					"settings":
+					{
+						"buffer_size": 8044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5780,
+								5780
+							],
+							[
+								6264,
+								6264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1755.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/galeria.php",
+					"settings":
+					{
+						"buffer_size": 1208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/views/servicios.php",
+					"settings":
+					{
+						"buffer_size": 3583,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3515,
+								3515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/controllers/inicio.php",
+					"settings":
+					{
+						"buffer_size": 6504,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4427,
+								4427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1575.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/controllers/administrator/productos.php",
+					"settings":
+					{
+						"buffer_size": 13656,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2475.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -311,7 +581,7 @@
 		[
 			[
 				"",
-				"/C/xampp/htdocs/micans/piaget/Colegio Piaget.sublime-project"
+				"/C/xampp/htdocs/micans/piaget/php.include/Libreria Teorema.sublime-project"
 			]
 		],
 		"width": 380.0
