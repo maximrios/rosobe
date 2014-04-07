@@ -6,6 +6,7 @@
 	$route['servicios'] = "inicio/servicios";
 	$route['galeria'] = "inicio/galeria";
 	$route['contacto'] = "inicio/contacto";
+	$route['consultar'] = "inicio/consultar";
 
 	$route['producto/([a-z-]+)'] = 'inicio/producto/$1';
 ?>

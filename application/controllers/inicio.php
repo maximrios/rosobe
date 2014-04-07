@@ -13,11 +13,16 @@ class Inicio extends Ext_Controller {
 		$this->load->library('Messages');
         $this->load->helper('utils_helper');
 		$this->_aReglas = array(
-								array(
-	                              	'field'   => 'txtnombre',
-	                              	'label'   => 'Nombre',
-	                              	'rules'   => 'trim|max_length[80]|xss_clean|required'
-	                          	)
+			array(
+	        	'field'   => 'txtnombre',
+	            'label'   => 'Nombre',
+	            'rules'   => 'trim|max_length[80]|xss_clean|required'
+			)
+			, array(
+	        	'field'   => 'txttelefono',
+	            'label'   => 'Telefono',
+	            'rules'   => 'trim|max_length[1]|xss_clean|required'
+			)
 		);
 	}
 	protected function _inicReglasWeb() {
@@ -32,56 +37,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('inicio', $aData, true);
 		parent::index();
 	}
-
-	public function novedades($id=0)
-	{
-		$this->load->model($this->db->dbdriver.'/lib_autenticacion/novedadesrol_model','_oModel');
-
-		$this->_SiteInfo['title'] .= ' Novedades';
-		$aData = array();
-
-        $aData['aNovedades'] = $this->_oModel->leer('', $this->lib_autenticacion->idRol(), 0, 1);
-        $aData['itemNovedad'] = $this->_oModel->obtenerUno($id);
-
-		$this->_vcContentPlaceHolder = $this->load->view('contenido-novedades',$aData,true);
-		
-		parent::index();
-	}
-
-	public function vermas($pageNovedades=0)
-	{
-		$this->load->model($this->db->dbdriver.'/lib_autenticacion/novedadesrol_model','_oModel');
-		$aData = array();
-        $aData['pageNovedades'] = $pageNovedades;
-        $aData['aNovedades'] = $this->_oModel->leer('', $this->lib_autenticacion->idRol(), $pageNovedades, 5);
-        $NovedadesNumRegs = $this->_oModel->numRegs('', $this->lib_autenticacion->idRol(), $pageNovedades, 5);
-        $aData['esViaAjax'] = $NovedadesNumRegs > ($pageNovedades * 5);
-
-		// $conntent = 
-		
-		$this->load->view('contenido-novedades-vermas',$aData);
-		
-		// $conntent .= print_r($this->lib_autenticacion->filtrarXHtml($conntent));
-		
-		// $this->output->set_output($conntent);
-	}
-
-	public function demo()
-	{
-		$this->_SiteInfo['title'] .= ' Demo';
-				
-		$aData = array();
-
-		$this->_vcContentPlaceHolder = $this->load->view('contenido-demo',$aData,true);
-		
-		parent::index();
-	}
-	
-	public function acercaDe()
-	{
-		parent::index();
-	}
-
 	public function nosotros() {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Nosotros';
@@ -89,7 +44,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('nosotros', $aData, true);
 		parent::index();
 	}
-
 	public function mayoristas() {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Mayoristas';
@@ -97,7 +51,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
 	}
-	
 	public function productos() {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Productos';
@@ -106,7 +59,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
 	}
-
 	public function producto($slug) {
 		$aData = array();
 		$this->load->model('rosobe/productos_model', 'productos');
@@ -123,11 +75,9 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('producto', $aData, true);
 		parent::index();
 	}
-
 	public function no_producto() {
 		echo "no existe";
 	}
-
 	public function servicios() {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Servicios';
@@ -135,7 +85,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('servicios', $aData, true);
 		parent::index();
 	}
-
 	public function galeria() {
 		$aData = array();
 		$aData['galeria'] = $this->layout->obtener_galeria();
@@ -144,7 +93,6 @@ class Inicio extends Ext_Controller {
 		$this->_vcContentPlaceHolder = $this->load->view('galeria', $aData, true);
 		parent::index();
 	}
-
 	public function contacto() {
 		$this->load->library('hits/googlemaps');
 		$config = array();
@@ -169,7 +117,7 @@ class Inicio extends Ext_Controller {
 		$this->_menu = 'contacto';
 		if($this->input->post('form')) {
 			$this->_inicReglasWeb();
-        	if ($this->_validarReglasWeb()) {
+        	if ($this->_validarReglas()) {
 	        	$aData['vcMsjSrv'] = 'Se envio con exito';
         	}
         	else {
@@ -183,7 +131,7 @@ class Inicio extends Ext_Controller {
 	}
 	public function consultar() {
 		$this->_inicReglasWeb();
-        if ($this->_validarReglasWeb()) {
+        if ($this->_validarReglas()) {
         	echo "si paso";
         }
         else {
@@ -193,8 +141,8 @@ class Inicio extends Ext_Controller {
         if($this->_aEstadoOperWeb['status'] > 0) {
 			$this->listado();
 		} else {
-			redirect('home/contacto');
-			//$this->contacto();
+			//redirect('contacto');
+			$this->contacto();
 		}
 	}
 }

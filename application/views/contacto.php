@@ -2,7 +2,7 @@
 <div class="div-50">
 	<h4>Formulario de contacto</h4>
 	<?=$vcMsjSrv;?>
-	<form action="home/contacto" method="post" class="contacto" accept-charset="utf-8">
+	<form action="consultar.html" method="post" class="contacto" accept-charset="utf-8">
 		<li>
 			<label for="txtnombre">Nombres</label>
 			<input id="nombre" type="text" name="txtnombre" tabindex="1" title="Ingrese el nombre completo" placeholder="Nombre completo" required>
