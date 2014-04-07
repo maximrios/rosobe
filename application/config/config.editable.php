@@ -24,5 +24,5 @@ $config['ext_base_smtp_config_editable']['mail'] = 'consultas@joseoquiroga.com.a
 $config['ext_base_smtp_config_editable']['asunto_mail'] = 'Consulta desde web';
 $config['ext_base_smtp_config_editable']['cuerpo_mail'] = 'mail_template';
 
-$config['ext_base_nombre_sistema'] = 'Sistema Integral de Administracion y Gestion SIGEP';
-$config['ext_base_bienvenida_sistema'] = 'Bienvenido al Sistema Integral de Administracion y Gestion SIGEP';
+$config['ext_base_nombre_sistema'] = 'Administracion Industrias y Servicios Ro.So.Be.';
+$config['ext_base_bienvenida_sistema'] = 'Administracion Industrias y Servicios Ro.So.Be.';

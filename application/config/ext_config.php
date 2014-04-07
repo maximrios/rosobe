@@ -226,15 +226,7 @@ $config['css_array_admin'] = array(
 // Array de JS
 $config['js_array'] = array(
     'assets/themes/base/js/jquery.js',
-    //'assets/themes/base/js/jquery.ui.js',
-    //'assets/themes/base/js/js.js',
-    //'assets/themes/base/js/stellar.js',
-    //'assets/themes/base/js/jquery.waypoints.js',
-    //'assets/themes/base/js/jquery.easing.js',
     'assets/themes/base/js/jquery.scrollUp.min.js',
-    //'assets/themes/base/js/jquery.vegas.js',
-    //'assets/themes/base/js/jquery.lavalamp.js',
-    //'assets/themes/base/js/jquery.easing.compatibility.js',
     'assets/themes/base/js/bootstrap.js',
     'assets/themes/base/js/jquery.placeholder.min.js',
     'assets/libraries/jquery.easing.1.3.js',
@@ -242,32 +234,6 @@ $config['js_array'] = array(
     'assets/themes/base/js/jquery.nivo.slider.pack.js',
     'assets/themes/base/js/jquery.prettyPhoto.js',
     'assets/themes/base/js/jquery.jqzoom-core.js',
-    //'assets/libraries/jquery-ui-1.10.3.custom.js',
-    //'assets/libraries/jquery/jquery.cookie.js',
-    //'assets/libraries/modernizr-2.0.6/modernizr-2.0.6.min.js',
-    //'assets/libraries/jqueryvalidation/js/languages/jquery.validationEngine-es.js',
-    //'assets/libraries/jqueryvalidation/js/jquery.validationEngine.js',
-  
-    //'assets/libraries/jqueryviaajax/jquery.fancyajax.js',
-    //'assets/libraries/jqueryviaajax/jquery.viaajax.js',
-    //'assets/libraries/jquery.md5/jquery.md5.js',
-    //'assets/libraries/mega-menu-dropdown/jquery.hoverIntent.minified.js',
-    //'assets/libraries/mega-menu-dropdown/jquery.mega.menu.js',
-    //'assets/libraries/mega-menu-dropdown/dropdown.control.js',
-    //'assets/libraries/jquery.gridhandler/jquery.gridhandler.js',
-    //'assets/libraries/bootstrap.js',
-    //'assets/libraries/bootstrap-typehead.js',
-    //'assets/libraries/jquery.fancybox.js',
-    //'assets/libraries/jquery.toolbar.js',
-    //'assets/libraries/bootstrap-datepicker.js',
-    //'assets/libraries/bootstrap-tabs-ajax.js',
-    //'assets/libraries/uploadify/jquery.uploadify.v2.1.0.min.js',
-    //'assets/libraries/uploadify/swfobject.js',
-    //'assets/libraries/jquery-1.10.2.js',
-    //'assets/libraries/ckeditor/ckeditor.js',
-    //'assets/libraries/resourcemanager.js',
-    //'assets/libraries/sigep.js',
-    //'assets/libraries/jquery/jquery.documentready.js', // este es el ultimo elemento de la lista, SIEMPRE
 );
 
 // Array de CSS
@@ -278,5 +244,4 @@ $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
     $config['ext_base_url_plantilla_elegida'].'css/prettyPhoto.css',
     $config['ext_base_url_plantilla_elegida'].'css/jquery.jqzoom.css',
-    //$config['ext_base_url_plantilla_elegida'].'css/jquery.vegas.css',
 );
