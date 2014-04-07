@@ -61,8 +61,7 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->lib_autenticacion->nombreUsuario();?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Mis datos</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Configuracion</a></li>
+                        <li><a href="http://industriasrosobe.com.ar:2084" target="_blank"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Webmail</a></li>
                         <li><a href="<?php echo config_item('ext_base_url');?>" target="_blank"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;Ver mi web</a></li>
                         <li class="divider"></li>
                         <li><a href="aut/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesión</a></li>
