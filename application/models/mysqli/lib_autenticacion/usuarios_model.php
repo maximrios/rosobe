@@ -12,7 +12,10 @@ class Usuarios_model extends CI_Model {
             , $vcPass
             , $vcIp
         );
-        $query = 'CALL hits_sp_usuarios_validar(? ,? ,? );';
+        //$query = 'CALL hits_sp_usuarios_validar(? ,? ,? );';
+        $query = 'SELECT idUsuario, idPersona, idRol, idEstado, nombreUsuario, passwordUsuario, intentosUsuario, ultimoLoginUsuario, nombreRol, nombreEstado, dniPersona, apellidoPersona, nombrePersona
+            FROM hits_view_login
+            WHERE nombreUsuario = ? AND passwordUsuario = ?;';
         $result = $this->db->query($query, $aParms)->result_array();
         return (sizeof($result) > 0) ? $result[0] : false;
     }

@@ -12,6 +12,7 @@ border-radius: 0.1em;
 -ms-border-radius: 0.1em;
 behavior: url(../otros/PIE.htc);
 margin: 0 0 5px 0;
+padding: 0.1em 0 1em 0;
 }
 .notif-container-alert .notif-lft{
 float: left;

@@ -215,6 +215,7 @@ class Productos extends Ext_crud_Controller {
         } 
         else {
             $this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
+             $this->_aEstadoOper['message'] = 'ello';
         }
         $this->_aEstadoOper['message'] = $this->messages->do_message(array('message'=>$this->_aEstadoOper['message'],'type'=> ($this->_aEstadoOper['status'] > 0)?'success':'alert'));
         if($this->_aEstadoOper['status'] > 0) {

@@ -13,8 +13,82 @@ class Usuarios_model extends CI_Model {
             , $vcIp
         );
         $query = 'CALL hits_sp_usuarios_validar(? ,? ,? );';
+        /*$query = 'SELECT idUsuario, idPersona, idRol, idEstado, nombreUsuario, passwordUsuario, intentosUsuario, ultimoLoginUsuario, nombreRol, nombreEstado, dniPersona, apellidoPersona, nombrePersona
+            FROM hits_view_login
+            WHERE nombreUsuario = pnombreUsuario AND passwordUsuario = ppasswordUsuario;'*/
+
+    /*IF(@idUsuario IS NULL) THEN
+        BEGIN
+            UPDATE hits_usuarios SET
+                intentosUsuario = intentosUsuario + 1
+                ,idEstado = (CASE intentosUsuario WHEN 4 THEN
+                                    (SELECT e.idEstado FROM hits_usuarios_estados e WHERE e.idEstado = 3)
+                                ELSE
+                                    idEstado
+                                END)
+            WHERE nombreUsuario = pnombreUsuario;
+            
+            INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
+
+            SELECT idUsuario, NOW(), pipUsuario, FALSE FROM hits_usuarios WHERE nombreUsuario = pnombreUsuario;
+        END;
+    ELSE
+        BEGIN
+            IF(@idEstado = 1) THEN
+                BEGIN
+                    IF(@intentosUsuario < 5) THEN
+                        BEGIN
+                            INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
+                        VALUES (@idUsuario, NOW(), pipUsuario, TRUE);
+                            UPDATE hits_usuarios SET 
+                                intentosUsuario = 0
+                                , ultimoLoginUsuario = now()
+                            WHERE idUsuario = @idUsuario;
+                        END;
+                    ELSE
+                        BEGIN
+                            INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
+                        VALUES (@idUsuario, now(), pipUsuario, FALSE);
+                            
+                            SET @idUsuario :=0
+                            , @idPersona:=0
+                            , @passwordUsuario:='';
+                        END;
+                    END IF;
+                END;
+            ELSE
+                BEGIN
+                    INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
+                    VALUES (@idUsuario, now(), ipAuditar, FALSE);
+
+                    SET @idUsuario :=0
+                    , @idPersona:=0
+                    , @passwordUsuario:='';
+                END;
+            END IF;
+        END;
+    END IF;
+    SELECT
+        @idUsuario idUsuario,
+      @idPersona idPersona,
+      @idRol idRol,
+      @idEstado idEstado,
+      @nombreUsuario nombreUsuario,
+      @passwordUsuario passwordUsuario,
+      @ultimoLoginUsuario ultimoLoginUsuario,
+      @intentosUsuario intentosUsuario,
+      @nombreRol nombreRol,
+      @nombreEstado nombreEstado,
+      @dniPersona dniPersona,
+      @nombrePersona nombrePersona,
+      @apellidoPersona apellidoPersona;';*/
+      
         $result = $this->db->query($query, $aParms)->result_array();
         return (sizeof($result) > 0) ? $result[0] : false;
+    }
+
+    public function guardarAuditar() {
+
     }
 
     public function permisosUriPorRol($inIdUsuario) {
