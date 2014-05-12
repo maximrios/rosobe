@@ -22,9 +22,9 @@ class Lib_Ubicacion{
 		$this->ci->load->library('Session');
 		$this->ci->load->database();
 		
-		$this->ci->load->model($this->ci->db->dbdriver.'/lib_ubicacion/usuariosorganismos_model');
-		$this->ci->load->model('sigep/cuadrocargosagentes_model', 'ubicaciones');
-		$this->ci->load->model('sigep/designaciones_model', 'designaciones');
+		//$this->ci->load->model($this->ci->db->dbdriver.'/lib_ubicacion/usuariosorganismos_model');
+		//$this->ci->load->model('sigep/cuadrocargosagentes_model', 'ubicaciones');
+		//$this->ci->load->model('sigep/designaciones_model', 'designaciones');
 	}
 	
 	protected function _setSession($data, $keys=array('idOrganismo','nombreOrganismo')) {

@@ -117,7 +117,8 @@ class Ext_AutController extends Ext_Controller {
 		$UsrView = $this->load->view('lib_autenticacion/usr-view'
 			, array(
 				'vcUsuarioActual' => $this->lib_autenticacion->nombreUsuario()
-				, 'vcUbicacionActual' => $this->lib_ubicacion->descripcion()
+				//, 'vcUbicacionActual' => $this->lib_ubicacion->descripcion()
+				, 'vcUbicacionActual' => ''
 			)
 			,true);
 		$data = array('PanelInfo'=> $this->_panelInfo()
@@ -133,7 +134,7 @@ class Ext_AutController extends Ext_Controller {
 		parent::_init($opciones=array());
 		$this->load->library('Form_validation');
 		$this->load->library('lib_autenticacion/lib_autenticacion',null);
-		$this->load->library('lib_ubicacion/lib_ubicacion',null);
+		//$this->load->library('lib_ubicacion/lib_ubicacion',null);
 		$this->load->library('lib_permisos/lib_permisos',null);
 		$this->_PanelInfo = array_merge($this->_PanelInfo, $this->config->item('ext_base_panel'));
 		$this->lib_autenticacion->estaLogueado();

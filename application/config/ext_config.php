@@ -212,6 +212,7 @@ $config['js_array_admin'] = array(
     'assets/libraries/jquery.file.upload/jquery.fileupload-process.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',
     'assets/libraries/chosen/chosen.jquery.js',
+    'assets/themes/base/js/hits.js',
     
 );
 $config['css_array_admin'] = array(
@@ -244,4 +245,6 @@ $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
     $config['ext_base_url_plantilla_elegida'].'css/prettyPhoto.css',
     $config['ext_base_url_plantilla_elegida'].'css/jquery.jqzoom.css',
+    '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css',
+
 );

@@ -25,14 +25,14 @@ class Lib_Autenticacion
 		$this->ci =& get_instance();
 		
 		$this->ci->load->library('Session');
-		$this->ci->load->library('lib_ubicacion/lib_ubicacion');
+		//$this->ci->load->library('lib_ubicacion/lib_ubicacion');
 		$this->ci->load->database();
 		
 		
 		// cargar modelos
 		$this->ci->load->model($this->ci->db->dbdriver.'/lib_autenticacion/usuarios_model');
 		//$this->ci->load->model('sigep/agentes_model', 'agentes');
-		$this->ci->load->model('sigep/designaciones_model', 'designaciones');
+		//$this->ci->load->model('sigep/designaciones_model', 'designaciones');
 		$this->_init();
 	}
 	

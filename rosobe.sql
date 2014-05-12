@@ -3,7 +3,7 @@
 -- Server version:               5.0.51b-community-nt-log - MySQL Community Edition (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2014-03-31 00:12:37
+-- Date/time:                    2014-05-12 00:57:49
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,6 +27,88 @@ INSERT INTO `hist_pass` (`id_pass`, `id_usu`, `old_pass`, `fecha`) VALUES
 	(2, 5, '670da91be64127c92faac35c8300e814', 1077018162),
 	(3, 6, '41fcba09f2bdcdf315ba4119dc7978dd', 1077018433);
 /*!40000 ALTER TABLE `hist_pass` ENABLE KEYS */;
+
+
+-- Dumping structure for table rosobe.hits_categorias
+DROP TABLE IF EXISTS `hits_categorias`;
+CREATE TABLE IF NOT EXISTS `hits_categorias` (
+  `idCategoria` int(10) NOT NULL auto_increment,
+  `nombreCategoria` varchar(255) default '0',
+  `pathCategoria` varchar(255) default '0',
+  `uriCategoria` varchar(255) default '0',
+  PRIMARY KEY  (`idCategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_categorias: ~25 rows (approximately)
+/*!40000 ALTER TABLE `hits_categorias` DISABLE KEYS */;
+INSERT INTO `hits_categorias` (`idCategoria`, `nombreCategoria`, `pathCategoria`, `uriCategoria`) VALUES
+	(1, 'Mesas', '0', '0'),
+	(2, 'Sillas', '0', '0'),
+	(3, 'Puertas', '0', '0'),
+	(4, 'Portones', '0', '0'),
+	(5, 'Ventanas', '0', '0'),
+	(6, 'precio', '0', '0'),
+	(7, 'divino', '0', '0'),
+	(8, 'maquina', '0', '0'),
+	(9, 'catego', '0', '0'),
+	(10, 'cate', '0', '0'),
+	(11, 'cafaya', '0', '0'),
+	(12, 'rioja', '0', '0'),
+	(13, 'riojano', '0', '0'),
+	(14, 'mendoza', '0', '0'),
+	(15, 'morsa', '0', '0'),
+	(16, 'asd aksdjh asdkajs dh', '0', 'asd-aksdjh-asdkajs-dh'),
+	(17, 'mierasd asd h', '0', '0'),
+	(18, 'asdaasdasdasd', '0', '0'),
+	(19, 'asdasdasdasd', '0', '0'),
+	(20, 'asdsad', '0', '0'),
+	(21, 'asdasdasda', '0', '0'),
+	(22, 'poedo', '0', '0'),
+	(23, 'pedando', '0', '0'),
+	(24, 'pedoasdk jasldka sjdlaskd j', '0', '0'),
+	(25, 'Tableros', '0', '0');
+/*!40000 ALTER TABLE `hits_categorias` ENABLE KEYS */;
+
+
+-- Dumping structure for table rosobe.hits_categorias_productos
+DROP TABLE IF EXISTS `hits_categorias_productos`;
+CREATE TABLE IF NOT EXISTS `hits_categorias_productos` (
+  `idCategoriaProducto` int(10) NOT NULL auto_increment,
+  `idCategoria` int(10) default '0',
+  `idProducto` int(10) default '0',
+  PRIMARY KEY  (`idCategoriaProducto`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_categorias_productos: 8 rows
+/*!40000 ALTER TABLE `hits_categorias_productos` DISABLE KEYS */;
+INSERT INTO `hits_categorias_productos` (`idCategoriaProducto`, `idCategoria`, `idProducto`) VALUES
+	(4, 2, 1),
+	(3, 1, 1),
+	(5, 3, 1),
+	(9, 2, 2),
+	(8, 1, 2),
+	(10, 1, 3),
+	(11, 1, 4),
+	(12, 12, 4);
+/*!40000 ALTER TABLE `hits_categorias_productos` ENABLE KEYS */;
+
+
+-- Dumping structure for table rosobe.hits_categorias_relaciones
+DROP TABLE IF EXISTS `hits_categorias_relaciones`;
+CREATE TABLE IF NOT EXISTS `hits_categorias_relaciones` (
+  `idCategoriaRelacion` int(10) NOT NULL auto_increment,
+  `idCategoria` int(10) default NULL,
+  `idSubcategoria` int(10) default NULL,
+  PRIMARY KEY  (`idCategoriaRelacion`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_categorias_relaciones: 2 rows
+/*!40000 ALTER TABLE `hits_categorias_relaciones` DISABLE KEYS */;
+INSERT INTO `hits_categorias_relaciones` (`idCategoriaRelacion`, `idCategoria`, `idSubcategoria`) VALUES
+	(1, 1, 2),
+	(2, 1, 3),
+	(3, 13, 16);
+/*!40000 ALTER TABLE `hits_categorias_relaciones` ENABLE KEYS */;
 
 
 -- Dumping structure for table rosobe.hits_ecivil
@@ -68,29 +150,30 @@ DROP TABLE IF EXISTS `hits_galeria`;
 CREATE TABLE IF NOT EXISTS `hits_galeria` (
   `idGaleria` int(10) NOT NULL auto_increment,
   `nombreGaleria` varchar(255) default '0',
-  `imagenGaleria` varchar(255) default '0',
+  `pathGaleria` varchar(255) default '0',
   `thumbGaleria` varchar(255) default '0',
+  `descripcionGaleria` text,
   `estadoGaleria` tinyint(4) default '0',
   PRIMARY KEY  (`idGaleria`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table rosobe.hits_galeria: 14 rows
 /*!40000 ALTER TABLE `hits_galeria` DISABLE KEYS */;
-INSERT INTO `hits_galeria` (`idGaleria`, `nombreGaleria`, `imagenGaleria`, `thumbGaleria`, `estadoGaleria`) VALUES
-	(1, 'Mesa jardinera Quina', 'assets/themes/sigep/images/galeria/imagen1.jpg', 'assets/themes/sigep/images/galeria/imagen1_thumb.jpg', 1),
-	(2, 'Gacebo', 'assets/themes/sigep/images/galeria/imagen2.jpg', 'assets/themes/sigep/images/galeria/imagen2_thumb.jpg', 1),
-	(3, 'Nombre Producto', 'assets/themes/sigep/images/galeria/imagen3.jpg', 'assets/themes/sigep/images/galeria/imagen3_thumb.jpg', 1),
-	(4, 'Producto 4', 'assets/themes/sigep/images/galeria/imagen4.jpg', 'assets/themes/sigep/images/galeria/imagen4_thumb.jpg', 1),
-	(5, 'Producto 5', 'assets/themes/sigep/images/galeria/imagen5.jpg', 'assets/themes/sigep/images/galeria/imagen5_thumb.jpg', 1),
-	(6, 'Producto 6', 'assets/themes/sigep/images/galeria/imagen6.jpg', 'assets/themes/sigep/images/galeria/imagen6_thumb.jpg', 1),
-	(7, 'Producto 7', 'assets/themes/sigep/images/galeria/imagen7.jpg', 'assets/themes/sigep/images/galeria/imagen7_thumb.jpg', 1),
-	(8, 'Producto 8', 'assets/themes/sigep/images/galeria/imagen8.jpg', 'assets/themes/sigep/images/galeria/imagen8_thumb.jpg', 1),
-	(9, 'Producto 9', 'assets/themes/sigep/images/galeria/imagen9.jpg', 'assets/themes/sigep/images/galeria/imagen9_thumb.jpg', 1),
-	(10, 'Producto 10', 'assets/themes/sigep/images/galeria/imagen10.jpg', 'assets/themes/sigep/images/galeria/imagen10_thumb.jpg', 1),
-	(11, 'Producto 11', 'assets/themes/sigep/images/galeria/imagen11.jpg', 'assets/themes/sigep/images/galeria/imagen11_thumb.jpg', 1),
-	(12, 'Producto 12', 'assets/themes/sigep/images/galeria/imagen12.jpg', 'assets/themes/sigep/images/galeria/imagen12_thumb.jpg', 1),
-	(13, 'Producto 13', 'assets/themes/sigep/images/galeria/imagen13.jpg', 'assets/themes/sigep/images/galeria/imagen13_thumb.jpg', 1),
-	(14, 'Producto 14', 'assets/themes/sigep/images/galeria/imagen14.jpg', 'assets/themes/sigep/images/galeria/imagen14_thumb.jpg', 1);
+INSERT INTO `hits_galeria` (`idGaleria`, `nombreGaleria`, `pathGaleria`, `thumbGaleria`, `descripcionGaleria`, `estadoGaleria`) VALUES
+	(1, 'Mesa jardinera Quina', 'assets/themes/sigep/images/galeria/imagen1.jpg', 'assets/themes/sigep/images/galeria/imagen1_thumb.jpg', NULL, 1),
+	(2, 'Gacebo', 'assets/themes/sigep/images/galeria/imagen2.jpg', 'assets/themes/sigep/images/galeria/imagen2_thumb.jpg', NULL, 1),
+	(3, 'Nombre Producto', 'assets/themes/sigep/images/galeria/imagen3.jpg', 'assets/themes/sigep/images/galeria/imagen3_thumb.jpg', NULL, 1),
+	(4, 'Producto 4', 'assets/themes/sigep/images/galeria/imagen4.jpg', 'assets/themes/sigep/images/galeria/imagen4_thumb.jpg', NULL, 1),
+	(5, 'Producto 5', 'assets/themes/sigep/images/galeria/imagen5.jpg', 'assets/themes/sigep/images/galeria/imagen5_thumb.jpg', NULL, 1),
+	(6, 'Producto 6', 'assets/themes/sigep/images/galeria/imagen6.jpg', 'assets/themes/sigep/images/galeria/imagen6_thumb.jpg', NULL, 1),
+	(7, 'Producto 7', 'assets/themes/sigep/images/galeria/imagen7.jpg', 'assets/themes/sigep/images/galeria/imagen7_thumb.jpg', NULL, 1),
+	(8, 'Producto 8', 'assets/themes/sigep/images/galeria/imagen8.jpg', 'assets/themes/sigep/images/galeria/imagen8_thumb.jpg', NULL, 1),
+	(9, 'Producto 9', 'assets/themes/sigep/images/galeria/imagen9.jpg', 'assets/themes/sigep/images/galeria/imagen9_thumb.jpg', NULL, 1),
+	(10, 'Producto 10', 'assets/themes/sigep/images/galeria/imagen10.jpg', 'assets/themes/sigep/images/galeria/imagen10_thumb.jpg', NULL, 1),
+	(11, 'Producto 11', 'assets/themes/sigep/images/galeria/imagen11.jpg', 'assets/themes/sigep/images/galeria/imagen11_thumb.jpg', NULL, 1),
+	(12, 'Producto 12', 'assets/themes/sigep/images/galeria/imagen12.jpg', 'assets/themes/sigep/images/galeria/imagen12_thumb.jpg', NULL, 1),
+	(13, 'Producto 13', 'assets/themes/sigep/images/galeria/imagen13.jpg', 'assets/themes/sigep/images/galeria/imagen13_thumb.jpg', NULL, 1),
+	(14, 'Producto 14', 'assets/themes/sigep/images/galeria/imagen14.jpg', 'assets/themes/sigep/images/galeria/imagen14_thumb.jpg', NULL, 1);
 /*!40000 ALTER TABLE `hits_galeria` ENABLE KEYS */;
 
 
@@ -244,6 +327,61 @@ INSERT INTO `hits_personas` (`idPersona`, `dniPersona`, `idTipoDni`, `apellidoPe
 /*!40000 ALTER TABLE `hits_personas` ENABLE KEYS */;
 
 
+-- Dumping structure for table rosobe.hits_productos
+DROP TABLE IF EXISTS `hits_productos`;
+CREATE TABLE IF NOT EXISTS `hits_productos` (
+  `idProducto` int(10) NOT NULL auto_increment,
+  `nombreProducto` varchar(255) NOT NULL default '0',
+  `codigoProducto` varchar(255) NOT NULL default '0',
+  `precioProducto` decimal(10,2) NOT NULL default '0.00',
+  `descripcionProducto` varchar(255) NOT NULL default '0',
+  `uriProducto` varchar(255) default NULL,
+  `publicadoProducto` tinyint(4) default NULL,
+  `estadoProducto` tinyint(4) default NULL,
+  PRIMARY KEY  (`idProducto`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_productos: ~4 rows (approximately)
+/*!40000 ALTER TABLE `hits_productos` DISABLE KEYS */;
+INSERT INTO `hits_productos` (`idProducto`, `nombreProducto`, `codigoProducto`, `precioProducto`, `descripcionProducto`, `uriProducto`, `publicadoProducto`, `estadoProducto`) VALUES
+	(1, 'SILLA DE JARDIN', '0', 0.00, 'Esta silla de jardin esta compuesta de madera obtenida de los palos borrachos que estan en en los bosques de canada', 'silla-de-jardin', NULL, NULL),
+	(2, 'SILLONES PARA DESCANSO', '0', 0.00, 'Con un aspecto diferente a los sillones de jardines comunes, estos sillones estan destinados a jardines amplios aportando al espacio algo delicado y de muy buena calidad.', 'sillones-para-descanso-de-jardineria', NULL, NULL),
+	(3, 'MESA PARA COCINA', '0', 0.00, 'Esta mesa esta diseñada para un hermoso quincho en donde se puede compartir con la familia o amigos.', 'mesa-para-cocina', NULL, NULL),
+	(4, 'MESA COMEDOR', '0', 0.00, 'La asdkaj sdlaksdj wqoi hdskfjhs dfkjsdfh iweu ksdjh sdifsdfsjdfhkifh sdijfh sdkfjhwifj hsdkfhsdf ksdjfhsd fshdf ksdfh ksdjfh fs dfk sdfhksdjfhs kdfjhsdfksjdfhksdfj', 'mesa-comedor', NULL, NULL);
+/*!40000 ALTER TABLE `hits_productos` ENABLE KEYS */;
+
+
+-- Dumping structure for table rosobe.hits_productos_imagenes
+DROP TABLE IF EXISTS `hits_productos_imagenes`;
+CREATE TABLE IF NOT EXISTS `hits_productos_imagenes` (
+  `idProductoImagen` int(10) NOT NULL auto_increment,
+  `idProducto` int(10) default NULL,
+  `pathProductoImagen` varchar(255) default NULL,
+  `thumbProductoImagen` varchar(255) default NULL,
+  `detailProductoImagen` varchar(255) default NULL,
+  `thumbdetailProductoImagen` varchar(255) default NULL,
+  `checkProductoImagen` tinyint(1) default NULL,
+  PRIMARY KEY  (`idProductoImagen`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_productos_imagenes: 12 rows
+/*!40000 ALTER TABLE `hits_productos_imagenes` DISABLE KEYS */;
+INSERT INTO `hits_productos_imagenes` (`idProductoImagen`, `idProducto`, `pathProductoImagen`, `thumbProductoImagen`, `detailProductoImagen`, `thumbdetailProductoImagen`, `checkProductoImagen`) VALUES
+	(1, 1, 'assets/images/productos/imagen1.jpg', 'assets/images/productos/imagen1_thumb.jpg', 'assets/images/productos/imagen1_detail.jpg', 'assets/images/productos/imagen1_thumb_detail.jpg', 1),
+	(10, 4, 'assets/images/productos/imagen8.jpg', 'assets/images/productos/imagen8_thumb.jpg', 'assets/images/productos/imagen8_detail.jpg', 'assets/images/productos/imagen8_thumb_detail.jpg', NULL),
+	(11, 4, 'assets/images/productos/imagen101.jpg', 'assets/images/productos/imagen101_thumb.jpg', 'assets/images/productos/imagen101_detail.jpg', 'assets/images/productos/imagen101_thumb_detail.jpg', NULL),
+	(3, 2, 'assets/images/productos/imagen3.jpg', 'assets/images/productos/imagen3_thumb.jpg', 'assets/images/productos/imagen3_detail.jpg', 'assets/images/productos/imagen3_thumb_detail.jpg', 1),
+	(4, 2, 'assets/images/productos/imagen4.jpg', 'assets/images/productos/imagen4_thumb.jpg', 'assets/images/productos/imagen4_detail.jpg', 'assets/images/productos/imagen4_thumb_detail.jpg', NULL),
+	(5, 2, 'assets/images/productos/imagen10.jpg', 'assets/images/productos/imagen10_thumb.jpg', 'assets/images/productos/imagen10_detail.jpg', 'assets/images/productos/imagen10_thumb_detail.jpg', NULL),
+	(6, 3, 'assets/images/productos/imagen6.jpg', 'assets/images/productos/imagen6_thumb.jpg', 'assets/images/productos/imagen6_detail.jpg', 'assets/images/productos/imagen6_thumb_detail.jpg', 1),
+	(7, 3, 'assets/images/productos/imagen9.jpg', 'assets/images/productos/imagen9_thumb.jpg', 'assets/images/productos/imagen9_detail.jpg', 'assets/images/productos/imagen9_thumb_detail.jpg', NULL),
+	(8, 3, 'assets/images/productos/imagen11.jpg', 'assets/images/productos/imagen11_thumb.jpg', 'assets/images/productos/imagen11_detail.jpg', 'assets/images/productos/imagen11_thumb_detail.jpg', NULL),
+	(9, 3, 'assets/images/productos/imagen12.jpg', 'assets/images/productos/imagen12_thumb.jpg', 'assets/images/productos/imagen12_detail.jpg', 'assets/images/productos/imagen12_thumb_detail.jpg', NULL),
+	(12, 4, 'assets/images/productos/imagen13.jpg', 'assets/images/productos/imagen13_thumb.jpg', 'assets/images/productos/imagen13_detail.jpg', 'assets/images/productos/imagen13_thumb_detail.jpg', 1),
+	(13, 4, 'assets/images/productos/imagen14.jpg', 'assets/images/productos/imagen14_thumb.jpg', 'assets/images/productos/imagen14_detail.jpg', 'assets/images/productos/imagen14_thumb_detail.jpg', NULL);
+/*!40000 ALTER TABLE `hits_productos_imagenes` ENABLE KEYS */;
+
+
 -- Dumping structure for table rosobe.hits_sessions
 DROP TABLE IF EXISTS `hits_sessions`;
 CREATE TABLE IF NOT EXISTS `hits_sessions` (
@@ -255,184 +393,36 @@ CREATE TABLE IF NOT EXISTS `hits_sessions` (
   PRIMARY KEY  (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_sessions: 3 rows
+-- Dumping data for table rosobe.hits_sessions: 2 rows
 /*!40000 ALTER TABLE `hits_sessions` DISABLE KEYS */;
 INSERT INTO `hits_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-	('b83fbdf3c7a65f31895f024a6d1a1bbe', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0', 1396148632, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-03-29 14:51:49";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:0:{}}'),
-	('dd4449bf3019751c10d04d73b0886377', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0 FirePHP/0.7.4', 1396151819, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-03-30 00:03:57";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:4:{i:0;s:32:"frm139615077984frme5afb0f2dbc6d3";i:1;s:32:"frm139615079037frmbb702465f3c314";i:2;s:32:"frm139615114424frm78f1893678afbe";i:3;s:32:"frm139615139832frm09a8a8976abcdf";}}'),
-	('f8c50b609474c1c637d1a8f335d81d42', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0', 1396199298, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-03-30 00:38:39";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:0:{}}');
+	('688df323744d97de6281f1c02c2a3800', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', 1399863213, 'a:2:{s:9:"user_data";s:0:"";s:12:"antibotLlave";a:1:{i:0;s:32:"frm139986321388frmcaa89215e67b35";}}'),
+	('a4949b17aa3129d050b0fb91a1e98949', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0 FirePHP/0.7.4', 1399866002, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-04-02 17:14:13";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:5:{i:0;s:32:"frm139986584372frmafa299a4d1d8c5";i:1;s:32:"frm139986601265frmbd3ef5c19067fe";i:2;s:32:"frm139986604103frmda0b566359c386";i:3;s:32:"frm139986606743frm2297607a5db857";i:4;s:32:"frm139986622774frm64b3ec1fdfacea";}}');
 /*!40000 ALTER TABLE `hits_sessions` ENABLE KEYS */;
 
 
--- Dumping structure for function rosobe.hits_sp_personas_guardar
-DROP FUNCTION IF EXISTS `hits_sp_personas_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `hits_sp_personas_guardar`(`pidPersona` INT, `pidTipoDni` INT, `pdniPersona` INT, `papellidoPersona` VARCHAR(255), `pnombrePersona` vaRCHAR(255), `pcuilPersona` BIGINT, `pnacimientoPersona` daTE, `pidSexo` INT, `pidEcivil` INT, `pdomicilioPersona` VARCHAR(255), `ptelefonoPersona` BIGINT, `pcelularPersona` BIGINT, `pemailPersona` vARCHAR(255), `plaboralPersona` BIGINT) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidPersona IS NULL OR pidPersona=0 THEN
-		BEGIN	
-			INSERT INTO hits_personas
-				(dniPersona
-				, idTipoDni
-				, idEcivil
-				, cuilPersona
-				, nombrePersona
-				, apellidoPersona
-				, nacimientoPersona
-				, idSexo
-				, domicilioPersona
-				, telefonoPersona
-				, celularPersona
-				, emailPersona
-				, laboralPersona) 
-			VALUES
-				(pdniPersona
-				, pidTipoDni
-				, pidEcivil
-				, pcuilPersona
-				, pnombrePersona
-				, papellidoPersona
-				, pnacimientoPersona
-				, pidSexo
-				, pdomicilioPersona
-				, ptelefonoPersona
-				, pcelularPersona
-				, pemailPersona
-				, plaboralPersona);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE hits_personas SET 
-		 		dniPersona = pdniPersona
-				, idTipoDni = pidTipoDni
-				, idEcivil = pidEcivil
-				, cuilPersona = pcuilPersona
-				, nombrePersona = pnombrePersona
-				, apellidoPersona = papellidoPersona
-				, nacimientoPersona = pnacimientoPersona
-				, idSexo = pidSexo
-				, domicilioPersona = pdomicilioPersona
-				, telefonoPersona = ptelefonoPersona
-				, celularPersona = pcelularPersona
-				, emailPersona = pemailPersona
-				, laboralPersona = plaboralPersona
-			WHERE idPersona = pidPersona;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
+-- Dumping structure for table rosobe.hits_slider
+DROP TABLE IF EXISTS `hits_slider`;
+CREATE TABLE IF NOT EXISTS `hits_slider` (
+  `idSlider` int(10) NOT NULL auto_increment,
+  `tituloSlider` varchar(50) default NULL,
+  `pathSlider` varchar(255) default NULL,
+  `mimeSlider` varchar(50) default NULL,
+  `linkSlider` varchar(255) default NULL,
+  `targetSlider` varchar(50) default NULL,
+  `vigenciaDesde` date default NULL,
+  `vigenciaHasta` date default NULL,
+  `activoSlider` tinyint(4) default NULL,
+  PRIMARY KEY  (`idSlider`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
--- Dumping structure for procedure rosobe.hits_sp_usuarios_obtener
-DROP PROCEDURE IF EXISTS `hits_sp_usuarios_obtener`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `hits_sp_usuarios_obtener`(IN `pidUsuario` INT)
-BEGIN
-  SELECT idUsuario, idPersona, idRol, idEstado, nombreEstado, nombreUsuario, 
-       '' as passwordUsuario , l.ultimoLoginUsuario, l.intentosUsuario, l.nombreRol, l.idRol, 
-       l.dniPersona, l.nombrePersona, l.apellidoPersona
-  FROM hits_view_login l
-  WHERE idUsuario = pidUsuario;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.hits_sp_usuarios_password
-DROP FUNCTION IF EXISTS `hits_sp_usuarios_password`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `hits_sp_usuarios_password`(`pidUsuario` INT, `ppasswordUsuario` VARCHAR(255), `ppasswordNuevo` varCHAR(255)) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-UPDATE hits_usuarios SET 
-		passwordUsuario = ppasswordNuevo
-	WHERE idUsuario = pidUsuario AND passwordUsuario = ppasswordUsuario;
-	RETURN ROW_COUNT();
-END//
-DELIMITER ;
-
-
--- Dumping structure for procedure rosobe.hits_sp_usuarios_validar
-DROP PROCEDURE IF EXISTS `hits_sp_usuarios_validar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `hits_sp_usuarios_validar`(IN `pnombreUsuario` VARCHAR(50), IN `ppasswordUsuario` VARCHAR(255), IN `pipUsuario` VARCHAR(50))
-    DETERMINISTIC
-BEGIN
-	SELECT idUsuario, idPersona, idRol, idEstado, nombreUsuario, passwordUsuario, intentosUsuario, ultimoLoginUsuario, nombreRol, nombreEstado, dniPersona, apellidoPersona, nombrePersona
-	INTO @idUsuario, @idPersona, @idRol, @idEstado, @nombreUsuario, @passwordUsuario, @intentosUsuario, @ultimoLoginUsuario, @nombreRol, @nombreEstado, @dniPersona, @apellidoPersona, @nombrePersona
-	FROM hits_view_login
-	WHERE nombreUsuario = pnombreUsuario AND passwordUsuario = ppasswordUsuario;
-
-	IF(@idUsuario IS NULL) THEN
-		BEGIN
-			UPDATE hits_usuarios SET
-				intentosUsuario = intentosUsuario + 1
-				,idEstado = (CASE intentosUsuario WHEN 4 THEN
-									(SELECT e.idEstado FROM hits_usuarios_estados e WHERE e.idEstado = 3)
-								ELSE
-									idEstado
-						  		END)
-			WHERE nombreUsuario = pnombreUsuario;
-			
-			INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
-
-			SELECT idUsuario, NOW(), pipUsuario, FALSE FROM hits_usuarios WHERE nombreUsuario = pnombreUsuario;
-		END;
-	ELSE
-		BEGIN
-			IF(@idEstado = 1) THEN
-				BEGIN
-					IF(@intentosUsuario < 5) THEN
-						BEGIN
-							INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
-              			VALUES (@idUsuario, NOW(), pipUsuario, TRUE);
-							UPDATE hits_usuarios SET 
-								intentosUsuario = 0
-								, ultimoLoginUsuario = now()
-							WHERE idUsuario = @idUsuario;
-						END;
-					ELSE
-						BEGIN
-							INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
-              			VALUES (@idUsuario, now(), pipUsuario, FALSE);
-							
-							SET @idUsuario :=0
-							, @idPersona:=0
-							, @passwordUsuario:='';
-						END;
-					END IF;
-				END;
-			ELSE
-				BEGIN
-					INSERT INTO hits_usuarios_auditar (idUsuario, fechaAuditar, ipAuditar, exitoAuditar)
-					VALUES (@idUsuario, now(), ipAuditar, FALSE);
-
-					SET @idUsuario :=0
-					, @idPersona:=0
-					, @passwordUsuario:='';
-				END;
-			END IF;
-		END;
-	END IF;
-	SELECT
-		@idUsuario idUsuario,
-      @idPersona idPersona,
-      @idRol idRol,
-      @idEstado idEstado,
-      @nombreUsuario nombreUsuario,
-      @passwordUsuario passwordUsuario,
-      @ultimoLoginUsuario ultimoLoginUsuario,
-      @intentosUsuario intentosUsuario,
-      @nombreRol nombreRol,
-      @nombreEstado nombreEstado,
-      @dniPersona dniPersona,
-      @nombrePersona nombrePersona,
-      @apellidoPersona apellidoPersona;
-END//
-DELIMITER ;
+-- Dumping data for table rosobe.hits_slider: ~3 rows (approximately)
+/*!40000 ALTER TABLE `hits_slider` DISABLE KEYS */;
+INSERT INTO `hits_slider` (`idSlider`, `tituloSlider`, `pathSlider`, `mimeSlider`, `linkSlider`, `targetSlider`, `vigenciaDesde`, `vigenciaHasta`, `activoSlider`) VALUES
+	(1, 'Slider 1 cargado', 'assets/images/slider/city-q-c-922-330-5.jpg', NULL, 'http://www.google.com.ar', '_blank', '2014-03-21', '2014-12-12', 1),
+	(2, 'Slider 2 cargado', 'assets/images/slider/fashion-q-c-922-330-10.jpg', NULL, 'http://www.mejorando.la/cursos', '_blank', '2014-03-21', '2014-12-12', 1),
+	(3, 'Slider 3 cargado', 'assets/images/slider/nature-q-c-922-330-5.jpg', NULL, '', '_blank', '2014-03-21', '2014-12-12', 1);
+/*!40000 ALTER TABLE `hits_slider` ENABLE KEYS */;
 
 
 -- Dumping structure for table rosobe.hits_usuarios
@@ -452,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `hits_usuarios` (
 -- Dumping data for table rosobe.hits_usuarios: ~4 rows (approximately)
 /*!40000 ALTER TABLE `hits_usuarios` DISABLE KEYS */;
 INSERT INTO `hits_usuarios` (`idUsuario`, `nombreUsuario`, `passwordUsuario`, `idPersona`, `idRol`, `idEstado`, `intentosUsuario`, `ultimoLoginUsuario`) VALUES
-	(1, 'maxim', '3124d38d1725b3e54f157d1a3d2c6739', 64, 1, 1, 0, '2014-03-30 14:08:23'),
+	(1, 'maxim', '3124d38d1725b3e54f157d1a3d2c6739', 64, 1, 1, 0, '2014-04-02 17:14:13'),
 	(2, 'alfaro', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 3, 1, 0, '2013-11-12 09:57:49'),
 	(3, 'marcelo', '3124d38d1725b3e54f157d1a3d2c6739', 3, 5, 1, 0, '2013-11-22 08:59:26'),
 	(4, 'rrhh', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, NULL, 1, '0000-00-00 00:00:00');
@@ -468,9 +458,9 @@ CREATE TABLE IF NOT EXISTS `hits_usuarios_auditar` (
   `ipAuditar` varchar(50) default NULL,
   `exitoAuditar` tinyint(4) default NULL,
   PRIMARY KEY  (`idAuditar`)
-) ENGINE=MyISAM AUTO_INCREMENT=571 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=572 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_usuarios_auditar: 570 rows
+-- Dumping data for table rosobe.hits_usuarios_auditar: 571 rows
 /*!40000 ALTER TABLE `hits_usuarios_auditar` DISABLE KEYS */;
 INSERT INTO `hits_usuarios_auditar` (`idAuditar`, `idUsuario`, `fechaAuditar`, `ipAuditar`, `exitoAuditar`) VALUES
 	(1, 1, '2013-08-30 13:10:47', '123213123', 0),
@@ -1042,7 +1032,8 @@ INSERT INTO `hits_usuarios_auditar` (`idAuditar`, `idUsuario`, `fechaAuditar`, `
 	(567, 1, '2014-03-29 14:51:49', '127.0.0.1', 1),
 	(568, 1, '2014-03-30 00:03:57', '127.0.0.1', 1),
 	(569, 1, '2014-03-30 00:38:39', '127.0.0.1', 1),
-	(570, 1, '2014-03-30 14:08:23', '127.0.0.1', 1);
+	(570, 1, '2014-03-30 14:08:23', '127.0.0.1', 1),
+	(571, 1, '2014-04-02 17:14:13', '127.0.0.1', 1);
 /*!40000 ALTER TABLE `hits_usuarios_auditar` ENABLE KEYS */;
 
 
@@ -1081,6 +1072,41 @@ INSERT INTO `hits_usuarios_roles` (`idRol`, `nombreRol`, `descripcionRol`) VALUE
 	(4, 'Jefatura', '0'),
 	(5, 'Usuario', '0');
 /*!40000 ALTER TABLE `hits_usuarios_roles` ENABLE KEYS */;
+
+
+-- Dumping structure for view rosobe.hits_view_categorias
+DROP VIEW IF EXISTS `hits_view_categorias`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `hits_view_categorias` (
+	`idCategoria` INT(10) NOT NULL DEFAULT '0',
+	`nombreCategoria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`pathCategoria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`uriCategoria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view rosobe.hits_view_categorias_productos
+DROP VIEW IF EXISTS `hits_view_categorias_productos`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `hits_view_categorias_productos` (
+	`idCategoria` INT(10) NOT NULL DEFAULT '0',
+	`nombreCategoria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`checked` INT(1) NOT NULL DEFAULT '0',
+	`idProducto` INT(10) NULL DEFAULT '0'
+) ENGINE=MyISAM;
+
+
+-- Dumping structure for view rosobe.hits_view_galeria
+DROP VIEW IF EXISTS `hits_view_galeria`;
+-- Creating temporary table to overcome VIEW dependency errors
+CREATE TABLE `hits_view_galeria` (
+	`idGaleria` INT(10) NOT NULL DEFAULT '0',
+	`nombreGaleria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`pathGaleria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`thumbGaleria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`descripcionGaleria` TEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`estadoGaleria` VARCHAR(12) NOT NULL DEFAULT '' COLLATE 'utf8_general_ci'
+) ENGINE=MyISAM;
 
 
 -- Dumping structure for view rosobe.hits_view_login
@@ -1130,547 +1156,18 @@ CREATE TABLE `hits_view_personas` (
 ) ENGINE=MyISAM;
 
 
--- Dumping structure for table rosobe.rosobe_categorias
-DROP TABLE IF EXISTS `rosobe_categorias`;
-CREATE TABLE IF NOT EXISTS `rosobe_categorias` (
-  `idCategoria` int(10) NOT NULL auto_increment,
-  `nombreCategoria` varchar(50) default '0',
-  PRIMARY KEY  (`idCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_categorias: ~25 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_categorias` DISABLE KEYS */;
-INSERT INTO `rosobe_categorias` (`idCategoria`, `nombreCategoria`) VALUES
-	(1, 'Mesas'),
-	(2, 'Sillas'),
-	(3, 'Puertas'),
-	(4, 'Portones'),
-	(5, 'Ventanas'),
-	(6, 'precio'),
-	(7, 'divino'),
-	(8, 'maquina'),
-	(9, 'catego'),
-	(10, 'cate'),
-	(11, 'cafaya'),
-	(12, 'rioja'),
-	(13, 'riojano'),
-	(14, 'mendoza'),
-	(15, 'morsa'),
-	(16, 'asd aksdjh asdkajs dh'),
-	(17, 'mierasd asd h'),
-	(18, 'asdaasdasdasd'),
-	(19, 'asdasdasdasd'),
-	(20, 'asdsad'),
-	(21, 'asdasdasda'),
-	(22, 'poedo'),
-	(23, 'pedando'),
-	(24, 'pedoasdk jasldka sjdlaskd j'),
-	(25, 'Tableros');
-/*!40000 ALTER TABLE `rosobe_categorias` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_categorias_productos
-DROP TABLE IF EXISTS `rosobe_categorias_productos`;
-CREATE TABLE IF NOT EXISTS `rosobe_categorias_productos` (
-  `idCategoriaProducto` int(10) NOT NULL auto_increment,
-  `idCategoria` int(10) default '0',
-  `idProducto` int(10) default '0',
-  PRIMARY KEY  (`idCategoriaProducto`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_categorias_productos: 8 rows
-/*!40000 ALTER TABLE `rosobe_categorias_productos` DISABLE KEYS */;
-INSERT INTO `rosobe_categorias_productos` (`idCategoriaProducto`, `idCategoria`, `idProducto`) VALUES
-	(4, 2, 1),
-	(3, 1, 1),
-	(5, 3, 1),
-	(9, 2, 2),
-	(8, 1, 2),
-	(10, 1, 3),
-	(11, 1, 4),
-	(12, 12, 4);
-/*!40000 ALTER TABLE `rosobe_categorias_productos` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_categorias_relaciones
-DROP TABLE IF EXISTS `rosobe_categorias_relaciones`;
-CREATE TABLE IF NOT EXISTS `rosobe_categorias_relaciones` (
-  `idCategoriaRelacion` int(10) NOT NULL auto_increment,
-  `idCategoria` int(10) default NULL,
-  `idSubcategoria` int(10) default NULL,
-  PRIMARY KEY  (`idCategoriaRelacion`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_categorias_relaciones: 2 rows
-/*!40000 ALTER TABLE `rosobe_categorias_relaciones` DISABLE KEYS */;
-INSERT INTO `rosobe_categorias_relaciones` (`idCategoriaRelacion`, `idCategoria`, `idSubcategoria`) VALUES
-	(1, 1, 2),
-	(2, 1, 3);
-/*!40000 ALTER TABLE `rosobe_categorias_relaciones` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_catprod
-DROP TABLE IF EXISTS `rosobe_catprod`;
-CREATE TABLE IF NOT EXISTS `rosobe_catprod` (
-  `idCatprod` int(10) NOT NULL auto_increment,
-  `idCategoria` int(10) default '0',
-  `idProducto` int(10) default '0',
-  PRIMARY KEY  (`idCatprod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_catprod: ~0 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_catprod` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rosobe_catprod` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_excepciones
-DROP TABLE IF EXISTS `rosobe_excepciones`;
-CREATE TABLE IF NOT EXISTS `rosobe_excepciones` (
-  `idExcepcion` int(10) NOT NULL auto_increment,
-  `codigoExcepcion` int(10) default NULL,
-  `mensajeExcepcion` varchar(255) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`idExcepcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table rosobe.rosobe_excepciones: ~1 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_excepciones` DISABLE KEYS */;
-INSERT INTO `rosobe_excepciones` (`idExcepcion`, `codigoExcepcion`, `mensajeExcepcion`) VALUES
-	(1, -40, 'Error (1): Ya existe un pedido para el cliente en esta fecha');
-/*!40000 ALTER TABLE `rosobe_excepciones` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_galeria
-DROP TABLE IF EXISTS `rosobe_galeria`;
-CREATE TABLE IF NOT EXISTS `rosobe_galeria` (
-  `idGaleria` int(10) NOT NULL auto_increment,
-  `nombreGaleria` varchar(100) default '0',
-  `descripcionGaleria` varchar(100) default '0',
-  `pathGaleria` varchar(255) default '0',
-  `thumbGaleria` varchar(255) default NULL,
-  `estadoGaleria` int(10) default '1',
-  PRIMARY KEY  (`idGaleria`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_galeria: ~1 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_galeria` DISABLE KEYS */;
-INSERT INTO `rosobe_galeria` (`idGaleria`, `nombreGaleria`, `descripcionGaleria`, `pathGaleria`, `thumbGaleria`, `estadoGaleria`) VALUES
-	(1, 'Galeria cargada', 'asdlaksdj alsdk jasdlasdjkh asldkjashdlaksjdhaskldja hsdlkajsd hklasjd haklsdj haskdlja hsdklajsdh k', 'assets/images/galeria/web_4444444.jpg', 'assets/images/galeria/web_4444444_thumb.jpg', 0);
-/*!40000 ALTER TABLE `rosobe_galeria` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_groups
-DROP TABLE IF EXISTS `rosobe_groups`;
-CREATE TABLE IF NOT EXISTS `rosobe_groups` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `name` varchar(20) collate utf8_unicode_ci NOT NULL,
-  `description` varchar(100) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table rosobe.rosobe_groups: 2 rows
-/*!40000 ALTER TABLE `rosobe_groups` DISABLE KEYS */;
-INSERT INTO `rosobe_groups` (`id`, `name`, `description`) VALUES
-	(1, 'admin', 'Administrator'),
-	(2, 'members', 'General User');
-/*!40000 ALTER TABLE `rosobe_groups` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_login_attempts
-DROP TABLE IF EXISTS `rosobe_login_attempts`;
-CREATE TABLE IF NOT EXISTS `rosobe_login_attempts` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `ip_address` varbinary(16) NOT NULL,
-  `login` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `time` int(11) unsigned default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table rosobe.rosobe_login_attempts: 0 rows
-/*!40000 ALTER TABLE `rosobe_login_attempts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rosobe_login_attempts` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_productos
-DROP TABLE IF EXISTS `rosobe_productos`;
-CREATE TABLE IF NOT EXISTS `rosobe_productos` (
-  `idProducto` int(10) NOT NULL auto_increment,
-  `nombreProducto` varchar(255) NOT NULL default '0',
-  `descripcionProducto` varchar(255) NOT NULL default '0',
-  `uriProducto` varchar(255) default NULL,
-  PRIMARY KEY  (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_productos: ~4 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_productos` DISABLE KEYS */;
-INSERT INTO `rosobe_productos` (`idProducto`, `nombreProducto`, `descripcionProducto`, `uriProducto`) VALUES
-	(1, 'SILLA DE JARDIN', 'Esta silla de jardin esta compuesta de madera obtenida de los palos borrachos que estan en en los bosques de canada', 'silla-de-jardin'),
-	(2, 'SILLONES PARA DESCANSO', 'Con un aspecto diferente a los sillones de jardines comunes, estos sillones estan destinados a jardines amplios aportando al espacio algo delicado y de muy buena calidad.', 'sillones-para-descanso-de-jardineria'),
-	(3, 'MESA PARA COCINA', 'Esta mesa esta diseñada para un hermoso quincho en donde se puede compartir con la familia o amigos.', 'mesa-para-cocina'),
-	(4, 'MESA COMEDOR', 'La asdkaj sdlaksdj wqoi hdskfjhs dfkjsdfh iweu ksdjh sdifsdfsjdfhkifh sdijfh sdkfjhwifj hsdkfhsdf ksdjfhsd fshdf ksdfh ksdjfh fs dfk sdfhksdjfhs kdfjhsdfksjdfhksdfj', 'mesa-comedor');
-/*!40000 ALTER TABLE `rosobe_productos` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_productos_imagenes
-DROP TABLE IF EXISTS `rosobe_productos_imagenes`;
-CREATE TABLE IF NOT EXISTS `rosobe_productos_imagenes` (
-  `idProductoImagen` int(10) NOT NULL auto_increment,
-  `idProducto` int(10) default NULL,
-  `pathProductoImagen` varchar(255) default NULL,
-  `thumbProductoImagen` varchar(255) default NULL,
-  `detailProductoImagen` varchar(255) default NULL,
-  `thumbdetailProductoImagen` varchar(255) default NULL,
-  `checkProductoImagen` tinyint(1) default NULL,
-  PRIMARY KEY  (`idProductoImagen`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_productos_imagenes: 12 rows
-/*!40000 ALTER TABLE `rosobe_productos_imagenes` DISABLE KEYS */;
-INSERT INTO `rosobe_productos_imagenes` (`idProductoImagen`, `idProducto`, `pathProductoImagen`, `thumbProductoImagen`, `detailProductoImagen`, `thumbdetailProductoImagen`, `checkProductoImagen`) VALUES
-	(1, 1, 'assets/images/productos/imagen1.jpg', 'assets/images/productos/imagen1_thumb.jpg', 'assets/images/productos/imagen1_detail.jpg', 'assets/images/productos/imagen1_thumb_detail.jpg', 1),
-	(10, 4, 'assets/images/productos/imagen8.jpg', 'assets/images/productos/imagen8_thumb.jpg', 'assets/images/productos/imagen8_detail.jpg', 'assets/images/productos/imagen8_thumb_detail.jpg', NULL),
-	(11, 4, 'assets/images/productos/imagen101.jpg', 'assets/images/productos/imagen101_thumb.jpg', 'assets/images/productos/imagen101_detail.jpg', 'assets/images/productos/imagen101_thumb_detail.jpg', NULL),
-	(3, 2, 'assets/images/productos/imagen3.jpg', 'assets/images/productos/imagen3_thumb.jpg', 'assets/images/productos/imagen3_detail.jpg', 'assets/images/productos/imagen3_thumb_detail.jpg', 1),
-	(4, 2, 'assets/images/productos/imagen4.jpg', 'assets/images/productos/imagen4_thumb.jpg', 'assets/images/productos/imagen4_detail.jpg', 'assets/images/productos/imagen4_thumb_detail.jpg', NULL),
-	(5, 2, 'assets/images/productos/imagen10.jpg', 'assets/images/productos/imagen10_thumb.jpg', 'assets/images/productos/imagen10_detail.jpg', 'assets/images/productos/imagen10_thumb_detail.jpg', NULL),
-	(6, 3, 'assets/images/productos/imagen6.jpg', 'assets/images/productos/imagen6_thumb.jpg', 'assets/images/productos/imagen6_detail.jpg', 'assets/images/productos/imagen6_thumb_detail.jpg', 1),
-	(7, 3, 'assets/images/productos/imagen9.jpg', 'assets/images/productos/imagen9_thumb.jpg', 'assets/images/productos/imagen9_detail.jpg', 'assets/images/productos/imagen9_thumb_detail.jpg', NULL),
-	(8, 3, 'assets/images/productos/imagen11.jpg', 'assets/images/productos/imagen11_thumb.jpg', 'assets/images/productos/imagen11_detail.jpg', 'assets/images/productos/imagen11_thumb_detail.jpg', NULL),
-	(9, 3, 'assets/images/productos/imagen12.jpg', 'assets/images/productos/imagen12_thumb.jpg', 'assets/images/productos/imagen12_detail.jpg', 'assets/images/productos/imagen12_thumb_detail.jpg', NULL),
-	(12, 4, 'assets/images/productos/imagen13.jpg', 'assets/images/productos/imagen13_thumb.jpg', 'assets/images/productos/imagen13_detail.jpg', 'assets/images/productos/imagen13_thumb_detail.jpg', 1),
-	(13, 4, 'assets/images/productos/imagen14.jpg', 'assets/images/productos/imagen14_thumb.jpg', 'assets/images/productos/imagen14_detail.jpg', 'assets/images/productos/imagen14_thumb_detail.jpg', NULL);
-/*!40000 ALTER TABLE `rosobe_productos_imagenes` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_slider
-DROP TABLE IF EXISTS `rosobe_slider`;
-CREATE TABLE IF NOT EXISTS `rosobe_slider` (
-  `idSlider` int(10) NOT NULL auto_increment,
-  `tituloSlider` varchar(50) default NULL,
-  `pathSlider` varchar(255) default NULL,
-  `mimeSlider` varchar(50) default NULL,
-  `linkSlider` varchar(255) default NULL,
-  `targetSlider` varchar(50) default NULL,
-  `vigenciaDesde` date default NULL,
-  `vigenciaHasta` date default NULL,
-  `activoSlider` tinyint(4) default NULL,
-  PRIMARY KEY  (`idSlider`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_slider: ~3 rows (approximately)
-/*!40000 ALTER TABLE `rosobe_slider` DISABLE KEYS */;
-INSERT INTO `rosobe_slider` (`idSlider`, `tituloSlider`, `pathSlider`, `mimeSlider`, `linkSlider`, `targetSlider`, `vigenciaDesde`, `vigenciaHasta`, `activoSlider`) VALUES
-	(1, 'Slider 1 cargado', 'assets/images/slider/city-q-c-922-330-5.jpg', NULL, 'http://www.google.com.ar', '_blank', '2014-03-21', '2014-12-12', 1),
-	(2, 'Slider 2 cargado', 'assets/images/slider/fashion-q-c-922-330-10.jpg', NULL, 'http://www.mejorando.la/cursos', '_blank', '2014-03-21', '2014-12-12', 1),
-	(3, 'Slider 3 cargado', 'assets/images/slider/nature-q-c-922-330-5.jpg', NULL, '', '_blank', '2014-03-21', '2014-12-12', 1);
-/*!40000 ALTER TABLE `rosobe_slider` ENABLE KEYS */;
-
-
--- Dumping structure for function rosobe.rosobe_sp_categorias_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_categorias_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_categorias_guardar`(`pidCategoria` INT, `pnombreCategoria` VARCHAR(255)) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidCategoria IS NULL OR pidCategoria=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_categorias
-				(nombreCategoria) 
-			VALUES
-				(pnombreCategoria);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_categorias SET 
-		 		nombreCategoria = pnombreCategoria
-			WHERE idCategoria = pidCategoria;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.rosobe_sp_categorias_productos_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_categorias_productos_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_categorias_productos_guardar`() RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidProducto IS NULL OR pidProducto=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_productos
-				(nombreProducto
-				, descripcionProducto
-				, uriProducto) 
-			VALUES
-				(pnombreProducto
-				, pdescripcionProducto
-				, puriProducto);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_productos SET 
-		 		nombreProducto = pnombreProducto
-		 		, descripcionProducto = pdescripcionProducto
-		 		, uriProducto = puriProducto
-			WHERE idProducto = pidProducto;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.rosobe_sp_galeria_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_galeria_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_galeria_guardar`(`pidGaleria` INT, `pnombreGaleria` VARCHAR(255), `pdescripcionGaleria` VARCHAR(255), `ppathGaleria` VARCHAR(255), `pthumbGaleria` VARCHAR(255), `pestadoGaleria` TINYINT) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidGaleria IS NULL OR pidGaleria=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_galeria
-				(nombreGaleria
-				, descripcionGaleria
-				, pathGaleria
-				, thumbGaleria
-				, estadoGaleria) 
-			VALUES
-				(pnombreGaleria
-				, pdescripcionGaleria
-				, ppathGaleria
-				, pthumbGaleria
-				, pestadoGaleria);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_galeria SET 
-		 		nombreGaleria = pnombreGaleria
-				, descripcionGaleria = pdescripcionGaleria
-				, pathGaleria = ppathGaleria
-				, thumbGaleria = pthumbGaleria
-				, estadoGaleria = pestadoGaleria
-			WHERE idGaleria = pidGaleria;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.rosobe_sp_productos_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_productos_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_productos_guardar`(`pidProducto` INT, `pnombreProducto` VARCHAR(100), `pdescripcionProducto` VARCHAR(255), `puriProducto` VARCHAR(255)) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidProducto IS NULL OR pidProducto=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_productos
-				(nombreProducto
-				, descripcionProducto
-				, uriProducto) 
-			VALUES
-				(pnombreProducto
-				, pdescripcionProducto
-				, puriProducto);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_productos SET 
-		 		nombreProducto = pnombreProducto
-		 		, descripcionProducto = pdescripcionProducto
-		 		, uriProducto = puriProducto
-			WHERE idProducto = pidProducto;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.rosobe_sp_productos_imagenes_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_productos_imagenes_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_productos_imagenes_guardar`(`pidProductoImagen` INT, `pidProducto` INT, `ppathProductoImagen` VARCHAR(255), `pthumbProductoImagen` VARCHAR(255), `pdetailProductoImagen` VARCHAR(255), `pthumbdetailProductoImagen` VARCHAR(255), `pcheckProductoImagen` TINYINT) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidProductoImagen IS NULL OR pidProductoImagen=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_productos_imagenes
-				(idProducto
-				, pathProductoImagen
-				, thumbProductoImagen
-				, detailProductoImagen
-				, thumbdetailProductoImagen) 
-			VALUES
-				(pidProducto
-				, ppathProductoImagen
-				, pthumbProductoImagen
-				, pdetailProductoImagen
-				, pthumbdetailProductoImagen);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_productos_imagenes SET 
-				checkProductoImagen = 0
-			WHERE idProducto = pidProducto;
-			UPDATE rosobe_productos_imagenes SET 
-		 		checkProductoImagen = pcheckProductoImagen
-			WHERE idProductoImagen = pidProductoImagen;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for function rosobe.rosobe_sp_slider_guardar
-DROP FUNCTION IF EXISTS `rosobe_sp_slider_guardar`;
-DELIMITER //
-CREATE DEFINER=`root`@`localhost` FUNCTION `rosobe_sp_slider_guardar`(`pidSlider` INT, `ptituloSlider` VARCHAR(255), `ppathSlider` VARCHAR(255), `plinkSlider` VARCHAR(100), `ptargetSlider` VARCHAR(50), `pvigenciaDesde` DATE, `pvigenciaHasta` DATE, `pactivoSlider` TINYINT) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
-  	DECLARE EXIT HANDLER FOR SQLSTATE '23000' RETURN -1; -- Excepcion de clave unica duplicada
-	IF pidSlider IS NULL OR pidSlider=0 THEN
-		BEGIN	
-			INSERT INTO rosobe_slider
-				(tituloSlider
-				, pathSlider
-				, linkSlider
-				, targetSlider
-				, vigenciaDesde
-				, vigenciaHasta
-				, activoSlider) 
-			VALUES
-				(ptituloSlider
-				, ppathSlider
-				, plinkSlider
-				, ptargetSlider
-				, pvigenciaDesde
-				, pvigenciaHasta
-				, pactivoSlider);
-			RETURN LAST_INSERT_ID();
-		END;
-	ELSE
-		BEGIN
-			UPDATE rosobe_slider SET 
-		 		tituloSlider = ptituloSlider
-		 		, pathSlider = ppathSlider
-		 		, linkSlider = plinkSlider
-		 		, targetSlider = ptargetSlider
-		 		, vigenciaDesde = pvigenciaDesde
-		 		, vigenciaHasta = pvigenciaHasta
-		 		, activoSlider = pactivoSlider
-			WHERE idSlider = pidSlider;
-			RETURN ROW_COUNT();
-		END;
-	END IF;
-END//
-DELIMITER ;
-
-
--- Dumping structure for table rosobe.rosobe_users
-DROP TABLE IF EXISTS `rosobe_users`;
-CREATE TABLE IF NOT EXISTS `rosobe_users` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `ip_address` varbinary(16) NOT NULL,
-  `username` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `password` varchar(80) collate utf8_unicode_ci NOT NULL,
-  `salt` varchar(40) collate utf8_unicode_ci default NULL,
-  `email` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `activation_code` varchar(40) collate utf8_unicode_ci default NULL,
-  `forgotten_password_code` varchar(40) collate utf8_unicode_ci default NULL,
-  `forgotten_password_time` int(11) unsigned default NULL,
-  `remember_code` varchar(40) collate utf8_unicode_ci default NULL,
-  `created_on` int(11) unsigned NOT NULL,
-  `last_login` int(11) unsigned default NULL,
-  `active` tinyint(1) unsigned default NULL,
-  `first_name` varchar(50) collate utf8_unicode_ci default NULL,
-  `last_name` varchar(50) collate utf8_unicode_ci default NULL,
-  `company` varchar(100) collate utf8_unicode_ci default NULL,
-  `phone` varchar(20) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table rosobe.rosobe_users: 1 rows
-/*!40000 ALTER TABLE `rosobe_users` DISABLE KEYS */;
-INSERT INTO `rosobe_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-	(1, _binary 0x7F000001, 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1368448759, 1, 'Admin', 'istrator', 'ADMIN', '0');
-/*!40000 ALTER TABLE `rosobe_users` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_users_groups
-DROP TABLE IF EXISTS `rosobe_users_groups`;
-CREATE TABLE IF NOT EXISTS `rosobe_users_groups` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `user_id` mediumint(8) unsigned NOT NULL,
-  `group_id` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table rosobe.rosobe_users_groups: 2 rows
-/*!40000 ALTER TABLE `rosobe_users_groups` DISABLE KEYS */;
-INSERT INTO `rosobe_users_groups` (`id`, `user_id`, `group_id`) VALUES
-	(1, 1, 1),
-	(2, 1, 2);
-/*!40000 ALTER TABLE `rosobe_users_groups` ENABLE KEYS */;
-
-
--- Dumping structure for table rosobe.rosobe_view_categorias
-DROP TABLE IF EXISTS `rosobe_view_categorias`;
-CREATE TABLE IF NOT EXISTS `rosobe_view_categorias` (
-  `idCategoria` int(10) NOT NULL,
-  `nombreCategoria` varchar(50) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- Dumping data for table rosobe.rosobe_view_categorias: 0 rows
-/*!40000 ALTER TABLE `rosobe_view_categorias` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rosobe_view_categorias` ENABLE KEYS */;
-
-
--- Dumping structure for view rosobe.rosobe_view_categorias_productos
-DROP VIEW IF EXISTS `rosobe_view_categorias_productos`;
+-- Dumping structure for view rosobe.hits_view_productos
+DROP VIEW IF EXISTS `hits_view_productos`;
 -- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `rosobe_view_categorias_productos` (
-	`idCategoria` INT(10) NOT NULL DEFAULT '0',
-	`nombreCategoria` VARCHAR(50) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
-	`checked` INT(1) NOT NULL DEFAULT '0',
-	`idProducto` INT(10) NULL DEFAULT '0'
-) ENGINE=MyISAM;
-
-
--- Dumping structure for view rosobe.rosobe_view_galeria
-DROP VIEW IF EXISTS `rosobe_view_galeria`;
--- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `rosobe_view_galeria` (
-	`idGaleria` INT(10) NOT NULL DEFAULT '0',
-	`nombreGaleria` VARCHAR(100) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
-	`pathGaleria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
-	`thumbGaleria` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
-	`descripcionGaleria` VARCHAR(100) NULL DEFAULT '0' COLLATE 'utf8_general_ci',
-	`estadoGaleria` VARCHAR(12) NOT NULL DEFAULT '' COLLATE 'utf8_general_ci'
-) ENGINE=MyISAM;
-
-
--- Dumping structure for view rosobe.rosobe_view_productos
-DROP VIEW IF EXISTS `rosobe_view_productos`;
--- Creating temporary table to overcome VIEW dependency errors
-CREATE TABLE `rosobe_view_productos` (
+CREATE TABLE `hits_view_productos` (
 	`idProducto` INT(10) NOT NULL DEFAULT '0',
 	`nombreProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`codigoProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`precioProducto` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
 	`descripcionProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
 	`uriProducto` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+	`publicadoProducto` TINYINT(4) NULL DEFAULT NULL,
+	`estadoProducto` TINYINT(4) NULL DEFAULT NULL,
 	`idProductoImagen` INT(10) NOT NULL DEFAULT '0',
 	`pathProductoImagen` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
 	`thumbProductoImagen` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
@@ -1679,8 +1176,29 @@ CREATE TABLE `rosobe_view_productos` (
 	`checkProductoImagen` TINYINT(1) NULL DEFAULT NULL,
 	`idCategoriaProducto` INT(10) NOT NULL DEFAULT '0',
 	`idCategoria` INT(10) NOT NULL DEFAULT '0',
-	`nombreCategoria` VARCHAR(50) NULL DEFAULT '0' COLLATE 'utf8_general_ci'
+	`nombreCategoria` VARCHAR(255) NULL DEFAULT '0' COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
+
+
+-- Dumping structure for view rosobe.hits_view_categorias
+DROP VIEW IF EXISTS `hits_view_categorias`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `hits_view_categorias`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hits_view_categorias` AS select `hits_categorias`.`idCategoria` AS `idCategoria`,`hits_categorias`.`nombreCategoria` AS `nombreCategoria`,`hits_categorias`.`pathCategoria` AS `pathCategoria`,`hits_categorias`.`uriCategoria` AS `uriCategoria` from `hits_categorias`;
+
+
+-- Dumping structure for view rosobe.hits_view_categorias_productos
+DROP VIEW IF EXISTS `hits_view_categorias_productos`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `hits_view_categorias_productos`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hits_view_categorias_productos` AS select `c`.`idCategoria` AS `idCategoria`,`c`.`nombreCategoria` AS `nombreCategoria`,if(isnull(`cp`.`idCategoriaProducto`),0,1) AS `checked`,`cp`.`idProducto` AS `idProducto` from (`hits_categorias` `c` left join `hits_categorias_productos` `cp` on(((`c`.`idCategoria` = `cp`.`idCategoria`) and (`cp`.`idProducto` = 1))));
+
+
+-- Dumping structure for view rosobe.hits_view_galeria
+DROP VIEW IF EXISTS `hits_view_galeria`;
+-- Removing temporary table and create final VIEW structure
+DROP TABLE IF EXISTS `hits_view_galeria`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hits_view_galeria` AS select `g`.`idGaleria` AS `idGaleria`,`g`.`nombreGaleria` AS `nombreGaleria`,`g`.`pathGaleria` AS `pathGaleria`,`g`.`thumbGaleria` AS `thumbGaleria`,`g`.`descripcionGaleria` AS `descripcionGaleria`,if((`g`.`estadoGaleria` = 1),_utf8'Publicado',_utf8'Sin publicar') AS `estadoGaleria` from `hits_galeria` `g`;
 
 
 -- Dumping structure for view rosobe.hits_view_login
@@ -1697,24 +1215,10 @@ DROP TABLE IF EXISTS `hits_view_personas`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rosobe`.`hits_view_personas` AS select `jose`.`hits_personas`.`idPersona` AS `idPersona`,`jose`.`hits_personas`.`dniPersona` AS `dniPersona`,`jose`.`hits_personas`.`idTipoDni` AS `idTipoDni`,`jose`.`hits_personas`.`apellidoPersona` AS `apellidoPersona`,`jose`.`hits_personas`.`nombrePersona` AS `nombrePersona`,`jose`.`hits_personas`.`cuilPersona` AS `cuilPersona`,`jose`.`hits_personas`.`cuitPersona` AS `cuitPersona`,`jose`.`hits_personas`.`nacimientoPersona` AS `nacimientoPersona`,`jose`.`hits_personas`.`idSexo` AS `idSexo`,`jose`.`hits_personas`.`idEcivil` AS `idEcivil`,`jose`.`hits_personas`.`domicilioPersona` AS `domicilioPersona`,`jose`.`hits_personas`.`telefonoPersona` AS `telefonoPersona`,`jose`.`hits_personas`.`celularPersona` AS `celularPersona`,`jose`.`hits_personas`.`laboralPersona` AS `laboralPersona`,`jose`.`hits_personas`.`internoPersona` AS `internoPersona`,`jose`.`hits_personas`.`emailPersona` AS `emailPersona`,`jose`.`hits_personas`.`nacionalidadPersona` AS `nacionalidadPersona`,concat_ws(_utf8' ',lcase(`jose`.`hits_personas`.`dniPersona`),lcase(`jose`.`hits_personas`.`apellidoPersona`),lcase(`jose`.`hits_personas`.`nombrePersona`)) AS `busqueda`,concat_ws(_utf8', ',`jose`.`hits_personas`.`apellidoPersona`,`jose`.`hits_personas`.`nombrePersona`) AS `completoPersona` from `jose`.`hits_personas`;
 
 
--- Dumping structure for view rosobe.rosobe_view_categorias_productos
-DROP VIEW IF EXISTS `rosobe_view_categorias_productos`;
+-- Dumping structure for view rosobe.hits_view_productos
+DROP VIEW IF EXISTS `hits_view_productos`;
 -- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `rosobe_view_categorias_productos`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rosobe_view_categorias_productos` AS select `c`.`idCategoria` AS `idCategoria`,`c`.`nombreCategoria` AS `nombreCategoria`,if(isnull(`cp`.`idCategoriaProducto`),0,1) AS `checked`,`cp`.`idProducto` AS `idProducto` from (`rosobe_categorias` `c` left join `rosobe_categorias_productos` `cp` on(((`c`.`idCategoria` = `cp`.`idCategoria`) and (`cp`.`idProducto` = 1))));
-
-
--- Dumping structure for view rosobe.rosobe_view_galeria
-DROP VIEW IF EXISTS `rosobe_view_galeria`;
--- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `rosobe_view_galeria`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rosobe_view_galeria` AS select `g`.`idGaleria` AS `idGaleria`,`g`.`nombreGaleria` AS `nombreGaleria`,`g`.`pathGaleria` AS `pathGaleria`,`g`.`thumbGaleria` AS `thumbGaleria`,`g`.`descripcionGaleria` AS `descripcionGaleria`,if((`g`.`estadoGaleria` = 1),_utf8'Publicado',_utf8'Sin publicar') AS `estadoGaleria` from `rosobe_galeria` `g`;
-
-
--- Dumping structure for view rosobe.rosobe_view_productos
-DROP VIEW IF EXISTS `rosobe_view_productos`;
--- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `rosobe_view_productos`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rosobe_view_productos` AS select `p`.`idProducto` AS `idProducto`,`p`.`nombreProducto` AS `nombreProducto`,`p`.`descripcionProducto` AS `descripcionProducto`,`p`.`uriProducto` AS `uriProducto`,`pi`.`idProductoImagen` AS `idProductoImagen`,`pi`.`pathProductoImagen` AS `pathProductoImagen`,`pi`.`thumbProductoImagen` AS `thumbProductoImagen`,`pi`.`detailProductoImagen` AS `detailProductoImagen`,`pi`.`thumbdetailProductoImagen` AS `thumbdetailProductoImagen`,`pi`.`checkProductoImagen` AS `checkProductoImagen`,`cp`.`idCategoriaProducto` AS `idCategoriaProducto`,`c`.`idCategoria` AS `idCategoria`,`c`.`nombreCategoria` AS `nombreCategoria` from (((`rosobe_productos` `p` join `rosobe_productos_imagenes` `pi` on((`p`.`idProducto` = `pi`.`idProducto`))) join `rosobe_categorias_productos` `cp` on((`p`.`idProducto` = `cp`.`idProducto`))) join `rosobe_categorias` `c` on((`cp`.`idCategoria` = `c`.`idCategoria`)));
+DROP TABLE IF EXISTS `hits_view_productos`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `hits_view_productos` AS select `p`.`idProducto` AS `idProducto`,`p`.`nombreProducto` AS `nombreProducto`,`p`.`codigoProducto` AS `codigoProducto`,`p`.`precioProducto` AS `precioProducto`,`p`.`descripcionProducto` AS `descripcionProducto`,`p`.`uriProducto` AS `uriProducto`,`p`.`publicadoProducto` AS `publicadoProducto`,`p`.`estadoProducto` AS `estadoProducto`,`pi`.`idProductoImagen` AS `idProductoImagen`,`pi`.`pathProductoImagen` AS `pathProductoImagen`,`pi`.`thumbProductoImagen` AS `thumbProductoImagen`,`pi`.`detailProductoImagen` AS `detailProductoImagen`,`pi`.`thumbdetailProductoImagen` AS `thumbdetailProductoImagen`,`pi`.`checkProductoImagen` AS `checkProductoImagen`,`cp`.`idCategoriaProducto` AS `idCategoriaProducto`,`c`.`idCategoria` AS `idCategoria`,`c`.`nombreCategoria` AS `nombreCategoria` from (((`hits_productos` `p` join `hits_productos_imagenes` `pi` on((`p`.`idProducto` = `pi`.`idProducto`))) join `hits_categorias_productos` `cp` on((`p`.`idProducto` = `cp`.`idProducto`))) join `hits_categorias` `c` on((`cp`.`idCategoria` = `c`.`idCategoria`)));
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -408,6 +408,13 @@ class Gridview {
             case 'time':
                 return $this->_doDataCell($dataRow,$name,$def['type'],$def['options']['stripTags'],$def['options']['numChars']);    
                 break;
+            case 'tinyText':
+                //return $this->_doFunctionCell($index,$dataRow,$name,$def);
+                //return wordwrap($dataRow[$name], 5);
+                //return $this->_doDataCell($dataRow, $name,$ def['type'],$def['options']['stripTags'],$def['options']['numChars']);    
+                return word_limiter($dataRow[$name], 10);
+                //return $dataRow[$name];
+                break;
             case 'function':
                 return $this->_doFunctionCell($index,$dataRow,$name,$def);
                 break;

@@ -1,71 +1,30 @@
-<?php
-if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Nombre de métodos y variables respetando la notacion camel case en minúsculas. pe acercaDe()
- * Nombre de variables publicas de la clase indique el prefijo del tipo de datos. pe $inIdNoticia
- * Nombre de variables privadas de la clase indique un _ antes del prefijo del tipo de datos. pe $_inIdNoticia
- */
-
-/**
- * @Noticias class
- * @package Base
- * @author  Maximiliano Ezequiel Rios
- * @copyright 2013
+ * @author Maximiliano Ezequiel Rios
+ * @version 1.0.0
+ * @copyright 2014
+ * @package Sabandijas Rodados
  */
 class Noticias extends Ext_crud_controller {
-
     private $_aTemas = array();
     private $_rsRegs = array();
-
     function __construct() {
         parent::__construct();
-
-        //$this->load->model($this->db->dbdriver . '/lib_autenticacion/faq_model', '_oModel');
-        $this->load->model('hits/noticias_model', 'noticia');
+        $this->load->model('hits/noticias_model', 'noticias');
         $this->load->library('gridview');
         $this->load->library('Messages');
+        $this->load->library('hits/uploads', array(), 'uploads');
         $this->load->helper('utils_helper');
-        $this->tiposnoticias = $this->noticia->dropdownNoticiasTipos();
         $this->load->helper('ckeditor_helper');
-        
-$this->capa = array(
- 
-            //ID of the textarea that will be replaced
-            'id'    =>  'descNoticia',
+        $this->capa = array(
+            'id'    =>  'descripcionNoticia',
             'path'  =>  'assets/libraries/ckeditor',
- 
-            //Optionnal values
             'config' => array(
                 'toolbar'   =>  "Full",     //Using the Full toolbar
-                'width'     =>  "550px",    //Setting a custom width
-                'height'    =>  '100px',    //Setting a custom height
+                'width'     =>  "100%",    //Setting a custom width
+                'height'    =>  '300px',    //Setting a custom height
  
             ),
- 
-            //Replacing styles from the "Styles tool"
-            'styles' => array(
- 
-                //Creating a new style named "style 1"
-                'style 1' => array (
-                    'name'      =>  'Blue Title',
-                    'element'   =>  'h2',
-                    'styles' => array(
-                        'color'     =>  'Blue',
-                        'font-weight'   =>  'bold'
-                    )
-                ),
- 
-                //Creating a new style named "style 2"
-                'style 2' => array (
-                    'name'  =>  'Red Title',
-                    'element'   =>  'h2',
-                    'styles' => array(
-                        'color'         =>  'Red',
-                        'font-weight'       =>  'bold',
-                        'text-decoration'   =>  'underline'
-                    )
-                )               
-            )
         );
         $this->_aReglas = array(
             array(
@@ -74,9 +33,24 @@ $this->capa = array(
                 'rules' => 'trim|xss_clean'
             ),
             array(
+                'field' => 'tituloNoticia',
+                'label' => 'Título',
+                'rules' => 'trim|required|min_length[5]|max_length[300]|xss_clean'
+            ),
+            array(
+                'field' => 'epigrafeNoticia',
+                'label' => 'Epígrafe',
+                'rules' => 'trim|required|min_length[5]|max_length[100]|xss_clean'
+            ),
+            array(
+                'field' => 'descripcionNoticia',
+                'label' => 'Descripción',
+                'rules' => 'trim|required|min_length[5]|max_length[5000]|xss_clean'
+            ),
+            array(
                 'field' => 'inicioNoticia',
                 'label' => 'Fecha de Inicio',
-                'rules' => 'trim|xss_clean'
+                'rules' => 'trim|xss_clean|required'
             ),
             array(
                 'field' => 'vencimientoNoticia',
@@ -84,32 +58,17 @@ $this->capa = array(
                 'rules' => 'trim|xss_clean'
             ),
             array(
-                'field' => 'tituloNoticia',
-                'label' => 'Titulo',
-                'rules' => 'trim|required|min_length[5]|max_length[300]|xss_clean'
-            ),
-            array(
-                'field' => 'descripcionNoticia',
-                'label' => 'Descripcion',
-                'rules' => 'trim|required|min_length[5]|max_length[5000]|xss_clean'
-            ),
-            array(
-                'field' => 'idTipoNoticia',
-                'label' => 'Tipo de Noticia',
+                'field' => 'userfile[]',
+                'label' => 'Imagenes',
                 'rules' => 'trim|xss_clean'
             ),
-            array(
-                'field' => 'publicadoNoticia',
-                'label' => 'Publicación',
-                'rules' => 'trim|xss_clean'
-            )
         );
     }
 
     public function index() {
         //
         $this->_vcContentPlaceHolder = $this->load->view('administrator/hits/noticias/principal', array(), true);
-        //		 
+        //       
         parent::index();
     }
 
@@ -119,13 +78,15 @@ $this->capa = array(
             , 'inicioNoticia' => null
             , 'vencimientoNoticia' => null
             , 'tituloNoticia' => ''
+            , 'epigrafeNoticia' => ''
             , 'descripcionNoticia' => ''
             , 'idTipoNoticia' => null
             , 'publicadoNoticia' => null
+            , 'thumbImagenNoticia' => null
         );
         $inId = ($this->input->post('idNoticia') !== false) ? $this->input->post('idNoticia') : 0;
         if ($inId != 0 && !$boIsPostBack) {
-            $this->_reg = $this->noticia->obtenerUno($inId);
+            $this->_reg = $this->noticias->obtenerUno($inId);
             $this->_reg['inicioNoticia'] = GetDateFromISO($this->_reg['inicioNoticia'], FALSE);
             $this->_reg['vencimientoNoticia'] = GetDateFromISO($this->_reg['vencimientoNoticia'], FALSE);
         } else {
@@ -135,8 +96,10 @@ $this->capa = array(
                 , 'vencimientoNoticia' => ($this->input->post('vencimientoNoticia') === FALSE) ? GetToday('d/m/Y') : set_value('vencimientoNoticia')
                 , 'idTipoNoticia' => $this->input->post('idTipoNoticia')
                 , 'tituloNoticia' => set_value('tituloNoticia')
+                , 'epigrafeNoticia' => set_value('epigrafeNoticia')
                 , 'descripcionNoticia' => set_value('descripcionNoticia')
                 , 'publicadoNoticia' => ((bool)(set_value('publicadoNoticia')))
+                , 'thumbImagenNoticia' => null
             );
         }
         return $this->_reg;
@@ -151,11 +114,11 @@ $this->capa = array(
         $this->gridview->initialize(
                 array(
                     'sResponseUrl' => 'administrator/noticias/listado'
-                    , 'iTotalRegs' => $this->noticia->numRegs($vcBuscar)
+                    , 'iTotalRegs' => $this->noticias->numRegs($vcBuscar)
                     , 'iPerPage' => ($this->input->post('per_page')==FALSE)? 10: $this->input->post('per_page')
                     , 'bOrder' => FALSE
                     , 'sFootProperties' => 'class="paginador"'
-                    , 'titulo' => 'Listado de Noticias'
+                    , 'titulo' => 'Listado de Novedades'
                     , 'identificador' => 'idNoticia'
                 )
         );
@@ -164,19 +127,17 @@ $this->capa = array(
 
         $this->gridview->addColumn('idNoticia', '#', 'int');
         $this->gridview->addColumn('tituloNoticia', 'Titulo', 'text');
+        $this->gridview->addColumn('epigrafeNoticia', 'Epígrafe', 'text');
         $this->gridview->addColumn('inicioNoticia', 'Inicio', 'date');
-        $this->gridview->addColumn('vencimientoNoticia', 'Fin', 'date');
-        $this->gridview->addColumn('nombrePersona', 'Usuario', 'text');
-        $this->gridview->addColumn('nombreTipoNoticia', 'Tipo noticia', 'text');
         $this->gridview->addColumn('estadoNoticia', 'Estado', 'text');
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
-
-        $this->gridview->addControl('inIdFaqCtrl', array('face' => '<a href="administrator/noticias/formulario/{idNoticia}" title="click para editar {tituloNoticia}" class="icono-editar btn-accion" rel="{\'idNoticia\': {idNoticia}}">&nbsp;</a>'.
-                                                                   '<a href="administrator/noticias/publicacion/{idNoticia}" title="click para cambiar el estado de {tituloNoticia}" class="icono-refresca btn-accion" rel="{\'idNoticia\': {idNoticia}}">&nbsp;</a>',
-                                                                   'class' => 'acciones', 'style' => 'width:64px;'));
-
-
-        $this->_rsRegs = $this->noticia->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
+        $editar = '<a href="administrator/noticias/formulario/{idNoticia}" title="Editar {tituloNoticia}" 
+        class="btn-accion" rel="{\'idNoticia\': {idNoticia}}">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;</a>';
+        $estado = '<a href="administrator/noticias/publicacion/{idNoticia}" title="Cambiar estado de {tituloNoticia}" 
+        class="btn-accion" rel="{\'idNoticia\': {idNoticia}}">&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;</a>';
+        $controles = $editar.$estado;
+        $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones'));
+        $this->_rsRegs = $this->noticias->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
         $this->load->view('administrator/hits/noticias/listado'
             , array(
                 'vcGridView' => $this->gridview->doXHtml($this->_rsRegs)
@@ -186,11 +147,7 @@ $this->capa = array(
         );
     }
     public function formulario() {
-
-        $aData['ckeditor_texto1'] = $this->capa;
-        //$aData['vcFrmAction'] = 'administrator/noticias/guardar';
-        //$rsTemas = $this->_oModel->obtTemasDdl(TRUE, TRUE);
-        $aData['tiposnoticias'] = $this->tiposnoticias;
+        $aData['ckeditor_texto'] = $this->capa;
         $aData['Reg'] = $this->_inicReg($this->input->post('vcForm'));
         $aData['vcFrmAction'] = 'administrator/noticias/guardar';
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
@@ -243,20 +200,42 @@ $this->capa = array(
         $this->_inicReglas();
         if ($this->_validarReglas()) {
             $this->_inicReg((bool) $this->input->post('vcForm'));
-            $this->_aEstadoOper['status'] = $this->noticia->guardar(
-                    array(
-                        $this->_reg['idNoticia']
-                        , $this->_reg['tituloNoticia']
-                        , $this->_reg['descripcionNoticia']
-                        , GetDateTimeFromFrenchToISO($this->_reg['inicioNoticia'])
-                        , GetDateTimeFromFrenchToISO($this->_reg['vencimientoNoticia'])
-                        , $this->_reg['idTipoNoticia']
-                        , $this->_reg['publicadoNoticia']
-                        , 1
-                    )
+            $this->_aEstadoOper['status'] = $this->noticias->guardar(
+                array(
+                    $this->_reg['idNoticia']
+                    , $this->_reg['tituloNoticia']
+                    , $this->_reg['epigrafeNoticia']
+                    , $this->_reg['descripcionNoticia']
+                    , GetDateTimeFromFrenchToISO($this->_reg['inicioNoticia'])
+                    , GetDateTimeFromFrenchToISO($this->_reg['vencimientoNoticia'])
+                    , url_title(strtolower($this->_reg['tituloNoticia']))
+                    , 1
+                )
             );
             if ($this->_aEstadoOper['status'] > 0) {
                 $this->_aEstadoOper['message'] = 'El registro fue guardado correctamente.';
+                if($_FILES['userfile']['name'][0] != '') {
+                    $config = array(
+                        'cantidad_imagenes' => count($_FILES['userfile']['name'])
+                        , 'upload_path' => 'assets/images/noticias/'
+                        , 'allowed_types' => 'jpg'
+                        , 'max_size' => 3000
+                        , 'create_thumb' => true
+                        , 'thumbs' => array(
+                            array('thumb_marker' => '_thumb', 'width' => 300)
+                            , array('thumb_marker' => '_detail', 'width' => 600)
+                        )
+                    );
+                    $data = $this->uploads->do_upload($config);
+                    $this->noticias->guardarImagen(
+                        array(
+                            ($this->_reg['idNoticia'] != '' && $this->_reg['idNoticia'] != 0)? $this->_reg['idNoticia'] : $this->_aEstadoOper['status']
+                            , $data[0]['thumbnails'][0]['pathThumbnail']
+                            , $data[0]['thumbnails'][1]['pathThumbnail']
+                        )
+                    );    
+                }
+                
             } else {
                 $this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
             }
@@ -279,9 +258,9 @@ $this->capa = array(
     }
 
     public function publicacion($noticia) {
-        $noticia = $this->noticia->obtenerUno($noticia);
+        $noticia = $this->noticias->obtenerUno($noticia);
         ($noticia['publicadoNoticia'] == 0)? $estado=1 : $estado=0;
-        $this->_aEstadoOper['status'] = $this->noticia->cambiarEstado(
+        $this->_aEstadoOper['status'] = $this->noticias->cambiarEstado(
             array(
                 $estado
                 , $noticia['idNoticia']

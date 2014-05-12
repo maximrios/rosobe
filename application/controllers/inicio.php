@@ -1,11 +1,10 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
- * Nombre de métodos y variables respetando la notacion camel case en minúsculas. pe acercaDe()
- * Nombre de variables publicas de la clase indique el prefijo del tipo de datos. pe $inIdNoticia
- * Nombre de variables privadas de la clase indique un _ antes del prefijo del tipo de datos. pe $_inIdNoticia
- */
+* Nombre de métodos y variables respetando la notacion camel case en minúsculas. pe acercaDe()
+* Nombre de variables publicas de la clase indique el prefijo del tipo de datos. pe $inIdNoticia
+* Nombre de variables privadas de la clase indique un _ antes del prefijo del tipo de datos. pe $_inIdNoticia
+*/
 class Inicio extends Ext_Controller {
 	function __construct() {
 		parent::__construct();
@@ -14,14 +13,14 @@ class Inicio extends Ext_Controller {
         $this->load->helper('utils_helper');
 		$this->_aReglas = array(
 			array(
-	        	'field'   => 'txtnombre',
-	            'label'   => 'Nombre',
-	            'rules'   => 'trim|max_length[80]|xss_clean|required'
+				'field' => 'txtnombre',
+				'label' => 'Nombre',
+				'rules' => 'trim|max_length[80]|xss_clean|required'
 			)
 			, array(
-	        	'field'   => 'txttelefono',
-	            'label'   => 'Telefono',
-	            'rules'   => 'trim|max_length[1]|xss_clean|required'
+				'field' => 'txttelefono',
+				'label' => 'Telefono',
+				'rules' => 'trim|max_length[1]|xss_clean|required'
 			)
 		);
 	}
@@ -99,12 +98,12 @@ class Inicio extends Ext_Controller {
 		$config['center'] = '-24.859007,-65.452682';
 		$config['zoom'] = 14;
 		$config['directions'] = TRUE;
-		
+
 		//$config['directionsStart'] = '-24.782889,-65.41174';
 		//$config['directionsStart'] = '-24.847344,-65.46155';
 		//$config['directionsEnd'] = '-24.859007,-65.452682';
 		//$config['directionsDivID'] = 'prueba';
-		
+
 		$this->googlemaps->initialize($config);
 		$marker = array();
 		$marker['position'] = '-24.859007,-65.452682';
@@ -117,14 +116,14 @@ class Inicio extends Ext_Controller {
 		$this->_menu = 'contacto';
 		if($this->input->post('form')) {
 			$this->_inicReglasWeb();
-        	if ($this->_validarReglas()) {
-	        	$aData['vcMsjSrv'] = 'Se envio con exito';
-        	}
-        	else {
-	        	$this->_aEstadoOperWeb['status'] = 0;
-            	$this->_aEstadoOperWeb['message'] = validation_errors();
-            	$aData['vcMsjSrv'] = $this->_aEstadoOperWeb['message'];
-        	}
+         	if ($this->_validarReglas()) {
+				$aData['vcMsjSrv'] = 'Se envio con exito';
+         	}
+         	else {
+				$this->_aEstadoOperWeb['status'] = 0;
+             	$this->_aEstadoOperWeb['message'] = validation_errors();
+             	$aData['vcMsjSrv'] = $this->_aEstadoOperWeb['message'];
+         	}
 		}
 		$this->_vcContentPlaceHolder = $this->load->view('contacto', $aData, true);
 		parent::index();
@@ -132,7 +131,7 @@ class Inicio extends Ext_Controller {
 	public function consultar() {
 		$this->_inicReglasWeb();
         if ($this->_validarReglas()) {
-        	echo "si paso";
+         	echo "si paso";
         }
         else {
         	$this->_aEstadoOperWeb['status'] = 0;
@@ -140,7 +139,8 @@ class Inicio extends Ext_Controller {
         }
         if($this->_aEstadoOperWeb['status'] > 0) {
 			$this->listado();
-		} else {
+		} 
+		else {
 			//redirect('contacto');
 			$this->contacto();
 		}

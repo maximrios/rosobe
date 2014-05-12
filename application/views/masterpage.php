@@ -54,8 +54,7 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><?= $PanelInfo['titulo'];?></a>
-                
+                <a class="navbar-brand" href="#"><?= $PanelInfo['titulo'].' - '.$PanelInfo['cliente'];?></a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -231,20 +230,22 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
                 <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
             </ul>
             <ul class="sidebar-nav" id="sidebar">     
-                <li><a href="administrator/dashboard">Dashboard<span class="sub_icon glyphicon glyphicon-home"></span></a></li>
+                <!--<li><a href="administrator/dashboard">Dashboard<span class="sub_icon glyphicon glyphicon-home"></span></a></li>-->
+                <li><a href="administrator/personas">Personas<span class="sub_icon glyphicon glyphicon-user"></span></a></li>
                 <li><a href="administrator/categorias">Categorias<span class="sub_icon glyphicon glyphicon-tags"></span></a></li>
                 <li><a href="administrator/productos">Productos<span class="sub_icon glyphicon glyphicon-bookmark"></span></a></li>
-                <li><a href="administrator/galerias">Galeria<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>
+                <li><a href="administrator/noticias">Novedades<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>
+                <li><a href="administrator/contactos">Contactos<span class="sub_icon glyphicon glyphicon-envelope"></span></a></li>
             </ul>
         </div>
         <div id="page-content-wrapper">
             <div class="page-content inset">
                 <div class="row">
                     <div class="col-md-12" style="padding-top:5px;">
-                        <ol class="breadcrumb" style="background:none;margin:0px;">
+                        <!--<ol class="breadcrumb" style="background:none;margin:0px;">
                             <li><a href="#">Administración</a></li>
                             <li><a href="#">Productos</a></li>
-                        </ol>
+                        </ol>-->
                         <?= $vcMainContent; ?>          
                     </div>
                 </div>

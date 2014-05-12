@@ -73,7 +73,7 @@ ClientTemplate;
 		$this->initialize($options);
 		$this->_set_client_controller();
 		$message = <<<ClientTemplate
-          <div id="{$this->id}" class="notif-container-{$this->type}">
+          <div id="{$this->id}" class="notif-container-{$this->type} clearfix">
 			<div class="notif-lft">
 {$this->message}
 			</div>

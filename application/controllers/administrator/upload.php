@@ -1,76 +1,62 @@
 <?php
- 
-class Upload extends Controller
-{
- 
-    public function __construct()
-    {
+class Upload extends CI_Controller {
+    public function __construct() {
         parent::__construct();
-         
         // Loader
         $this->load->helper('url');
         $this->load->config('application');
     }
- 
-    public function index()
-    {
+    public function index() {
         $this->load->view('index');
     }
- 
-    public function upload()
-    {
-        # Configuracion de la libreria
-        # 'img_path' esta en /applications/config/pixmat.php
-        $config['upload_path']      = $this->config->item('upload_path');
-        $config['allowed_types']    = 'jpg|gif|png';
-        $config['encrypt_name']     = 'TRUE';
-        $config['max_size']             = '71680';
-        $config['max_width']        = '8000';
-        $config['max_height']       = '8000';
- 
+    public function do_upload() {
+        echo "si llega ";
+        die();
+        $config['upload_path'] = $config_user['upload_path'];
+        $config['allowed_types'] = $config_user['allowed_types'];
+        $config['max_size'] = $config_user['max_size'];
         $this->load->library('upload', $config);
- 
-        # Uploading
-        if ( ! $this->upload->do_upload('Filedata')) {
-            # Error
-            $errors = $this->upload->display_errors();
- 
-            # nombre de la imagen, evitando errores
-            $image_name = NULL;
-        } else {
-            # Nombre de la foto
-            $imageData  = $this->upload->data();
-            $image_name = $imageData['file_name'];
-            $image_ext  = $imageData['file_ext'];
- 
-            # Achicamos la foto
-            if( ! $this->resizePhoto($image_name)){
-                $errors = "La imagen no pudo redimensionarse correctamente";
-            } else {
-                # Agregamos a la base de datos
-                $data = array(
-                    'title'         => 'Foto sin titulo',
-                    'image'         =>   $image_name,
-                    'active'            => 0
-                );
- 
-                # ID recien creado, verificamos
-                $id = $this->photos_model->create($data);
- 
-                if ( ! $id) {
-                    $errors = "La imagen no pudo ingresarse a la DB";
+        $this->load->library('image_lib');
+        $upload_files = $_FILES;
+        for($i = 0; $i < $config_user['cantidad_imagenes']; $i++) {
+            $_FILES['userfile'] = array(
+                'name' => $upload_files['userfile']['name'][$i],
+                'type' => $upload_files['userfile']['type'][$i],
+                'tmp_name' => $upload_files['userfile']['tmp_name'][$i],
+                'error' => $upload_files['userfile']['error'][$i],
+                'size' => $upload_files['userfile']['size'][$i]
+            );
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->_aEstadoOper['message'] = $error;
+            } 
+            else {
+                $data = $this->upload->data();
+                if($config_user['create_thumb']) {
+                    foreach ($config_user['thumbs'] as $thumb) {
+                        $configa['create_thumb'] = $config_user['create_thumb'];
+                        $configa['maintain_ratio'] = TRUE;
+                        $configa['new_image'] = $config_user['upload_path'];
+                        $configa['source_image'] = $config_user['upload_path'].$data['file_name'];
+                        $configa['thumb_marker'] = $thumb['thumb_marker'];
+                        $configa['width'] = $thumb['width'];
+                        $configa['height'] = 1;
+                        $configa['master_dim'] = 'width';
+                        $this->image_lib->initialize($configa);
+                        if($this->image_lib->resize()) {
+                            $nombreThumbnail = $data['raw_name'].$thumb['thumb_marker'].$data['file_ext'];
+                            $data['thumbnails'][] = array('nombreThumbnail' => $nombreThumbnail, 'pathThumbnail' => $config_user['upload_path'].$nombreThumbnail);
+                        }
+                        else {
+                            $data['thumbnails'][] = array_merge($this->errors, array($image->error->string));
+                        }
+                        $configa = array();
+                    }
+                    $this->image_lib->clear();
                 }
             }
         }
- 
-        // Error?
-        if (isset($errors)){
-            # Borramos la foto (si existe)
-            $id = isset($id) ? $id : NULL;
-            $this->deletePhoto($id, $image_name);
- 
-            echo $errors;
-        }
+        return $data;
     }
  
     private function resizePhoto($name)
