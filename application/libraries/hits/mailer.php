@@ -22,7 +22,7 @@ class Mailer  {
         $mail->Port       = $config['smtp_port'];                   // SMTP port to connect to GMail
         $mail->Username   = $config['smtp_user'];  // user email address
         $mail->Password   = $config['smtp_pass'];            // password in GMail
-        $mail->SetFrom($config['smtp_user'], 'Sabandijas Rodados');
+        $mail->SetFrom($config['smtp_user'], $config['from']);
         $mail->Subject    = $asunto;
         $mail->Body       = $this->ci->load->view($cuerpo, $data, TRUE);
         foreach ($destinatarios as $destino) {

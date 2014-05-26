@@ -12,7 +12,7 @@ border-radius: 0.1em;
 -ms-border-radius: 0.1em;
 behavior: url(../otros/PIE.htc);
 margin: 0 0 5px 0;
-padding: 0.1em 0 1em 0;
+/*padding: 0.1em 0 1em 0;*/
 }
 .notif-container-alert .notif-lft{
 float: left;
@@ -141,6 +141,10 @@ height: 23px;
 margin: 7px 5px 5px 5px;
 padding: 0;
 cursor: pointer;
+}
+.icon-notif, .icon-notif:hover {
+	border: none;
+	text-decoration: none;
 }
 /* *
 * Fin Mensajes de notificación

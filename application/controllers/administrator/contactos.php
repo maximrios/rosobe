@@ -3,12 +3,12 @@
  * @author Maximiliano Ezequiel Rios
  * @version 1.0.0
  * @copyright 2014
- * @package Sabandijas Rodados
+ * @package Hits
  */
 class Contactos extends Ext_crud_Controller {
 	function __construct() {
 		parent::__construct();
-        $this->load->model('sabandijas/contactos_model', 'contactos');
+        $this->load->model('hits/contactos_model', 'contactos');
         $this->load->library('gridview');
         $this->load->library('Messages');
         $this->load->helper('utils_helper');
@@ -52,7 +52,7 @@ class Contactos extends Ext_crud_Controller {
         $val = $this->form_validation->set_rules($this->_aReglas);
     }
 	function index() {
-		$this->_vcContentPlaceHolder = $this->load->view('administrator/sabandijas/contactos/principal', array(), true);
+		$this->_vcContentPlaceHolder = $this->load->view('administrator/hits/contactos/principal', array(), true);
         parent::index();
 	}
 	public function listado() {
@@ -80,7 +80,7 @@ class Contactos extends Ext_crud_Controller {
         $controles = $ver.$eliminar;
         $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones'));
         $this->_rsRegs = $this->contactos->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
-        $this->load->view('administrator/sabandijas/contactos/listado'
+        $this->load->view('administrator/hits/contactos/listado'
             , array(
                 'vcGridView' => $this->gridview->doXHtml($this->_rsRegs)
                 , 'vcMsjSrv' => $this->_aEstadoOper['message']
@@ -96,14 +96,14 @@ class Contactos extends Ext_crud_Controller {
         $aData['vcFrmAction'] = 'administrator/productos/guardar';
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
         $aData['vcAccion'] = ($this->_reg['idproducto'] > 0) ? 'Modificar' : 'Agregar';
-        $this->load->view('administrator/sigep/productos/buscador', $aData);
+        $this->load->view('administrator/hits/productos/buscador', $aData);
 	}
 	function formulario() {
 		$aData['Reg'] = $this->_inicReg($this->input->post('vcForm'));
         $aData['vcFrmAction'] = 'administrator/contactos/guardar';
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
         $aData['vcAccion'] = ($this->_reg['idContacto'] > 0) ? 'Modificar' : 'Agregar';
-        $this->load->view('administrator/sabandijas/contactos/formulario', $aData);
+        $this->load->view('administrator/hits/contactos/formulario', $aData);
 	}
 	function guardar() {
 		antibotCompararLlave($this->input->post('vcForm'));

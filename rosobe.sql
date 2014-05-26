@@ -3,7 +3,7 @@
 -- Server version:               5.0.51b-community-nt-log - MySQL Community Edition (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2014-05-12 00:57:49
+-- Date/time:                    2014-05-25 23:28:29
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -77,19 +77,25 @@ CREATE TABLE IF NOT EXISTS `hits_categorias_productos` (
   `idCategoria` int(10) default '0',
   `idProducto` int(10) default '0',
   PRIMARY KEY  (`idCategoriaProducto`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_categorias_productos: 8 rows
+-- Dumping data for table rosobe.hits_categorias_productos: 14 rows
 /*!40000 ALTER TABLE `hits_categorias_productos` DISABLE KEYS */;
 INSERT INTO `hits_categorias_productos` (`idCategoriaProducto`, `idCategoria`, `idProducto`) VALUES
 	(4, 2, 1),
 	(3, 1, 1),
 	(5, 3, 1),
-	(9, 2, 2),
-	(8, 1, 2),
+	(20, 2, 2),
+	(19, 1, 2),
 	(10, 1, 3),
 	(11, 1, 4),
-	(12, 12, 4);
+	(12, 12, 4),
+	(13, 11, 5),
+	(14, 10, 5),
+	(24, 11, 6),
+	(23, 20, 6),
+	(22, 21, 6),
+	(21, 18, 6);
 /*!40000 ALTER TABLE `hits_categorias_productos` ENABLE KEYS */;
 
 
@@ -102,13 +108,35 @@ CREATE TABLE IF NOT EXISTS `hits_categorias_relaciones` (
   PRIMARY KEY  (`idCategoriaRelacion`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_categorias_relaciones: 2 rows
+-- Dumping data for table rosobe.hits_categorias_relaciones: 3 rows
 /*!40000 ALTER TABLE `hits_categorias_relaciones` DISABLE KEYS */;
 INSERT INTO `hits_categorias_relaciones` (`idCategoriaRelacion`, `idCategoria`, `idSubcategoria`) VALUES
 	(1, 1, 2),
 	(2, 1, 3),
 	(3, 13, 16);
 /*!40000 ALTER TABLE `hits_categorias_relaciones` ENABLE KEYS */;
+
+
+-- Dumping structure for table rosobe.hits_contactos
+DROP TABLE IF EXISTS `hits_contactos`;
+CREATE TABLE IF NOT EXISTS `hits_contactos` (
+  `idContacto` int(10) NOT NULL auto_increment,
+  `nombreContacto` varchar(255) default '0',
+  `telefonoContacto` bigint(20) default '0',
+  `emailContacto` varchar(255) default '0',
+  `mensajeContacto` text,
+  `fechaContacto` datetime default NULL,
+  `estadoContacto` tinyint(4) default NULL,
+  PRIMARY KEY  (`idContacto`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table rosobe.hits_contactos: 3 rows
+/*!40000 ALTER TABLE `hits_contactos` DISABLE KEYS */;
+INSERT INTO `hits_contactos` (`idContacto`, `nombreContacto`, `telefonoContacto`, `emailContacto`, `mensajeContacto`, `fechaContacto`, `estadoContacto`) VALUES
+	(1, 'Maximiliano', 234234234, 'em-rios@hotmail.com', 'sdfsdf sd fsdf sd fsd fsdfsdfsdfsdfsdfsdfsdf', '2014-05-25 22:41:54', 1),
+	(2, 'Maximiliano', 234234234, 'em-rios@hotmail.com', 'sdfsdf sd fsdf sd fsd fsdfsdfsdfsdfsdfsdfsdf', '2014-05-25 22:54:30', 1),
+	(3, 'Maximiliano', 234234234, 'em-rios@hotmail.com', 'sdfsdf sd fsdf sd fsd fsdfsdfsdfsdfsdfsdfsdf', '2014-05-25 22:56:33', 1);
+/*!40000 ALTER TABLE `hits_contactos` ENABLE KEYS */;
 
 
 -- Dumping structure for table rosobe.hits_ecivil
@@ -334,20 +362,22 @@ CREATE TABLE IF NOT EXISTS `hits_productos` (
   `nombreProducto` varchar(255) NOT NULL default '0',
   `codigoProducto` varchar(255) NOT NULL default '0',
   `precioProducto` decimal(10,2) NOT NULL default '0.00',
-  `descripcionProducto` varchar(255) NOT NULL default '0',
+  `descripcionProducto` text,
   `uriProducto` varchar(255) default NULL,
   `publicadoProducto` tinyint(4) default NULL,
   `estadoProducto` tinyint(4) default NULL,
   PRIMARY KEY  (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_productos: ~4 rows (approximately)
+-- Dumping data for table rosobe.hits_productos: ~6 rows (approximately)
 /*!40000 ALTER TABLE `hits_productos` DISABLE KEYS */;
 INSERT INTO `hits_productos` (`idProducto`, `nombreProducto`, `codigoProducto`, `precioProducto`, `descripcionProducto`, `uriProducto`, `publicadoProducto`, `estadoProducto`) VALUES
-	(1, 'SILLA DE JARDIN', '0', 0.00, 'Esta silla de jardin esta compuesta de madera obtenida de los palos borrachos que estan en en los bosques de canada', 'silla-de-jardin', NULL, NULL),
-	(2, 'SILLONES PARA DESCANSO', '0', 0.00, 'Con un aspecto diferente a los sillones de jardines comunes, estos sillones estan destinados a jardines amplios aportando al espacio algo delicado y de muy buena calidad.', 'sillones-para-descanso-de-jardineria', NULL, NULL),
-	(3, 'MESA PARA COCINA', '0', 0.00, 'Esta mesa esta diseñada para un hermoso quincho en donde se puede compartir con la familia o amigos.', 'mesa-para-cocina', NULL, NULL),
-	(4, 'MESA COMEDOR', '0', 0.00, 'La asdkaj sdlaksdj wqoi hdskfjhs dfkjsdfh iweu ksdjh sdifsdfsjdfhkifh sdijfh sdkfjhwifj hsdkfhsdf ksdjfhsd fshdf ksdfh ksdjfh fs dfk sdfhksdjfhs kdfjhsdfksjdfhksdfj', 'mesa-comedor', NULL, NULL);
+	(1, 'SILLA DE JARDIN', '0', 0.00, 'Esta silla de jardin esta compuesta de madera obtenida de los palos borrachos que estan en en los bosques de canada', 'silla-de-jardin', 1, 1),
+	(2, 'Sillones para descansar', '0', 0.00, '&lt;p&gt;Con un aspecto diferente a los sillones de jardines comunes, estos sillones estan destinados a jardines amplios aportando al espacio algo delicado y de muy buena calidad.&lt;/p&gt;', 'sillones-para-descansar', 1, 1),
+	(3, 'MESA PARA COCINA', '0', 0.00, 'Esta mesa esta diseñada para un hermoso quincho en donde se puede compartir con la familia o amigos.', 'mesa-para-cocina', 1, 1),
+	(4, 'MESA COMEDOR', '0', 0.00, 'La asdkaj sdlaksdj wqoi hdskfjhs dfkjsdfh iweu ksdjh sdifsdfsjdfhkifh sdijfh sdkfjhwifj hsdkfhsdf ksdjfhsd fshdf ksdfh ksdjfh fs dfk sdfhksdjfhs kdfjhsdfksjdfhksdfj', 'mesa-comedor', 0, 1),
+	(5, 'PRUEBA DE ONDA', 'asdlk', 0.00, '&lt;p&gt;asdlka sdjaldkj adhlkasdj hsaldkjsa dhlkasjd hsalkdj ashdlk asdlkasjd haklsd jhaskldj ashdklaj sdhklas djhalskd jhsd lkasdj halskdj ahsdhkljasd hlkas jdhlaskjd haskdj ahslkd sahdklas jdhaslkd jahsldkj ahsdlkj asdhlkasjd&lt;/p&gt;', 'prueba-de-onda', 1, 1),
+	(6, 'Producto categorizado', '12', 0.00, '&lt;p&gt;asd asdasdkj hasdlkasj dhklasdj hsakdlj ahsdkljasdhk jdhkas jdhask dhd sakjsd kasdh hsa d kaljsd hkasdj haklsdj haksdj haksdj aklsdj haskldj hkljhaskdjhaksdj kjhkljasd hkajsd hkas dkajd &lt;strong&gt;texto en negrita&lt;/strong&gt;&lt;/p&gt;', 'producto-categorizado', 1, 1);
 /*!40000 ALTER TABLE `hits_productos` ENABLE KEYS */;
 
 
@@ -362,9 +392,9 @@ CREATE TABLE IF NOT EXISTS `hits_productos_imagenes` (
   `thumbdetailProductoImagen` varchar(255) default NULL,
   `checkProductoImagen` tinyint(1) default NULL,
   PRIMARY KEY  (`idProductoImagen`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_productos_imagenes: 12 rows
+-- Dumping data for table rosobe.hits_productos_imagenes: 14 rows
 /*!40000 ALTER TABLE `hits_productos_imagenes` DISABLE KEYS */;
 INSERT INTO `hits_productos_imagenes` (`idProductoImagen`, `idProducto`, `pathProductoImagen`, `thumbProductoImagen`, `detailProductoImagen`, `thumbdetailProductoImagen`, `checkProductoImagen`) VALUES
 	(1, 1, 'assets/images/productos/imagen1.jpg', 'assets/images/productos/imagen1_thumb.jpg', 'assets/images/productos/imagen1_detail.jpg', 'assets/images/productos/imagen1_thumb_detail.jpg', 1),
@@ -378,7 +408,9 @@ INSERT INTO `hits_productos_imagenes` (`idProductoImagen`, `idProducto`, `pathPr
 	(8, 3, 'assets/images/productos/imagen11.jpg', 'assets/images/productos/imagen11_thumb.jpg', 'assets/images/productos/imagen11_detail.jpg', 'assets/images/productos/imagen11_thumb_detail.jpg', NULL),
 	(9, 3, 'assets/images/productos/imagen12.jpg', 'assets/images/productos/imagen12_thumb.jpg', 'assets/images/productos/imagen12_detail.jpg', 'assets/images/productos/imagen12_thumb_detail.jpg', NULL),
 	(12, 4, 'assets/images/productos/imagen13.jpg', 'assets/images/productos/imagen13_thumb.jpg', 'assets/images/productos/imagen13_detail.jpg', 'assets/images/productos/imagen13_thumb_detail.jpg', 1),
-	(13, 4, 'assets/images/productos/imagen14.jpg', 'assets/images/productos/imagen14_thumb.jpg', 'assets/images/productos/imagen14_detail.jpg', 'assets/images/productos/imagen14_thumb_detail.jpg', NULL);
+	(13, 4, 'assets/images/productos/imagen14.jpg', 'assets/images/productos/imagen14_thumb.jpg', 'assets/images/productos/imagen14_detail.jpg', 'assets/images/productos/imagen14_thumb_detail.jpg', NULL),
+	(14, 5, 'assets/images/productos/imagen131.jpg', 'assets/images/productos/imagen131_thumb.jpg', 'assets/images/productos/imagen131_detail.jpg', 'assets/images/productos/imagen131_thumb_detail.jpg', 1),
+	(15, 6, 'assets/images/productos/imagen111.jpg', 'assets/images/productos/imagen111_thumb.jpg', 'assets/images/productos/imagen111_detail.jpg', 'assets/images/productos/imagen111_thumb_detail.jpg', 1);
 /*!40000 ALTER TABLE `hits_productos_imagenes` ENABLE KEYS */;
 
 
@@ -393,11 +425,10 @@ CREATE TABLE IF NOT EXISTS `hits_sessions` (
   PRIMARY KEY  (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Dumping data for table rosobe.hits_sessions: 2 rows
+-- Dumping data for table rosobe.hits_sessions: 1 rows
 /*!40000 ALTER TABLE `hits_sessions` DISABLE KEYS */;
 INSERT INTO `hits_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-	('688df323744d97de6281f1c02c2a3800', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0', 1399863213, 'a:2:{s:9:"user_data";s:0:"";s:12:"antibotLlave";a:1:{i:0;s:32:"frm139986321388frmcaa89215e67b35";}}'),
-	('a4949b17aa3129d050b0fb91a1e98949', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0 FirePHP/0.7.4', 1399866002, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-04-02 17:14:13";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:5:{i:0;s:32:"frm139986584372frmafa299a4d1d8c5";i:1;s:32:"frm139986601265frmbd3ef5c19067fe";i:2;s:32:"frm139986604103frmda0b566359c386";i:3;s:32:"frm139986606743frm2297607a5db857";i:4;s:32:"frm139986622774frm64b3ec1fdfacea";}}');
+	('fb1396e23a8f716bd2736962b4f0e0a5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0 FirePHP/0.7.4', 1401071103, 'a:4:{s:9:"user_data";s:0:"";s:15:"Lib_Aut_Usuario";a:8:{s:9:"idUsuario";s:1:"1";s:5:"idRol";s:1:"1";s:9:"idPersona";s:2:"64";s:10:"dniPersona";s:8:"32505371";s:13:"nombreUsuario";s:5:"maxim";s:18:"ultimoLoginUsuario";s:19:"2014-04-02 17:14:13";s:13:"nombrePersona";s:20:"MAXIMILIANO EZEQUIEL";s:15:"apellidoPersona";s:4:"RIOS";}s:18:"Lib_Aut_boLogueado";b:1;s:12:"antibotLlave";a:13:{i:0;s:32:"frm140106881996frm8685549650016d";i:1;s:32:"frm140106927067frm01064f1de9dfcd";i:2;s:32:"frm140106939307frmcb41f167917ec4";i:3;s:32:"frm140106940382frmbee3d07327a21d";i:4;s:32:"frm140106948459frm5e5dd00d770ef3";i:5;s:32:"frm140106950609frm99f42c473afe0e";i:6;s:32:"frm140106954134frmf4661398cb1a3a";i:7;s:32:"frm140106958159frme0b60d939b4a80";i:8;s:32:"frm140106972706frm5e90ae5f6eb12b";i:9;s:32:"frm140106977473frma2e11098af33e2";i:10;s:32:"frm140106979219frm19a6a0b9360519";i:11;s:32:"frm140106983617frmc9d91cb2c696ea";i:12;s:32:"frm140106988282frm33953455b0a758";}}');
 /*!40000 ALTER TABLE `hits_sessions` ENABLE KEYS */;
 
 
@@ -1164,7 +1195,7 @@ CREATE TABLE `hits_view_productos` (
 	`nombreProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
 	`codigoProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
 	`precioProducto` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
-	`descripcionProducto` VARCHAR(255) NOT NULL DEFAULT '0' COLLATE 'utf8_general_ci',
+	`descripcionProducto` TEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
 	`uriProducto` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
 	`publicadoProducto` TINYINT(4) NULL DEFAULT NULL,
 	`estadoProducto` TINYINT(4) NULL DEFAULT NULL,

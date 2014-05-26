@@ -21,7 +21,7 @@
         <meta name="author" content="<?= $SiteInfo['author'];?>">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
-        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <?php
             # Para garantizar que los archivos CSS se descarguen en paralelo,
             # incluya siempre los recursos CSS externos antes que los recursos JavaScript externos
@@ -31,92 +31,56 @@
         <!-- Scripts for any page -->
         <?= $vcIncludesGlobales; ?>
         <!-- End Scripts for any page -->
-        <style type="text/css">
-        .lavalamp-object {
-            top: -10px!important;
-            border-bottom: 2px solid orange;
-        }
-        #nav-primary li:hover a {
-            color: orange!important;
-        }
-        </style>
     </head>
     <body>
-        <!--<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>-->
-
-        <section class="container header">
-            <header class="content">
-                <h1 id="logo">
+        <header>
+            <div id="header" class="col-lg-8 container">
+                <h1 id="logo" class="col-lg-6">
                     <a href="http://www.industriasrosobe.com.ar" alt="<?=config_item('ext_base_nombre_sitio');?>" title="<?=config_item('ext_base_nombre_sitio');?>">Industrias RoSoBe</a>
                 </h1>
-                <div class="div-40 like">
-                    <ul class="">
-                        <div class="fb-like" data-href="http://www.industriasrosobe.com.ar" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                    </ul>
-                </div>
-                
-                <ul class="datas">
-                    <li>(0387) 4010107 - 4290826</li>
-                    <li><a href="mailto:info@industriasrosobe.com.ar" title="Industrias Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
-                    <li>Av. Ex Combatientes de Malvinas 6201</li>
-                    <li>Salta - Argentina</li>
+                <ul class="sociales pull-right">
+                    <li><a href="#" class="redes_sociales facebook"></a></li>
+                    <li><a href="#" class="redes_sociales twitter"></a></li>
+                    <li><a href="#" class="redes_sociales flickr"></a></li>
                 </ul>
-            </header>
-        </section>
-        <!--<section class="container nav">-->
-        <section>
-            <!--<nav class="content">-->
-            <!--<?=$vcMenu;?>-->
-            <!--</nav>-->
-            <nav class="navbar" role="navigation">
+            </div>
+        </header>
+        <div class="nav-bar">
+            <nav class="nav pull-right col-lg-9 container" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                             <span class="sr-only">Menú</span>
-                            <span class="icon-bar"></span>
+                            <span class="icon-bar">-</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul id="nav-primary" class="nav navbar-nav wrap-nav nav-primary" style="width:100%;margin:0 auto!important;">
+                        <ul id="nav-primary" class="nav navbar-nav wrap-nav nav-primary">
                             <?php
                             echo $vcMenu;
                             ?>
-                            <!--<li><a href="#">Inicio</a></li>
-                            <li><a href="#">Quienes Somos</a></li>
-                            <li><a href="#">Mayoristas<span class="badge badge-important">Nuevo</span></a></li>
-                            <li><a href="inicio/productos">Productos</a></li>
-                            
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Galeria</a></li>
-                            <li><a href="inicio/contacto">Contacto</a></li>-->
                         </ul>
+                        <form action="productos/busqueda" method="post" class="navbar-form navbar-right pull-right" role="search">
+                            <div class="form-group">
+                                <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Buscar producto...">
+                            </div>
+                            <button type="submit" class="btn btn-default">Buscar</button>
+                        </form>
                     </div>
                 </div>
-            </nav>
 
+            </nav>
             
+        </div>
+        <div class="fondo"></div>
+        <section id="wrap-content" class="col-lg-12 container">
+            <?=$vcMainContent?>
         </section>
-        <section class="container">
-            <?=$vcMainContent; ?>
-        </section>
-        <section class="container footer" style="background:#E36F35;">
-            <footer class="content">
-                <div class="col-lg-2">
-                    <h5>MENU</h5>
-                    <ul>
-                    <?=$vcMenu;?>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
+        <section class="col-lg-12 footer">
+            <footer class="col-lg-8 container">
+                <div class="col-lg-4">
                     <h5>OFICINA EN SALTA</h5>
                     <ul>
                         <li>(0387) 4010107 - 4290826</li>
@@ -125,7 +89,7 @@
                         <li>Salta - Argentina</li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <h5>OFICINA EN CORDOBA</h5>
                     <ul>
                         <li>(0387) 4010107 - 4290826</li>
@@ -147,24 +111,13 @@
                 </div>
             </footer>
         </section>
-        <div class="col-lg-12" style="background:#393737;padding:0.9em 0;text-align:center;font-size:0.8em;color:#FFF;">
+        <div class="col-lg-12 copyright">
             Industrias y Servicios Ro.So.Be. - Todos los derechos reservados &copy; 2014
         </div>
-        <script>
-            jQuery(document).ready(function(){
-    $(".dropdown").hover(
-        function() { $('.dropdown-menu', this).fadeIn("fast");
-        },
-        function() { $('.dropdown-menu', this).fadeOut("fast");
-    });
-});
-            $('#nav-primary').lavalamp({
-                easing: 'easeOutBack'
-            });
-            $('#badge-important').animate({
-                'margin-top':'-25px',
-                'margin-top':'5px'
-            },1500);
-        </script>
+    <script type="text/javascript">
+        $('#nav-primary').lavalamp({
+            easing: 'easeOutBack'
+        });
+    </script>
     </body>
 </html>

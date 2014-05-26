@@ -1,5 +1,13 @@
-<section class="content wrap-content row">
+<div class="col-lg-9 container">
+	<div class="col-lg-12 breadcrumb">
+		<label><?=$breadcrumb?></label>
+		<h5>Productos ::</h5>
+	</div>
+</div>
+<div class="col-lg-9 container content">
 	<div class="col-lg-3">
+		<h3 class="titulo-section">Categorias</h3>
+		<hr class="titulo-section">
 		<ul class="nav nav-panel">
             <li>
             	<label label-default="" class="tree-toggle nav-header">Aberturas</label>
@@ -25,38 +33,40 @@
 					<li><a href="#">Cocinas</a></li>
 					<li><a href="#">Comedores</a></li>
 					<li><a href="#">Dormitorios</a></li>
-                    <!--<li>
-                    	<label label-default="" class="tree-toggle nav-header">Media Queries</label>
-                        <ul class="nav tree">
-                        	<li><a href="#">Text</a></li>
-                            <li><a href="#">Images</a></li>
-						</ul>
-                    </li>-->
                 </ul>
             </li>
 		</ul>
 	</div>
 	<div class="col-lg-9">
-		<h4>Productos destacados</h4>
-		<ul class="row" style="display:inline-block;">
-			<li style="display:inline-block;">
+		<h3 class="titulo-section">Productos destacados</h3>
+		<hr class="titulo-section">
+		<div class="row">
+		<ul class="productos">
 			<?php
 			$i = 1;
 			for($i=1;$i<=3;$i++) { ?>
-				<img src="assets/images/productos/imagen<?=$i?>_thumb.jpg" style="margin: 0.4em;" width="">
-			<?php } ?>
+			<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+				<figure>
+					<a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><img src="<?=$productos[$i]['thumbProductoImagen']?>" alt="<?=$productos[$i]['nombreProducto']?>"></a>
+					<figcaption>
+						<label><a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><?=$productos[$i]['nombreProducto']?></a></label>
+					</figcaption>
+				</figure>
 			</li>
+			<?php } ?>
+			
 		</ul>
-		<h5>Aberturas / Ventanas</h5>
+		</div>
+		<h3 class="titulo-section"><?=($categoria!='')? '':'Todos los productos'?></h3>
+		<hr class="titulo-section">
 		<div class="row">
-			<ul>
+			<ul class="productos">
 				<?php foreach ($productos as $producto) { ?>
 				<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-					<figure style="text-align:center;padding: 0.4em 0;margin:0.3em;background:white;border: 1px solid #D9D9D9;min-height:330px;">
-						<a href="producto/<?=$producto['uriProducto']?>"><img width="170" src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
+					<figure>
+						<a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><img src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
 						<figcaption>
-							<label style="font-size:1em;margin:0.5em 0;"><?=$producto['nombreProducto']?></label>
-							<p style="font-size:0.9em;"><?=$producto['descripcionProducto']?>.</p>
+							<label><a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><?=$producto['nombreProducto']?></a></label>
 						</figcaption>
 					</figure>
 				</li>
@@ -64,10 +74,6 @@
 			</ul>
 		</div>
 	</div>
-</section>
+</div>
 <script type="text/javascript">
-$('.tree-toggle').click(function () {
-	$(this).parent().children('ul.tree').toggle(200);
-});
-$("a[rel^='prettyPhoto']").prettyPhoto();
 </script>

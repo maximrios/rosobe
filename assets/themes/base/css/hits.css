@@ -5,8 +5,13 @@ html, body {
 body {
 	padding-top: 50px;
 }
-
-
+textarea {
+    resize: none!important;
+}
+.categorias {
+    list-style: none;
+    margin-left: 0;
+}
 
 /*Grid View */
 .container-gridview table{
@@ -40,8 +45,8 @@ body {
   cursor: pointer;
 }
 .container-gridview tbody tr:nth-child(odd){
-  background: #ffffff;	
-  color: #333;
+    background: #ffffff;	
+    color: #333;
 	font-size: 12px;	     
 }
 
@@ -55,10 +60,29 @@ body {
     padding: 10px 5px;
     line-height:1.05em;
 }
+.container-gridview tbody td p {
+    text-align: left;
+}
 
 .container-gridview tbody tr td.acciones{
-    padding: 2px 2px 2px 0px;
-
+    /*padding: 2px 2px 2px 0px;*/
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle!important;
+    border: none;
+    border-right: 1px solid #cCC;
+}
+.container-gridview tbody tr td.acciones a {
+    /*width: 20px!important;*/
+    
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle!important;
+}
+.container-gridview tbody tr td.acciones a:hover span {
+    color: orange;
 }
 .container-gridview td.hilite{
     /*background-image: linear-gradient(left bottom, #E8E8E8 0%, #FFFFFF 100%);
@@ -82,7 +106,7 @@ body {
     background-image: -ms-linear-gradient(left bottom, #444444 0%, #666666 100%);
     background-image: -webkit-gradient(linear,left bottom,right top,color-stop(0, #444444),color-stop(1, #666666));*/
 }
-.container-gridview tbody tr:hover td{
+.container-gridview tbody tr:hover td, .container-gridview tbody tr:hover td a {
     background: #4682B4;
     color: #fff;
     /*text-shadow:3px 3px 2px #333;

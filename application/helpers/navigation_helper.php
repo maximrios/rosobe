@@ -13,7 +13,8 @@ if ( ! function_exists('menu_ul')) {
         $menu = '';
         foreach($items as $item) {
             $current = (in_array($sel, $item)) ? ' class="active"' : '';
-            $importante = (in_array($important, $item)) ? ' <span id="badge-important" class="badge badge-important">Nuevo</span>' : '';
+            //$importante = (in_array($important, $item)) ? ' <span id="badge-important" class="badge badge-important">Nuevo</span>' : '';
+            $importante = '';
             $id = (!empty($item['id'])) ? ' id="'.$item['id'].'"' : '';
             $menu .= '<li '.$current.'><a href="'.site_url($item['link']).'">'.$item['title'].$importante;
             $menu .= '</a></li>'."\n";

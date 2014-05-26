@@ -31,6 +31,7 @@ class Inicio extends Ext_Controller {
 		$aData = array();
 		$aData['slider'] = $this->layout->obtenerSlider();
 		$aData['productos'] = $this->layout->obtenerDestacados();
+		$aData['breadcrumb'] = '<a href="#">Inicio</a>';
 		$this->_SiteInfo['title'] .= ' - Inicio';
 		$this->_menu = 'inicio';
 		$this->_vcContentPlaceHolder = $this->load->view('inicio', $aData, true);
@@ -40,6 +41,7 @@ class Inicio extends Ext_Controller {
 		$aData = array();
 		$this->_SiteInfo['title'] .= ' - Nosotros';
 		$this->_menu = 'nosotros';
+		$aData['breadcrumb'] = '<a href="#">Inicio</a>  >  <a href="nosotros">Nosotros</a>';
 		$this->_vcContentPlaceHolder = $this->load->view('nosotros', $aData, true);
 		parent::index();
 	}
@@ -49,33 +51,6 @@ class Inicio extends Ext_Controller {
 		$this->_menu = 'mayoristas';
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
-	}
-	public function productos() {
-		$aData = array();
-		$this->_SiteInfo['title'] .= ' - Productos';
-		$this->_menu = 'productos';
-		$aData['productos'] = $this->layout->obtenerProductos();
-		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
-		parent::index();
-	}
-	public function producto($slug) {
-		$aData = array();
-		$this->load->model('rosobe/productos_model', 'productos');
-		$aData['producto'] = $this->productos->obtenerUnoSlug($slug);
-		if(!$aData['producto']) {
-			redirect('inicio/no_producto');
-		}
-		else {
-			$aData['imagenes'] = $this->productos->obtenerImagenes($aData['producto']['idProducto']);
-			$aData['productos'] = $this->layout->obtenerRelacionados($aData['producto']['idProducto']);
-		}
-		$this->_SiteInfo['title'] .= ' - '.$aData['producto']['nombreProducto'];
-		$this->_menu = 'productos';
-		$this->_vcContentPlaceHolder = $this->load->view('producto', $aData, true);
-		parent::index();
-	}
-	public function no_producto() {
-		echo "no existe";
 	}
 	public function servicios() {
 		$aData = array();

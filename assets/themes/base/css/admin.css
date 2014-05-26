@@ -1,0 +1,21 @@
+.colores {
+	list-style: none;
+	padding-left: 0;
+}
+.productos-agregados .panel{
+	height: 300px;
+	
+}
+.productos-agregados .panel .panel-body {
+	height: 257px;
+	overflow-y: scroll;
+}
+.panel-body p {
+	margin: 0 auto;
+	text-align: center;
+}
+.panel-body .panel-empty {
+	color: #d0d0d0;
+	font-size: 2em;
+	margin-top: 80px!important;
+}

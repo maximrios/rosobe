@@ -7,6 +7,17 @@ class Productos extends Ext_crud_Controller {
         $this->load->library('gridview');
         $this->load->library('Messages');
         $this->load->helper('utils_helper');
+        $this->load->helper('ckeditor_helper');
+        $this->capa = array(
+            'id'    =>  'descripcionProducto',
+            'path'  =>  'assets/libraries/ckeditor',
+            'config' => array(
+                'toolbar'   =>  "Full",
+                'width'     =>  "100%",
+                'height'    =>  '100px',
+ 
+            ),
+        );
         $this->_aReglas = array(
             array(
                 'field'   => 'idProducto',
@@ -16,7 +27,7 @@ class Productos extends Ext_crud_Controller {
             ,array(
                 'field'   => 'nombreProducto',
                 'label'   => 'Nombre del Producto',
-                'rules'   => 'trim|xss_clean|required|strtoupper'
+                'rules'   => 'trim|xss_clean|required'
             )
             ,array(
                 'field'   => 'codigoProducto',
@@ -99,7 +110,7 @@ class Productos extends Ext_crud_Controller {
         class="btn-accion" rel="{\'idProducto\': {idProducto}}">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;</a>';
         $estado = '<a href="administrator/productos/publicacion/{idProducto}" title="Editar {nombreProducto}" 
         class="btn-accion" rel="{\'idProducto\': {idProducto}}">&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;</a>';
-        $eliminar = '<a href="administrator/productos/formulario/{idProducto}" title="Mostrar detalle de {nombreProducto}" class="btn-accion" rel="{\'idProducto\': {idProducto}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
+        $eliminar = '<a href="administrator/productos/eliminar/{idProducto}" title="Eliminar {nombreProducto}" class="btn-accion" rel="{\'idProducto\': {idProducto}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
         $controles = $editar.$estado.$eliminar;
         $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones'));
         $this->_rsRegs = $this->productos->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
@@ -116,9 +127,10 @@ class Productos extends Ext_crud_Controller {
         $aData['vcFrmAction'] = 'administrator/productos/guardar';
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
         $aData['vcAccion'] = ($this->_reg['idproducto'] > 0) ? 'Modificar' : 'Agregar';
-        $this->load->view('administrator/hits/productos/buscador', $aData);
+        $this->load->view('administrator/sigep/productos/buscador', $aData);
     }
     function formulario($idProducto=0) {
+        $aData['ckeditor'] = $this->capa;
         $aData['Reg'] = $this->_inicReg($this->input->post('vcForm'));    
         if(!$this->_reg['idProducto'] && $idProducto != 0) {
             $aData['Reg'] = $this->_inicReg(false, $idProducto);    
@@ -128,10 +140,12 @@ class Productos extends Ext_crud_Controller {
         $aData['vcAccion'] = ($this->_reg['idProducto'] > 0) ? 'Modificar' : 'Agregar';
         if($this->_reg['idProducto'] > 0) {
             $aData['imagenes'] = $this->productos->obtenerImagenes($this->_reg['idProducto']);
+            //$aData['colores'] = $this->productos->obtenerColores();
             $aData['categorias'] = $this->categorias->obtenerCategorias();
         }
         else {
             $aData['imagenes'] = FALSE;
+            //$aData['colores'] = $this->productos->obtenerColores();
             $aData['categorias'] = $this->categorias->obtenerCategorias();
         }
         $this->load->view('administrator/hits/productos/formulario', $aData);
@@ -199,7 +213,7 @@ class Productos extends Ext_crud_Controller {
                     )
                 );
             }
-            $this->productos->eliminarColoresProducto($this->_reg['idProducto']);
+            /*$this->productos->eliminarColoresProducto($this->_reg['idProducto']);
             if($this->input->post('colorProducto')) {
                 foreach ($this->input->post('colorProducto') as $color) {                 
                     $this->productos->guardarColoresProducto(
@@ -209,7 +223,7 @@ class Productos extends Ext_crud_Controller {
                         )
                     );
                 }    
-            }
+            }*/
         }
         else {
             $this->_aEstadoOper['status'] = 0;
@@ -228,6 +242,66 @@ class Productos extends Ext_crud_Controller {
         echo json_encode($data);
     }
 
+    /*function do_upload($config_user) {
+        $config['upload_path'] = $config_user['upload_path'];
+        $config['allowed_types'] = $config_user['allowed_types'];
+        $config['max_size'] = $config_user['max_size'];
+        $this->load->library('upload', $config);
+        $this->load->library('image_lib');
+        $upload_files = $_FILES;
+        for($i = 0; $i < $config_user['cantidad_imagenes']; $i++) {
+            $_FILES['userfile'] = array(
+                'name' => $upload_files['userfile']['name'][$i],
+                'type' => $upload_files['userfile']['type'][$i],
+                'tmp_name' => $upload_files['userfile']['tmp_name'][$i],
+                'error' => $upload_files['userfile']['error'][$i],
+                'size' => $upload_files['userfile']['size'][$i]
+            );
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->_aEstadoOper['message'] = $error;
+            } 
+            else {
+                $data = $this->upload->data();
+                if($config_user['create_thumb']) {
+                    foreach ($config_user['thumbs'] as $thumb) {
+                        $configa['create_thumb'] = $config_user['create_thumb'];
+                        $configa['maintain_ratio'] = TRUE;
+                        $configa['new_image'] = $config_user['upload_path'];
+                        $configa['source_image'] = $config_user['upload_path'].$data['file_name'];
+                        $configa['thumb_marker'] = $thumb['thumb_marker'];
+                        $configa['width'] = $thumb['width'];
+                        $configa['height'] = 1;
+                        $configa['master_dim'] = 'width';
+                        $this->image_lib->initialize($configa);
+                        if($this->image_lib->resize()) {
+                            $nombreThumbnail = $data['raw_name'].$thumb['thumb_marker'].$data['file_ext'];
+                            $data['thumbnails'][] = array('nombreThumbnail' => $nombreThumbnail, 'pathThumbnail' => $config_user['upload_path'].$nombreThumbnail);
+                        }
+                        else {
+                            $data['thumbnails'][] = array_merge($this->errors, array($image->error->string));
+                        }
+                        $configa = array();
+                    }
+                    $this->image_lib->clear();
+                }
+            }
+        }
+        return $data;
+    }
+    function _create_thumbnail($filename, $width, $height){
+        $config['image_library'] = 'gd2';
+        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+        $config['source_image'] = 'assets/images/productos/'.$filename;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+        $config['new_image']='assets/images/productos/';
+        $config['width'] = $width;
+        $config['height'] = $height;
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+    }*/
     function eliminarImagen($idProductoImagen) {
         $imagen = $this->productos->obtenerUnaImagen($idProductoImagen);
         if($imagen) {
@@ -278,6 +352,19 @@ class Productos extends Ext_crud_Controller {
         } else {
             $this->formulario();
         }
+    }
+    public function eliminar($idProducto) {
+        if($idProducto) {
+            $this->_aEstadoOper['status'] = $this->productos->eliminar($idProducto);
+            if($this->_aEstadoOper['status']) {
+                $this->_aEstadoOper['message'] = 'Se elimino el producto correctamente.';
+            }
+            else {
+                $this->_aEstadoOper['message'] = 'No se pudo eliminar el producto.';   
+            }
+        }
+        $this->_aEstadoOper['message'] = $this->messages->do_message(array('message' => $this->_aEstadoOper['message'], 'type' => ($this->_aEstadoOper['status'] > 0) ? 'success' : 'alert'));
+        $this->listado();
     }
 }
 

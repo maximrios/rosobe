@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * @author Maximiliano Ezequiel Rios
  * @version 1.0.0
  * @copyright 2014
- * @package Sabandijas Rodados
+ * @package Hits
  */
 class Contacto extends Ext_controller {
 	function __construct() {
@@ -53,7 +53,7 @@ class Contacto extends Ext_controller {
             $this->_inicReg((bool)$this->input->post('vcForm'));
             $this->load->library('hits/mailer', array(), 'mailer');
             $aData['consulta'] = $this->_reg;
-            if($this->mailer->enviarMail('Sabandijas Rodados - Consulta web', 'consulta', $aData, array(array('email' => $this->config->config['ext_base_smtp_config_editable']['mail'], 'nombre' => $this->config->config['ext_base_smtp_config_editable']['asunto_mail'])))) {
+            if($this->mailer->enviarMail('Industrias Ro.So.Be. - Consulta web', 'consulta', $aData, array(array('email' => $this->config->config['ext_base_smtp_config_editable']['mail'], 'nombre' => $this->config->config['ext_base_smtp_config_editable']['asunto_mail'])))) {
                 $this->layout->guardarContacto(array(
                     0
                     , $this->input->post('nombresContacto')
@@ -80,15 +80,18 @@ class Contacto extends Ext_controller {
         if($this->_aEstadoOper['message'] != '') {
             $this->_aEstadoOper['message'] = $this->messages->do_message(array('message'=>$this->_aEstadoOper['message'],'type'=> ($this->_aEstadoOper['status'] > 0)?'success':'alert'));    
         }
+        else {
+            $this->_aEstadoOper['message'] = '';
+        }
         $this->formulario();
 	}
     function formulario() {
         $this->load->library('hits/googlemaps');
         $config = array();
-        $config['center'] = '-31.2992526,-64.2889189';
+        $config['center'] = '-24.859007,-65.452682';
         $config['zoom'] = 14;
         $config['directions'] = TRUE;
-        $config['map_height'] = 230;
+        $config['map_height'] = 430;
         
         //$config['directionsStart'] = '-24.782889,-65.41174';
         //$config['directionsStart'] = '-24.847344,-65.46155';
@@ -97,9 +100,9 @@ class Contacto extends Ext_controller {
         
         $this->googlemaps->initialize($config);
         $marker = array();
-        $marker['position'] = '-31.2992526,-64.2889189';
-        $marker['title'] = 'Sabandijas Rodados';
-        $marker['infowindow_content'] = 'Sabandijas Rodados | TE: 03543 43-5608';
+        $marker['position'] = '-24.859007,-65.452682';
+        $marker['title'] = 'Industrias y Servicios Ro.So.Be.';
+        $marker['infowindow_content'] = 'Industrias y Servicios Ro.So.Be. | TE: (0387) 401 0107 - (0387) 429 0826';
         $this->googlemaps->add_marker($marker);
         $aData['map'] = $this->googlemaps->create_map();
         $aData['Reg'] = $this->_inicReg($this->input->post('vcForm'));
@@ -107,7 +110,8 @@ class Contacto extends Ext_controller {
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
         $this->_SiteInfo['title'] .= ' - Contacto';
         $this->_menu = 'contacto';
-        $aData['breadcrumb'] = 'Home / Contacto';
+        $aData['breadcrumb'] = '<a href="#">Inicio</a> > Contacto';
+        $aData['mensaje'] = $this->_aEstadoOper['message'];
         $this->_vcContentPlaceHolder = $this->load->view('contacto', $aData, true);
         parent::index();
     }

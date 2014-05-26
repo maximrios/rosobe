@@ -4,7 +4,7 @@
 /**
  * Configuracion extendida para el sistema
  */
-$config['ext_base_url'] = 'http://localhost/rosobe';
+$config['ext_base_url'] = 'http://www.industriasrosobe.com.ar';
 /**
  * Creando name spaces
  */
@@ -185,7 +185,6 @@ $config['lib_autenticacion_alert_usuario_login_2'] = 'Ha iniciado sesión en var
 /*******************************************************************************************/
 /* JS CSS Optimización */
 
-// Comprimir GZIP: TRUE/FALSE
 $config['js_css_gzip'] = TRUE;
 // Unificar archivos JS y CSS en 2 Archivos finales: TRUE/FALSE
 $config['js_css_unificar'] = FALSE;
@@ -211,40 +210,34 @@ $config['js_array_admin'] = array(
     'assets/libraries/jquery.file.upload/jquery.fileupload.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-process.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',
-    'assets/libraries/chosen/chosen.jquery.js',
-    'assets/themes/base/js/hits.js',
+    $config['ext_base_url_plantilla_elegida'].'js/hits.js',
     
 );
 $config['css_array_admin'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap.css',
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap-datepicker.css',
     $config['ext_base_url_plantilla_elegida'].'css/hits.css',
+    $config['ext_base_url_plantilla_elegida'].'css/admin.css',
     $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',
     $config['ext_base_url_plantilla_elegida'].'css/jqueryvalidation-validationEngine.jquery.css',
     $config['ext_base_url_plantilla_elegida'].'css/jquery.fileupload.css',
-    'assets/libraries/chosen/chosen.jquery.js',
+    
 );
 // Array de JS
 $config['js_array'] = array(
-    'assets/themes/base/js/jquery.js',
-    'assets/themes/base/js/jquery.scrollUp.min.js',
-    'assets/themes/base/js/bootstrap.js',
-    'assets/themes/base/js/jquery.placeholder.min.js',
-    'assets/libraries/jquery.easing.1.3.js',
-    'assets/libraries/jquery.lavalamp.min.js',
-    'assets/themes/base/js/jquery.nivo.slider.pack.js',
-    'assets/themes/base/js/jquery.prettyPhoto.js',
-    'assets/themes/base/js/jquery.jqzoom-core.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.js',
+    $config['ext_base_url_plantilla_elegida'].'js/bootstrap.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.fancybox.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.nivo.slider.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.easing.1.3.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.lavalamp.min.js',
 );
 
 // Array de CSS
 $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap.css',
-    $config['ext_base_url_plantilla_elegida'].'css/main-parallax.css',
+    $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',
     $config['ext_base_url_plantilla_elegida'].'css/rosobe.css',
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
-    $config['ext_base_url_plantilla_elegida'].'css/prettyPhoto.css',
-    $config['ext_base_url_plantilla_elegida'].'css/jquery.jqzoom.css',
-    '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css',
-
 );
+

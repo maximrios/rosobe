@@ -6,7 +6,7 @@ class Contactos_model extends CI_Model {
     }
     public function obtener($vcBuscar = '', $limit = 0, $offset = 9999999) {
         $sql = 'SELECT *
-            FROM sabandijas_contactos
+            FROM hits_contactos
             WHERE mensajeContacto LIKE ? 
             AND estadoContacto = 1
             ORDER BY fechaContacto DESC  
@@ -14,17 +14,17 @@ class Contactos_model extends CI_Model {
         return $this->db->query($sql, array('%' . strtolower((string) $vcBuscar) . '%', (double) $offset, (double) $limit))->result_array();
     }
     public function numRegs($vcBuscar) {
-        $sql = 'SELECT count(idContacto) AS inCant FROM sabandijas_contactos WHERE lower(mensajeContacto) LIKE ? AND estadoContacto = 1 ';
+        $sql = 'SELECT count(idContacto) AS inCant FROM hits_contactos WHERE lower(mensajeContacto) LIKE ? AND estadoContacto = 1 ';
         $result = $this->db->query($sql, array(strtolower('%' . strtolower($vcBuscar) . '%')))->result_array();
         return $result[0]['inCant'];
     }
     public function obtenerUno($id) {
-        $sql = 'SELECT * FROM sabandijas_contactos WHERE idContacto = ?;';
+        $sql = 'SELECT * FROM hits_contactos WHERE idContacto = ?;';
         return array_shift($this->db->query($sql, array($id))->result_array());
     }
     public function guardar($aParms) {
         if($aParms[0] == 'NULL' || $aParms[0] == 0) {
-            $sql = 'INSERT INTO sabandijas_contactos
+            $sql = 'INSERT INTO hits_contactos
                     (nombreContacto
                     , telefonoContacto
                     , emailContacto
@@ -41,7 +41,7 @@ class Contactos_model extends CI_Model {
             $type = 1;
         }
         else {
-            $sql = 'UPDATE sabandijas_contactos SET 
+            $sql = 'UPDATE hits_contactos SET 
                     nombreContacto = "'.$aParms[1].'"
                     , telefonoContacto = '.$aParms[2].'
                     , emailContacto = "'.$aParms[3].'"
@@ -59,7 +59,7 @@ class Contactos_model extends CI_Model {
         }
     }
     public function eliminar($id) {
-        $sql = 'UPDATE sabandijas_contactos SET estadoContacto = 0 WHERE idContacto = ?;';
+        $sql = 'UPDATE hits_contactos SET estadoContacto = 0 WHERE idContacto = ?;';
         $result = $this->db->query($sql, array($id));
         return TRUE;
     }

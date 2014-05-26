@@ -12,7 +12,7 @@ $config['ext_base_site_info']['propiedad'] = 'HITS - Soluciones Informaticas';
 $config['ext_base_site_info']['uri_propiedad'] = 'http://www.hitsweb.com.ar';
 $config['ext_base_site_info']['uri'] = 'www.industriasrosobe.com.ar';
 
-$config['ext_base_smtp_config_editable']['smtp_auth'] = TRUE;
+/*$config['ext_base_smtp_config_editable']['smtp_auth'] = TRUE;
 $config['ext_base_smtp_config_editable']['smtp_host'] = 'localhost';
 $config['ext_base_smtp_config_editable']['smtp_user'] = 'consultas@joseoquiroga.com.ar';
 $config['ext_base_smtp_config_editable']['smtp_pass'] = 'Ara21605';
@@ -21,6 +21,19 @@ $config['ext_base_smtp_config_editable']['validate'] = '';
 $config['ext_base_smtp_config_editable']['SMTPSecure'] = '';
 
 $config['ext_base_smtp_config_editable']['mail'] = 'consultas@joseoquiroga.com.ar';
+$config['ext_base_smtp_config_editable']['asunto_mail'] = 'Consulta desde web';
+$config['ext_base_smtp_config_editable']['cuerpo_mail'] = 'mail_template';*/
+
+$config['ext_base_smtp_config_editable']['smtp_auth'] = TRUE;
+$config['ext_base_smtp_config_editable']['smtp_host'] = 'smtp.gmail.com';
+$config['ext_base_smtp_config_editable']['smtp_user'] = 'maximrios@gmail.com';
+$config['ext_base_smtp_config_editable']['smtp_pass'] = 'ara21605';
+$config['ext_base_smtp_config_editable']['smtp_port'] = 465;
+$config['ext_base_smtp_config_editable']['validate'] = '';
+$config['ext_base_smtp_config_editable']['SMTPSecure'] = 'ssl';
+
+$config['ext_base_smtp_config_editable']['from'] = 'Industrias y Servicios Ro.So.Be.';
+$config['ext_base_smtp_config_editable']['mail'] = 'maximrios@gmail.com';
 $config['ext_base_smtp_config_editable']['asunto_mail'] = 'Consulta desde web';
 $config['ext_base_smtp_config_editable']['cuerpo_mail'] = 'mail_template';
 
