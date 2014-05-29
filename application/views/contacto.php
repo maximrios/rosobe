@@ -6,7 +6,7 @@
 <div class="col-lg-9 container">
 	<div class="col-lg-12 breadcrumb">
 		<label><?=$breadcrumb?></label>
-		<h5>Contacto ::</h5>
+		<!--<h5>Contacto ::</h5>-->
 	</div>
 </div>
 <div class="col-lg-9 container content">

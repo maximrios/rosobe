@@ -62,63 +62,11 @@ class Inicio extends Ext_Controller {
 	public function galeria() {
 		$aData = array();
 		$aData['galeria'] = $this->layout->obtener_galeria();
+		$aData['breadcrumb'] = '<a href="#">Inicio</a>  >  <a href="galeria">Galeria</a>';
 		$this->_SiteInfo['title'] .= ' - Galería';
 		$this->_menu = 'galeria';
 		$this->_vcContentPlaceHolder = $this->load->view('galeria', $aData, true);
 		parent::index();
-	}
-	public function contacto() {
-		$this->load->library('hits/googlemaps');
-		$config = array();
-		$config['center'] = '-24.859007,-65.452682';
-		$config['zoom'] = 14;
-		$config['directions'] = TRUE;
-
-		//$config['directionsStart'] = '-24.782889,-65.41174';
-		//$config['directionsStart'] = '-24.847344,-65.46155';
-		//$config['directionsEnd'] = '-24.859007,-65.452682';
-		//$config['directionsDivID'] = 'prueba';
-
-		$this->googlemaps->initialize($config);
-		$marker = array();
-		$marker['position'] = '-24.859007,-65.452682';
-		$marker['title'] = 'INDUSTRIAS y SERVICIOS Ro.So.Be';
-		$marker['infowindow_content'] = 'Industrias y Servicios Ro.So.Be';
-		$this->googlemaps->add_marker($marker);
-		$aData['map'] = $this->googlemaps->create_map();
-		$aData['vcMsjSrv']='';
-		$this->_SiteInfo['title'] .= ' - Contacto';
-		$this->_menu = 'contacto';
-		if($this->input->post('form')) {
-			$this->_inicReglasWeb();
-         	if ($this->_validarReglas()) {
-				$aData['vcMsjSrv'] = 'Se envio con exito';
-         	}
-         	else {
-				$this->_aEstadoOperWeb['status'] = 0;
-             	$this->_aEstadoOperWeb['message'] = validation_errors();
-             	$aData['vcMsjSrv'] = $this->_aEstadoOperWeb['message'];
-         	}
-		}
-		$this->_vcContentPlaceHolder = $this->load->view('contacto', $aData, true);
-		parent::index();
-	}
-	public function consultar() {
-		$this->_inicReglasWeb();
-        if ($this->_validarReglas()) {
-         	echo "si paso";
-        }
-        else {
-        	$this->_aEstadoOperWeb['status'] = 0;
-            $this->_aEstadoOperWeb['message'] = validation_errors();
-        }
-        if($this->_aEstadoOperWeb['status'] > 0) {
-			$this->listado();
-		} 
-		else {
-			//redirect('contacto');
-			$this->contacto();
-		}
 	}
 }
 ?>

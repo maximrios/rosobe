@@ -2,7 +2,7 @@
 class Galerias extends Ext_crud_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model('rosobe/galerias_model', 'galerias');
+        $this->load->model('hits/galerias_model', 'galerias');
         $this->load->library('gridview');
         $this->load->library('Messages');
         $this->load->helper('utils_helper');
@@ -63,7 +63,7 @@ class Galerias extends Ext_crud_Controller {
         $val = $this->form_validation->set_rules($this->_aReglas);
     }
     function index() {
-        $this->_vcContentPlaceHolder = $this->load->view('administrator/rosobe/galerias/principal', array(), true);
+        $this->_vcContentPlaceHolder = $this->load->view('administrator/hits/galerias/principal', array(), true);
         parent::index();
     }
     public function listado() {
@@ -86,7 +86,7 @@ class Galerias extends Ext_crud_Controller {
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
         //$this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones', 'style' => 'width:32px;'));
         $this->_rsRegs = $this->galerias->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
-        $this->load->view('administrator/rosobe/galerias/listado'
+        $this->load->view('administrator/hits/galerias/listado'
             , array(
                 'vcGridView' => $this->gridview->doXHtml($this->_rsRegs)
                 , 'vcMsjSrv' => $this->_aEstadoOper['message']
@@ -109,7 +109,7 @@ class Galerias extends Ext_crud_Controller {
         $aData['vcFrmAction'] = 'administrator/galerias/guardar';
         $aData['vcMsjSrv'] = $this->_aEstadoOper['message'];
         $aData['vcAccion'] = ($this->_reg['idGaleria'] > 0) ? 'Modificar' : 'Agregar';
-        $this->load->view('administrator/rosobe/galerias/formulario', $aData);
+        $this->load->view('administrator/hits/galerias/formulario', $aData);
     }
     function guardar() {
         antibotCompararLlave($this->input->post('vcForm'));

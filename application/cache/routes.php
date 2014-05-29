@@ -1,8 +1,7 @@
 <?php
 	$route['nosotros'] = "inicio/nosotros";
-	/*$route['productos'] = "inicio/productos";*/
-	//$route['productos/([a-z-]+)'] = 'inicio/productos/$1';
-	//$route['productos/([a-z-]+)'] = 'productos/categoria/$1';
+	$route['galeria'] = "inicio/galeria";
+	
 	$route['productos/(:num)'] = 'productos';
 	$route['productos/(:num)/([a-z-0-9-]+)'] = 'productos/categoria/$1';
 	$route['productos/(:num)/([a-z-0-9-]+)/(:num)'] = 'productos/categoria/$1';

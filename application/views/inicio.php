@@ -1,14 +1,17 @@
 <div class="col-lg-9 container">
     <div class="col-lg-12 breadcrumb">
         <label><?=$breadcrumb?></label>
-        <h5>Inicio ::</h5>
+        <!--<h5>Inicio ::</h5>-->
     </div>
 </div>
 <div class="col-lg-9 container">
+    <div class="slider-wrapper theme-default">
+    <div class="ribbon"></div>
     <div id="slider" class="nivoSlider">
         <?php foreach ($slider as $imagen) { ?>
             <a href="<?=$imagen['linkSlider']?>" target="<?=$imagen['targetSlider']?>"><img src="<?=$imagen['pathSlider']?>" alt="<?=$imagen['tituloSlider']?>"/></a>
         <?php } ?>
+    </div>
     </div>
 </div>
 <div class="col-lg-9 container">
@@ -72,8 +75,8 @@
 <script type="text/javascript">
 //$(window).load(function() {
     $('#slider').nivoSlider({
-        directionNav: false,             // Next & Prev navigation
-        controlNav: false,
+        directionNav: true,             // Next & Prev navigation
+        controlNav: true,
         effect: 'fade',               // 1,2,3... navigation
     });
 //});

@@ -1,7 +1,7 @@
 <div class="col-lg-9 container">
 	<div class="col-lg-12 breadcrumb">
 		<label><?=$breadcrumb?></label>
-		<h5>Productos ::</h5>
+		<!--<h5>Productos ::</h5>-->
 	</div>
 </div>
 <div class="col-lg-9 container content">
@@ -47,6 +47,7 @@
 			for($i=1;$i<=3;$i++) { ?>
 			<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
 				<figure>
+					<?=($productos[$i]['novedadProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">Nuevo</div></div>':''?>
 					<a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><img src="<?=$productos[$i]['thumbProductoImagen']?>" alt="<?=$productos[$i]['nombreProducto']?>"></a>
 					<figcaption>
 						<label><a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><?=$productos[$i]['nombreProducto']?></a></label>

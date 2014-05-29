@@ -98,7 +98,8 @@ nav {
 }
 nav ul li a {
     border: none;
-    color: #E36F35;
+    /*color: #E36F35;*/
+    color: #46614d;
     font-size: 1em;
 }
 nav ul li a:active, nav ul li a:hover, nav ul li a:focus {
@@ -117,6 +118,9 @@ nav ul li a:active, nav ul li a:hover, nav ul li a:focus {
 #nav-primary li:hover a {
     color: #E36F35!important;
     background: none;
+}
+#nav-primary li.active a {
+    color: #E36F35!important;
 }
 #nav-primary li.active:hover a {
     color: #FFFFFF;
@@ -138,17 +142,8 @@ ul#nav-primary li span.badge-important {
     /*color: #4b6e55;*/
     color: #E36F35;
 }
-.tree {
-    margin-bottom: 0.5em;
-}
-.tree li {
-    line-height: 0.3em;
-}
-.tree li a {
-    color: #46614d;
-}
-.tree li:hover a {
-    background: none;
+.nav-panel li ul li a {
+    color: #4b6e55;
 }
 #slider {
     border-radius: 15px;
@@ -253,6 +248,10 @@ footer a.flickr:hover {
     text-align: center;
 }
 /**
+ * Inicio
+ */
+
+/**
  * Productos
  */
 ul.productos {
@@ -284,6 +283,56 @@ ul.productos figure figcaption label a {
     font-size: 0.9em;
     text-decoration: none;
 }
+
+.ribbon-wrapper-green {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -1px;
+    right: 14px;
+}
+.ribbon-green {
+  font: bold 12px 'Open Sans', sans-serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 15px;
+  width: 120px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon-green:before {
+  left: 0;
+}
+.ribbon-green:after {
+  right: 0;
+}​
 /**
  * Fin de Productos
  */
@@ -332,66 +381,13 @@ ul.productos figure figcaption label a {
 /**
  * Fin de Detalle
  */
-.galeria a {
-  background: white;
-  display: inline-block;
-  margin: 0 15px 30px;
-  padding: 10px 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,.3);
-  -webkit-transition: all .15s linear;
-  -moz-transition: all .15s linear;
-  transition: all .15s linear;
-  z-index:0;
-  position:relative;
+.galeria img {
+    width: 100%;
 }
-.galeria a:after {
-  color: #333;
-  font-size: 0.8em;
-  content: attr(title);
-  position: relative;
-  top:15px;
+.galeria .galeria-thumbs {
+    margin-top: 1em;
 }
-.galeria img { 
-  display: block; 
-  width: inherit; 
-}
-.galeria a:nth-child(2n)
-{
-  -webkit-transform: rotate(4deg);  
-  -moz-transform: rotate(4deg); 
-  transform: rotate(4deg); 
-}
-.galeria a:nth-child(3n) { 
-  -webkit-transform: rotate(-24deg);  
-  -moz-transform: rotate(-24deg); 
-  transform: rotate(-24deg); 
-}
-.galeria a:nth-child(4n)
-{
-  -webkit-transform: rotate(14deg);  
-  -moz-transform: rotate(14deg); 
-  transform: rotate(14deg); 
-}
-.galeria a:nth-child(5n)
-{
-  -webkit-transform: rotate(-18deg);  
-  -moz-transform: rotate(-18deg); 
-  transform: rotate(-18deg); 
-}
-.galeria a:hover{
-  -webkit-transform: rotate(0deg); 
-  -moz-transform: rotate(0deg);
-        transform: rotate(0deg);
-  -webkit-transform: scale(1.2); 
-  -moz-transform: scale(1.2);
-        transform: scale(1.2);
-  z-index:10;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-  -moz-box-shadow: 0 10px 20px rgba(0,0,0,.7);
-        box-shadow: 0 10px 20px rgba(0,0,0,.7);
-}
-.galeria_thumbs img {
+.galeria .galeria-thumbs img {
     margin: 0.5em;
+    width: 150px;
 }

@@ -62,7 +62,7 @@
                             echo $vcMenu;
                             ?>
                         </ul>
-                        <form action="productos/busqueda" method="post" class="navbar-form navbar-right pull-right" role="search">
+                        <form action="productos" method="post" class="navbar-form navbar-right pull-right" role="search">
                             <div class="form-group">
                                 <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Buscar producto...">
                             </div>
@@ -83,19 +83,19 @@
                 <div class="col-lg-4">
                     <h5>OFICINA EN SALTA</h5>
                     <ul>
-                        <li>(0387) 4010107 - 4290826</li>
-                        <li><a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
-                        <li>Av. Ex Comb. de Malvinas 6201</li>
-                        <li>Salta - Argentina</li>
+                        <li><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;&nbsp;(0387) 4010107 - 4290826</li>
+                        <li><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;<a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;&nbsp;Av. Ex Comb. de Malvinas 6201</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;&nbsp;Salta - Argentina</li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
                     <h5>OFICINA EN CORDOBA</h5>
                     <ul>
-                        <li>(0387) 4010107 - 4290826</li>
-                        <li><a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
-                        <li>Av. Ex Comb. de Malvinas 6201</li>
-                        <li>Cordoba - Argentina</li>
+                        <li><span class="glyphicon glyphicon-earphone"></span>&nbsp;&nbsp;&nbsp;(0387) 4010107 - 4290826</li>
+                        <li><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;<a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;&nbsp;Av. Ex Comb. de Malvinas 6201</li>
+                        <li><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;&nbsp;Salta - Argentina</li>
                     </ul>
                 </div>
                 <div class="col-lg-3">

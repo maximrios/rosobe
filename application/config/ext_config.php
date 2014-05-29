@@ -228,7 +228,7 @@ $config['js_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'js/jquery.js',
     $config['ext_base_url_plantilla_elegida'].'js/bootstrap.js',
     $config['ext_base_url_plantilla_elegida'].'js/jquery.fancybox.js',
-    $config['ext_base_url_plantilla_elegida'].'js/jquery.nivo.slider.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.nivo.slider.pack.js',
     $config['ext_base_url_plantilla_elegida'].'js/jquery.easing.1.3.js',
     $config['ext_base_url_plantilla_elegida'].'js/jquery.lavalamp.min.js',
 );
@@ -239,5 +239,6 @@ $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',
     $config['ext_base_url_plantilla_elegida'].'css/rosobe.css',
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
+    $config['ext_base_url_plantilla_elegida'].'css/default.css',
 );
 

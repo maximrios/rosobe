@@ -234,7 +234,8 @@ $vcMainContent = (!empty($vcMainContent))? $vcMainContent: '';
                 <li><a href="administrator/personas">Personas<span class="sub_icon glyphicon glyphicon-user"></span></a></li>
                 <li><a href="administrator/categorias">Categorias<span class="sub_icon glyphicon glyphicon-tags"></span></a></li>
                 <li><a href="administrator/productos">Productos<span class="sub_icon glyphicon glyphicon-bookmark"></span></a></li>
-                <li><a href="administrator/noticias">Novedades<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>
+                <li><a href="administrator/galerias">Galeria<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>
+                <!--<li><a href="administrator/noticias">Novedades<span class="sub_icon glyphicon glyphicon-picture"></span></a></li>-->
                 <li><a href="administrator/contactos">Contactos<span class="sub_icon glyphicon glyphicon-envelope"></span></a></li>
             </ul>
         </div>
