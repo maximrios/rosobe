@@ -84,7 +84,14 @@ class Galerias extends Ext_crud_Controller {
         $this->gridview->addColumn('descripcionGaleria', 'Descripcion', 'text');
         $this->gridview->addColumn('estadoGaleria', 'Estado', 'text');
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
-        //$this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones', 'style' => 'width:32px;'));
+        $editar = '<a href="administrator/productos/formulario/{idGaleria}" title="Editar {nombreGaleria}" 
+        class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;</a>';
+        $estado = '<a href="administrator/productos/publicacion/{idGaleria}" title="Editar {nombreGaleria}" 
+        class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;</a>';
+        $eliminar = '<a href="administrator/productos/eliminar/{idGaleria}" title="Eliminar {nombreGaleria}" class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
+        $controles = $editar.$estado.$eliminar;
+        $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones'));
+
         $this->_rsRegs = $this->galerias->obtener($vcBuscar, $this->gridview->getLimit1(), $this->gridview->getLimit2());
         $this->load->view('administrator/hits/galerias/listado'
             , array(
@@ -116,56 +123,26 @@ class Galerias extends Ext_crud_Controller {
         $this->_inicReglas();
         if ($this->_validarReglas()) {
             $this->_inicReg((bool) $this->input->post('vcForm'));
-            /*
-             * Aca comienza el codigo del do_upload que posteriormente deberia de hacerlo mas generico.
-             */
-            $cant = count($_FILES['userfile']['name']);
-            $config['upload_path'] = 'assets/images/galeria/';
-            $config['allowed_types'] = 'jpg';
-            $config['max_size'] = '30000';
-            $this->load->library('upload', $config);
-            $this->load->library('image_lib');
-            $configa['image_library'] = 'gd2';
-            $configa['create_thumb'] = TRUE;
-            $configa['maintain_ratio'] = TRUE;
-            //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-            $configa['new_image']='assets/images/galeria/';
-            $configa['width'] = 150;
-            $configa['height'] = 150;
-            $upload_files = $_FILES;
-            $_FILES['userfile'] = array(
-                'name' => $upload_files['userfile']['name'],
-                'type' => $upload_files['userfile']['type'],
-                'tmp_name' => $upload_files['userfile']['tmp_name'],
-                'error' => $upload_files['userfile']['error'],
-                'size' => $upload_files['userfile']['size']
-            );
-            if ( ! $this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->_aEstadoOper['message'] = $error;
-                echo $error;
-                print_r($error);
-            } 
-            else {
-                $data = $this->upload->data();
-                $configa['source_image'] = 'assets/images/galeria/'.$data['file_name'];
-                $this->image_lib->initialize($configa);
-                $this->image_lib->resize();
-                $this->image_lib->clear();
-                
-            }
-            if ($data) {
-                $thumb = explode('.', $data['file_name']);
-                $data['file_name_thumb'] = $thumb[0].'_thumb.'.$thumb[1];
-            }
+            $config = array(
+                'cantidad_imagenes' => count($_FILES['userfile']['name'])
+                , 'upload_path' => 'assets/images/galeria/'
+                , 'allowed_types' => 'jpg'
+                , 'max_size' => 3000
+                , 'create_thumb' => true
+                , 'thumbs' => array(
+                    array('thumb_marker' => '_thumb', 'width' => 200)
+                    )
+                );
+            $this->load->library('hits/uploads', array(), 'uploads');
+            $data = $this->uploads->do_upload($config);
             $this->_aEstadoOper['status'] = $this->galerias->guardar(
                 array(
                     ($this->_reg['idGaleria'] != '' && $this->_reg['idGaleria'] != 0)? $this->_reg['idGaleria'] : 0
                     , $this->_reg['nombreGaleria']
                     , $this->_reg['descripcionGaleria']
-                    , ($data['file_name'])? $config['upload_path'].$data['file_name'] : $this->_reg['pathGaleria']
-                    , ($data['file_name'])? $config['upload_path'].$data['file_name_thumb'] : $this->_reg['thumbGaleria']
-                    , $this->_reg['estadoGaleria']
+                    , $config['upload_path'].$data[0]['file_name']
+                    , $data[0]['thumbnails'][0]['pathThumbnail']
+                    , 1
                 )
             );
         }

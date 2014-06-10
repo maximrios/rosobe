@@ -22,10 +22,11 @@ Contamos además con un Show Room, donde se puede encontrar mercaderías standar
 	</div>
 	<div class="col-lg-12">
 		<h5>Nuestros Objetivos</h5>
- 		<p>RoSoBe tiene planteado objetivos claros destinados al servicio que brinda a sus clientes</p>
- 		<div class="col-lg-4">Brindar a nuestros clientes un amplio surtido en muebles y aberturas exclusivas.-</div>
- 		<div class="col-lg-4">Cumplir en tiempo y forma los trabajos encomendados por los clientes.-</div>
- 		<div class="col-lg-4">Lograr la satisfacción plena de la confienza depositada de nuestros clientes.-</div>
+ 		<p>RoSoBe tiene planteado objetivos claros destinados al servicio que brinda a sus clientes
+ 		Brindar a nuestros clientes un amplio surtido en muebles y aberturas exclusivas.-
+ 		Cumplir en tiempo y forma los trabajos encomendados por los clientes.-
+ 		Lograr la satisfacción plena de la confienza depositada de nuestros clientes.-
+ 		Crecer y ser mejores día a día sin olvidar de donde vinimos y hacia donde queremos llegar.-</p>
  		<!--<ol>
  			<li>1- Brindar a nuestros clientes un amplio surtido en muebles y aberturas exclusivas.-</li>
  			<li>2- Cumplir en tiempo y forma los trabajos encomendados por los clientes.-</li>
@@ -37,6 +38,9 @@ Contamos además con un Show Room, donde se puede encontrar mercaderías standar
 	<div class="col-lg-12">
 		<h3 class="titulo-section">Empresas que confian en nosotros</h3>
 		<hr class="titulo-section">
+		<ul>
+			<li></li>
+		</ul>
 	</div>
 </div>
 <script type="text/javascript">

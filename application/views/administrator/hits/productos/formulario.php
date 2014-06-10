@@ -3,7 +3,7 @@
  * @author Maximiliano Ezequiel Rios
  * @version 1.0.0
  * @copyright 2014
- * @package Sabandijas Rodados
+ * @package Industrias Rosobe
  */
     $vcFormName = antibotHacerLlave();
     $vcMsjSrv = (!empty($vcMsjSrv))? $vcMsjSrv: '';

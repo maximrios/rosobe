@@ -237,6 +237,7 @@ $config['js_array'] = array(
 $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap.css',
     $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',
+    $config['ext_base_url_plantilla_elegida'].'css/jquery.fancybox.css',
     $config['ext_base_url_plantilla_elegida'].'css/rosobe.css',
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
     $config['ext_base_url_plantilla_elegida'].'css/default.css',

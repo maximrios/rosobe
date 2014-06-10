@@ -17,17 +17,16 @@
 <div class="col-lg-9 container">
     <div class="row inicio-servicios">
         <div class="col-lg-12">
-            <h5>Productos destacados</h5>
             <div class="col-lg-4">
-                <span class="icono-atencion">Design</span>
+                <span class="glyphicon glyphicon-wrench"></span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, ullam, ea, minus, iure laboriosam voluptates amet omnis iusto quibusdam consequuntur sit doloribus expedita dolores? A aliquid aperiam quae asperiores molestiae.</p>
             </div>
             <div class="col-lg-4">
-                <span class="icono-atencion">Time</span>
+                <span class="glyphicon glyphicon-tag"></span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, dignissimos iure ipsam sit odio pariatur amet asperiores in beatae rerum sunt aut. Quidem, quam, asperiores at architecto sint nisi laborum.</p>
             </div>
             <div class="col-lg-4">
-                <span class="icono-atencion">Gear</span>
+                <span class="glyphicon glyphicon-cog"></span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ipsa inventore totam atque modi quae quo vitae ullam consequuntur eaque repudiandae nobis saepe labore doloribus sint. Vel tenetur assumenda voluptas!</p>
             </div>
         </div>
@@ -36,11 +35,12 @@
     <div class="row">
         <div class="col-lg-12">
             <h5>Productos destacados</h5>
+            <br>
             <ul class="productos">
                 <?php foreach ($productos as $producto) { ?>
                 <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <figure>
-                        <a href="producto/<?=$producto['uriProducto']?>" title="<?=$producto['nombreProducto']?>" alt="<?=$producto['nombreProducto']?>"><img width="170" src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
+                        <a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>" title="<?=$producto['nombreProducto']?>" alt="<?=$producto['nombreProducto']?>"><img width="170" src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
                         <figcaption>
                             <label><a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><?=$producto['nombreProducto']?></a></label>
                         </figcaption>

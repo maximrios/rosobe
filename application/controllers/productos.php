@@ -34,6 +34,7 @@ class Productos extends Ext_Controller {
 		$aData['busqueda'] = $this->input->post('busqueda');
 		$aData['categoria'] = '';
 		$aData['categorias'] = $this->layout->obtenerCategorias();
+		$aData['destacados'] = $this->layout->obtenerDestacados();
 		$aData['productos'] = $this->layout->obtenerProductos();	
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
@@ -79,7 +80,7 @@ class Productos extends Ext_Controller {
             $busqueda = $this->input->post('busqueda');
             redirect('productos/busqueda/'.$busqueda);
         }
-        elseif ($busqueda != '' && $this->layout->obtenerProductosFind($busqueda)) {
+        elseif ($busqueda != '' && $this->layout->obtenerProductos($busqueda)) {
         	$aData = array();
 
         	$config['base_url'] = 'productos/busqueda';
@@ -112,7 +113,8 @@ class Productos extends Ext_Controller {
 			$aData['busqueda'] = $busqueda;
 			$aData['categoria'] = '';
 			$aData['categorias'] = $this->layout->obtenerCategorias();
-			$aData['productos'] = $this->layout->obtenerProductosFind($busqueda, 0, $config['per_page'], $page);
+			$aData['destacados'] = $this->layout->obtenerDestacados();
+			$aData['productos'] = $this->layout->obtenerProductos($busqueda, 0, $config['per_page'], $page);
 			$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 			parent::index();
         //}

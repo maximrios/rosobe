@@ -9,23 +9,13 @@
 		<h3 class="titulo-section">Galeria de Trabajos</h3>
 		<hr class="titulo-section">
 		<p>Queremos compartir nuestra galeria de trabajos con vos, podes consultar por cualquier trabajo que encuentres, si tenes algun proyecto en mente acercate a compartir con nosotros para llevarlo adelante.</p>
-		<!--<img src="assets/images/slider/imagen2.jpg">-->
-		<section class="galeria-thumbs">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-			<img src="assets/images/slider/imagen2_thumb.jpg">
-		</section>
+		<ul class="galeria-thumbs">
+			<?php foreach ($galeria as $imagen) { ?>
+				<li><a class="galeria-fancybox" href="<?=$imagen['pathGaleria']?>" title="<?=$imagen['descripcionGaleria']?>"><img src="<?=$imagen['thumbGaleria']?>"></a></li>
+			<?php } ?>
+		</ul>
 	</div>
 </div>
+<script>
+	$('a.galeria-fancybox').fancybox();
+</script>

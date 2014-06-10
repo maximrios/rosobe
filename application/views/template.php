@@ -62,7 +62,7 @@
                             echo $vcMenu;
                             ?>
                         </ul>
-                        <form action="productos" method="post" class="navbar-form navbar-right pull-right" role="search">
+                        <form action="productos/busqueda" method="post" class="navbar-form navbar-right pull-right" role="search">
                             <div class="form-group">
                                 <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Buscar producto...">
                             </div>

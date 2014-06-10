@@ -43,22 +43,24 @@
 		<div class="row">
 		<ul class="productos">
 			<?php
-			$i = 1;
-			for($i=1;$i<=3;$i++) { ?>
+			foreach ($destacados as $destacado) { ?>
 			<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
 				<figure>
-					<?=($productos[$i]['novedadProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">Nuevo</div></div>':''?>
-					<a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><img src="<?=$productos[$i]['thumbProductoImagen']?>" alt="<?=$productos[$i]['nombreProducto']?>"></a>
+					<?=($destacado['novedadProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">Nuevo</div></div>':''?>
+					<a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><img src="<?=$destacado['thumbProductoImagen']?>" alt="<?=$destacado['nombreProducto']?>"></a>
 					<figcaption>
-						<label><a href="producto/<?=$productos[$i]['idProducto']?>/<?=$productos[$i]['uriProducto']?>"><?=$productos[$i]['nombreProducto']?></a></label>
+						<label><a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><?=$destacado['nombreProducto']?></a></label>
 					</figcaption>
 				</figure>
 			</li>
-			<?php } ?>
-			
+			<?php }?>
 		</ul>
 		</div>
-		<h3 class="titulo-section"><?=($categoria!='')? '':'Todos los productos'?></h3>
+		<h3 class="titulo-section">
+			<?php if($busqueda != '') { echo 'Resultado para la busqueda:: "'.$busqueda.'"'; }?>
+			<?php if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
+			<?=($categoria=='' && $busqueda == '')? 'Todos los productos':''?>
+		</h3>
 		<hr class="titulo-section">
 		<div class="row">
 			<ul class="productos">

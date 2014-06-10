@@ -10,21 +10,21 @@ $config['navigation'] = array(
                 'title'  => 'Quienes Somos',
                 'link'   => 'nosotros'
             ),
-            'mayoristas' => array(
+            /*'mayoristas' => array(
                 'id'     => 'mayoristas',
                 'title'  => 'Mayoristas',
                 'link'   => 'mayoristas'
-            ),
+            ),*/
             'productos' => array(
                 'id'     => 'productos',
                 'title'  => 'Productos',
                 'link'   => 'productos'
             ),
-            'servicios' => array(
+            /*'servicios' => array(
                 'id'     => 'servicios',
                 'title'  => 'Servicios',
                 'link'   => 'servicios'
-            ),
+            ),*/
             'galeria' => array(
                 'id'     => 'galeria',
                 'title'  => 'Galeria',

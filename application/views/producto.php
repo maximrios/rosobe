@@ -1,16 +1,6 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <div class="col-lg-9 container">
     <div class="col-lg-12 breadcrumb">
         <label><?=$breadcrumb?></label>
-        <!--<h5>Productos ::</h5>-->
     </div>
 </div>
 <div class="col-lg-9 container content">
@@ -35,10 +25,6 @@
         <div class="col-lg-12">
             <a href="contacto" class="btn btn-primary pull-right">Consultar</a>
         </div>
-        
-        <h5>Comparte este producto en :</h5>
-        
-        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
         <h5>Formas de Pago</h5>
     </div>
 </div>
