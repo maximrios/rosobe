@@ -166,7 +166,7 @@
                         'type':'POST',
                         'vars': vars
 					});
-				} else if(element.is('input[type=submit]') || element.is('input[type=button]')) {
+				} else if(element.is('input[type=submit]') || element.is('input[type=button]') || element.is('button')) {
 					var sendForm = $('#' + element[0].form.id);
 					
 					if(!element.hasClass(options.grid.resetModifier)) {
@@ -250,7 +250,7 @@
                         'vars': vars
 					});
 					
-				} else if(element.is('input[type=submit]') || element.is('input[type=button]')) {
+				} else if(element.is('input[type=submit]') || element.is('input[type=button]') || element.is('button')) {
 					
 					var sendForm = $('#' + element[0].form.id);
 					

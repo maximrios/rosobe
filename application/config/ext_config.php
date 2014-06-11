@@ -210,12 +210,14 @@ $config['js_array_admin'] = array(
     'assets/libraries/jquery.file.upload/jquery.fileupload.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-process.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',
+    $config['ext_base_url_plantilla_elegida'].'js/bootstrap-switch.min.js',
     $config['ext_base_url_plantilla_elegida'].'js/hits.js',
     
 );
 $config['css_array_admin'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap.css',
     $config['ext_base_url_plantilla_elegida'].'css/bootstrap-datepicker.css',
+    $config['ext_base_url_plantilla_elegida'].'css/bootstrap-switch.css',
     $config['ext_base_url_plantilla_elegida'].'css/hits.css',
     $config['ext_base_url_plantilla_elegida'].'css/admin.css',
     $config['ext_base_url_plantilla_elegida'].'css/notificaciones.css',

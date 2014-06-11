@@ -278,6 +278,7 @@ ul.productos li figure:hover {
 }
 ul.productos li figure a img {
     width: 100%;
+    height: 150px!important;
 }
 ul.productos figure figcaption label {
     margin-top: 1em;
@@ -287,6 +288,16 @@ ul.productos figure figcaption label a {
     color: #46614d;
     font-size: 0.9em;
     text-decoration: none;
+}
+.productos-link a {
+    font-size: 0.7em;
+    text-decoration: none;
+}
+.productos-sin-resultados {
+    color: #D2D2D2;
+    font-size: 1.7em;
+    font-weight: bold;
+    text-align: center;
 }
 
 .ribbon-wrapper-green {
@@ -395,13 +406,14 @@ ul.productos figure figcaption label a {
  *  Detalle
  */
 .detalle-imagen img {
-    width: 100%;
+    max-width: 100%;
 }
 .detalle .slider-wrapper {
     padding: 0.5em!important;
     border: 2px solid #efefef;
 }
 .detalle .nivoSlider img {
+    max-width: 100%!important;
     max-height: 350px!important;
 }
 .detalle .nivo-thumbs-enabled {

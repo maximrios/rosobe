@@ -46,7 +46,7 @@
 			foreach ($destacados as $destacado) { ?>
 			<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
 				<figure>
-					<?=($destacado['novedadProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">Nuevo</div></div>':''?>
+					<?=($destacado['ofertaProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
 					<a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><img src="<?=$destacado['thumbProductoImagen']?>" alt="<?=$destacado['nombreProducto']?>"></a>
 					<figcaption>
 						<label><a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><?=$destacado['nombreProducto']?></a></label>
@@ -58,15 +58,19 @@
 		</div>
 		<h3 class="titulo-section">
 			<?php if($busqueda != '') { echo 'Resultado para la busqueda:: "'.$busqueda.'"'; }?>
+			<?php if($busqueda != '') { echo '<span class="productos-link pull-right"><a href="productos">Ver todos los productos</a></span>'; }?>
 			<?php if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
 			<?=($categoria=='' && $busqueda == '')? 'Todos los productos':''?>
 		</h3>
+
 		<hr class="titulo-section">
 		<div class="row">
+			<?php if($productos){ ?>
 			<ul class="productos">
 				<?php foreach ($productos as $producto) { ?>
 				<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 					<figure>
+						<?=($producto['ofertaProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
 						<a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><img src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
 						<figcaption>
 							<label><a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><?=$producto['nombreProducto']?></a></label>
@@ -75,6 +79,9 @@
 				</li>
 				<?php } ?>	
 			</ul>
+			<?php } else { ?>
+				<h4 class="productos-sin-resultados">No hay resultados para la busqueda</h4>
+			<?php } ?>
 		</div>
 	</div>
 </div>

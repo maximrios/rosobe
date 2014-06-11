@@ -36,7 +36,7 @@ class Layout_model extends CI_Model {
 		return $this->db->query($sql, array(strtolower('%' . strtolower($buscar) . '%')))->result_array();
 	}
 	function obtenerDestacados() {
-		$sql = 'SELECT * FROM hits_view_productos GROUP BY idProducto LIMIT 0, 3';
+		$sql = 'SELECT * FROM hits_view_productos WHERE novedadProducto = 1 GROUP BY idProducto ORDER BY RAND() LIMIT 0, 3';
 		return $this->db->query($sql)->result_array();
 	}
 	function obtenerRelacionados($producto=0) {

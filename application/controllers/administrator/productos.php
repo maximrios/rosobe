@@ -45,6 +45,16 @@ class Productos extends Ext_crud_Controller {
                 'rules'   => 'trim|xss_clean|required'
             )
             ,array(
+                'field'   => 'novedadProducto',
+                'label'   => 'Producto como novedad',
+                'rules'   => 'trim|xss_clean'
+            )
+            ,array(
+                'field'   => 'ofertaProducto',
+                'label'   => 'Producto como oferta',
+                'rules'   => 'trim|xss_clean'
+            )
+            ,array(
                 'field'   => 'categoriaProducto[]',
                 'label'   => 'Categoria',
                 'rules'   => 'trim|xss_clean|required'
@@ -63,6 +73,8 @@ class Productos extends Ext_crud_Controller {
             ,'codigoProducto' => null
             ,'precioProducto' => null
             , 'descripcionProducto' => null
+            , 'novedadProducto' => 0
+            , 'ofertaProducto' => 0
         );
         $id = ($this->input->post('idProducto')!==false)? $this->input->post('idProducto'):$idProducto;
         if($id!=0 && !$boIsPostBack) {
@@ -75,6 +87,8 @@ class Productos extends Ext_crud_Controller {
                 , 'codigoProducto' => set_value('codigoProducto')
                 , 'precioProducto' => set_value('precioProducto')
                 , 'descripcionProducto' => set_value('descripcionProducto')
+                , 'novedadProducto' => set_value('novedadProducto')
+                , 'ofertaProducto' => set_value('ofertaProducto')
             );          
         }
         return $this->_reg;
@@ -163,6 +177,8 @@ class Productos extends Ext_crud_Controller {
                     , ($this->_reg['precioProducto'])? $this->_reg['precioProducto']:0.00
                     , $this->_reg['descripcionProducto']
                     , url_title(strtolower($this->_reg['nombreProducto']))
+                    , ($this->_reg['novedadProducto'] == true)? 1:0
+                    , ($this->_reg['ofertaProducto'] == true)? 1:0
                 )
             );
             if($this->_aEstadoOper['status'] > 0) {

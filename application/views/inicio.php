@@ -40,6 +40,7 @@
                 <?php foreach ($productos as $producto) { ?>
                 <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <figure>
+                        <?=($producto['ofertaProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
                         <a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>" title="<?=$producto['nombreProducto']?>" alt="<?=$producto['nombreProducto']?>"><img width="170" src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
                         <figcaption>
                             <label><a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><?=$producto['nombreProducto']?></a></label>
