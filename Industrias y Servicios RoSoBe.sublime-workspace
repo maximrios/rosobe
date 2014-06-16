@@ -48,26 +48,18 @@
 	"buffers":
 	[
 		{
-			"file": "application/config/database.php",
+			"file": "application/controllers/aut.php",
 			"settings":
 			{
-				"buffer_size": 3230,
-				"line_ending": "Windows"
+				"buffer_size": 9546,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "application/models/hits/usuarios_model.php",
+			"file": "application/views/administrator/hits/usuarios/formulario_login.php",
 			"settings":
 			{
-				"buffer_size": 8736,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rosobe.sql",
-			"settings":
-			{
-				"buffer_size": 99588,
+				"buffer_size": 1867,
 				"line_ending": "Windows"
 			}
 		}
@@ -148,8 +140,11 @@
 	},
 	"file_history":
 	[
-		"/C/xampp/htdocs/rosobe/application/models/prueba_model.php",
+		"/C/xampp/htdocs/rosobe/application/views/productos.php",
+		"/C/xampp/htdocs/rosobe/application/config/database.php",
+		"/C/xampp/htdocs/rosobe/application/models/hits/usuarios_model.php",
 		"/C/xampp/htdocs/rosobe/rosobe.sql",
+		"/C/xampp/htdocs/rosobe/application/models/prueba_model.php",
 		"/C/xampp/htdocs/rosobe/application/views/masterpage.php",
 		"/C/xampp/htdocs/rosobe/application/config/ext_config.php",
 		"/C/xampp/htdocs/rosobe/.htaccess",
@@ -162,7 +157,6 @@
 		"/C/xampp/htdocs/rosobe/application/controllers/inicio.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/productos.php",
 		"/C/xampp/htdocs/rosobe/assets/themes/base/css/hits.css",
-		"/C/xampp/htdocs/rosobe/application/views/productos.php",
 		"/C/xampp/htdocs/rosobe/application/views/contacto.php",
 		"/C/xampp/htdocs/rosobe/application/models/rosobe/rosobe_model.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/galerias/formulario.php",
@@ -229,6 +223,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"login",
 			"content",
 			"footer",
 			"view_pro",
@@ -264,23 +259,22 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/config/database.php",
+					"file": "application/controllers/aut.php",
 					"settings":
 					{
-						"buffer_size": 3230,
+						"buffer_size": 9546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2661,
-								2665
+								3164,
+								3164
 							]
 						],
 						"settings":
@@ -288,25 +282,25 @@
 							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 69.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/models/hits/usuarios_model.php",
+					"file": "application/views/administrator/hits/usuarios/formulario_login.php",
 					"settings":
 					{
-						"buffer_size": 8736,
+						"buffer_size": 1867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								291,
-								291
+								1633,
+								1848
 							]
 						],
 						"settings":
@@ -316,33 +310,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 48.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "rosobe.sql",
-					"settings":
-					{
-						"buffer_size": 99588,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								35588,
-								35588
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SQL/SQL.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6184.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -401,7 +369,7 @@
 		[
 			[
 				"",
-				"/C/xampp/htdocs/micans/piaget/php.include/Libreria Teorema.sublime-project"
+				"/C/xampp/htdocs/mactuaciones/Modulo Actuaciones SIGEP.sublime-project"
 			]
 		],
 		"width": 380.0

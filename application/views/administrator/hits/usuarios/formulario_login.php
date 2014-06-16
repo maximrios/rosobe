@@ -6,7 +6,7 @@
 <div class="center-block" style="width:300px;">
 	<form id="form-login-access" method="post" enctype="application/x-www-form-urlencoded" action="aut/autenticar" target="srv-resp">
 		<div class="form-group">
-			<label for="nombreUsuario">Usuario</label>
+			<label for="nombreUsuario">Usuarios</label>
         	<input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" placeholder="Usuario" autofocus required>
     	</div>
     	<div class="form-group">
