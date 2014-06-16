@@ -202,14 +202,14 @@ $config['js_array_admin'] = array(
     'assets/libraries/jquery.md5/jquery.md5.js',
     'assets/libraries/jquery.gridhandler/jquery.gridhandler.js',
     'assets/libraries/bootstrap-datepicker.js',
-    'assets/themes/base/js/bootstrap.fileupload.js',
+    /*'assets/themes/base/js/bootstrap.fileupload.js',
     'assets/libraries/jquery.file.upload/jquery.ui.widget.js',
     'assets/libraries/jquery.file.upload/load-image.min.js',
     'assets/libraries/jquery.file.upload/canvas-to-blob.min.js',
     'assets/libraries/jquery.file.upload/jquery.iframe-transport.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload.js',
     'assets/libraries/jquery.file.upload/jquery.fileupload-process.js',
-    'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',
+    'assets/libraries/jquery.file.upload/jquery.fileupload-image.js',*/
     $config['ext_base_url_plantilla_elegida'].'js/bootstrap-switch.min.js',
     $config['ext_base_url_plantilla_elegida'].'js/hits.js',
     
@@ -233,6 +233,7 @@ $config['js_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'js/jquery.nivo.slider.pack.js',
     $config['ext_base_url_plantilla_elegida'].'js/jquery.easing.1.3.js',
     $config['ext_base_url_plantilla_elegida'].'js/jquery.lavalamp.min.js',
+    $config['ext_base_url_plantilla_elegida'].'js/jquery.simplyscroll.min.js'
 );
 
 // Array de CSS
@@ -243,5 +244,6 @@ $config['css_array'] = array(
     $config['ext_base_url_plantilla_elegida'].'css/rosobe.css',
     $config['ext_base_url_plantilla_elegida'].'css/nivo-slider.css',
     $config['ext_base_url_plantilla_elegida'].'css/default.css',
+    $config['ext_base_url_plantilla_elegida'].'css/jquery.simplyscroll.css',
 );
 

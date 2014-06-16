@@ -32,7 +32,7 @@ class Productos extends Ext_crud_Controller {
             ,array(
                 'field'   => 'codigoProducto',
                 'label'   => 'Código del Producto',
-                'rules'   => 'trim|xss_clean|required'
+                'rules'   => 'trim|xss_clean'
             )
             ,array(
                 'field'   => 'precioProducto',
@@ -114,10 +114,8 @@ class Productos extends Ext_crud_Controller {
                 )
         );
         $this->gridview->addColumn('idProducto', '#', 'int');
-        $this->gridview->addColumn('codigoProducto', 'Código', 'text');
         $this->gridview->addColumn('nombreProducto', 'Nombre', 'text');
         $this->gridview->addColumn('descripcionProducto', 'Descripcion', 'tinyText');
-        $this->gridview->addColumn('precioProducto', 'Precio', 'double');
         $this->gridview->addColumn('publicadoProducto', 'Publicación', 'text');
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
         $editar = '<a href="administrator/productos/formulario/{idProducto}" title="Editar {nombreProducto}" 
@@ -154,12 +152,10 @@ class Productos extends Ext_crud_Controller {
         $aData['vcAccion'] = ($this->_reg['idProducto'] > 0) ? 'Modificar' : 'Agregar';
         if($this->_reg['idProducto'] > 0) {
             $aData['imagenes'] = $this->productos->obtenerImagenes($this->_reg['idProducto']);
-            //$aData['colores'] = $this->productos->obtenerColores();
             $aData['categorias'] = $this->categorias->obtenerCategorias();
         }
         else {
             $aData['imagenes'] = FALSE;
-            //$aData['colores'] = $this->productos->obtenerColores();
             $aData['categorias'] = $this->categorias->obtenerCategorias();
         }
         $this->load->view('administrator/hits/productos/formulario', $aData);
@@ -229,17 +225,6 @@ class Productos extends Ext_crud_Controller {
                     )
                 );
             }
-            /*$this->productos->eliminarColoresProducto($this->_reg['idProducto']);
-            if($this->input->post('colorProducto')) {
-                foreach ($this->input->post('colorProducto') as $color) {                 
-                    $this->productos->guardarColoresProducto(
-                        array(
-                            $color
-                            , $this->_reg['idProducto']
-                        )
-                    );
-                }    
-            }*/
         }
         else {
             $this->_aEstadoOper['status'] = 0;
@@ -257,67 +242,6 @@ class Productos extends Ext_crud_Controller {
         $data = $this->productos->obtenerUno($this->input->post('idProducto'));
         echo json_encode($data);
     }
-
-    /*function do_upload($config_user) {
-        $config['upload_path'] = $config_user['upload_path'];
-        $config['allowed_types'] = $config_user['allowed_types'];
-        $config['max_size'] = $config_user['max_size'];
-        $this->load->library('upload', $config);
-        $this->load->library('image_lib');
-        $upload_files = $_FILES;
-        for($i = 0; $i < $config_user['cantidad_imagenes']; $i++) {
-            $_FILES['userfile'] = array(
-                'name' => $upload_files['userfile']['name'][$i],
-                'type' => $upload_files['userfile']['type'][$i],
-                'tmp_name' => $upload_files['userfile']['tmp_name'][$i],
-                'error' => $upload_files['userfile']['error'][$i],
-                'size' => $upload_files['userfile']['size'][$i]
-            );
-            if (!$this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
-                $this->_aEstadoOper['message'] = $error;
-            } 
-            else {
-                $data = $this->upload->data();
-                if($config_user['create_thumb']) {
-                    foreach ($config_user['thumbs'] as $thumb) {
-                        $configa['create_thumb'] = $config_user['create_thumb'];
-                        $configa['maintain_ratio'] = TRUE;
-                        $configa['new_image'] = $config_user['upload_path'];
-                        $configa['source_image'] = $config_user['upload_path'].$data['file_name'];
-                        $configa['thumb_marker'] = $thumb['thumb_marker'];
-                        $configa['width'] = $thumb['width'];
-                        $configa['height'] = 1;
-                        $configa['master_dim'] = 'width';
-                        $this->image_lib->initialize($configa);
-                        if($this->image_lib->resize()) {
-                            $nombreThumbnail = $data['raw_name'].$thumb['thumb_marker'].$data['file_ext'];
-                            $data['thumbnails'][] = array('nombreThumbnail' => $nombreThumbnail, 'pathThumbnail' => $config_user['upload_path'].$nombreThumbnail);
-                        }
-                        else {
-                            $data['thumbnails'][] = array_merge($this->errors, array($image->error->string));
-                        }
-                        $configa = array();
-                    }
-                    $this->image_lib->clear();
-                }
-            }
-        }
-        return $data;
-    }
-    function _create_thumbnail($filename, $width, $height){
-        $config['image_library'] = 'gd2';
-        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
-        $config['source_image'] = 'assets/images/productos/'.$filename;
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-        $config['new_image']='assets/images/productos/';
-        $config['width'] = $width;
-        $config['height'] = $height;
-        $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
-    }*/
     function eliminarImagen($idProductoImagen) {
         $imagen = $this->productos->obtenerUnaImagen($idProductoImagen);
         if($imagen) {

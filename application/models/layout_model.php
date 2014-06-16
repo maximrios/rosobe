@@ -35,8 +35,8 @@ class Layout_model extends CI_Model {
         WHERE nombreProducto LIKE ? AND publicadoProducto = 1 AND checkProductoImagen = 1 '.$and.' GROUP BY idProducto';
 		return $this->db->query($sql, array(strtolower('%' . strtolower($buscar) . '%')))->result_array();
 	}
-	function obtenerDestacados() {
-		$sql = 'SELECT * FROM hits_view_productos WHERE novedadProducto = 1 GROUP BY idProducto ORDER BY RAND() LIMIT 0, 3';
+	function obtenerDestacados($cantidad=3) {
+		$sql = 'SELECT * FROM hits_view_productos WHERE novedadProducto = 1 GROUP BY idProducto ORDER BY RAND() LIMIT 0, '.$cantidad;
 		return $this->db->query($sql)->result_array();
 	}
 	function obtenerRelacionados($producto=0) {
@@ -44,7 +44,7 @@ class Layout_model extends CI_Model {
 		return $this->db->query($sql)->result_array();
 	}
 	function obtener_galeria() {
-		$sql = 'SELECT * FROM hits_galeria WHERE estadoGaleria = 1';
+		$sql = 'SELECT * FROM hits_galeria WHERE publicadoGaleria = 1';
 		return $this->db->query($sql)->result_array();
 	}
 	public function obtenerImagenes($id) {

@@ -21,14 +21,14 @@
             <label for="nombreProducto">Nombre del Producto</label>
             <input type="text" id="nombreProducto" name="nombreProducto" tabindex="1" class="form-control" placeholder="Nombre del Producto." value="<?php echo $Reg['nombreProducto']?>" autofocus>
         </div>
-        <div class="form-group col-lg-6">
+        <!--<div class="form-group col-lg-6">
             <label for="codigoProducto">Código de Producto</label>
             <input type="text" id="codigoProducto" name="codigoProducto" tabindex="1" class="form-control" placeholder="Código." value="<?php echo $Reg['codigoProducto']?>" autofocus>
         </div>
         <div class="form-group col-lg-6">
             <label for="precioProducto">Precio del Producto</label>
             <input type="text" id="precioProducto" name="precioProducto" tabindex="1" class="form-control" placeholder="00.00" value="<?php echo $Reg['precioProducto']?>" autofocus>
-        </div>
+        </div>-->
         <div class="form-group col-lg-12">
             <label for="descripcionProducto">Descripción del Producto</label>
             <textarea id="descripcionProducto" name="descripcionProducto" tabindex="2" class="form-control" placeholder="Descripción del Producto." rows="3"><?=$Reg['descripcionProducto']?></textarea>

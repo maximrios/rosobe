@@ -20,7 +20,7 @@ class Galerias extends Ext_crud_Controller {
             ,array(
                 'field'   => 'descripcionGaleria',
                 'label'   => 'Descripcion',
-                'rules'   => 'trim|xss_clean'
+                'rules'   => 'trim|xss_clean|required'
             )
             ,array(
                 'field'   => 'pathGaleria',
@@ -82,13 +82,13 @@ class Galerias extends Ext_crud_Controller {
         $this->gridview->addColumn('idGaleria', '#', 'int');
         $this->gridview->addColumn('nombreGaleria', 'Titulo', 'text');
         $this->gridview->addColumn('descripcionGaleria', 'Descripcion', 'text');
-        $this->gridview->addColumn('estadoGaleria', 'Estado', 'text');
+        $this->gridview->addColumn('publicadoGaleria', 'Estado', 'text');
         $this->gridview->addParm('vcBuscar', $this->input->post('vcBuscar'));
-        $editar = '<a href="administrator/productos/formulario/{idGaleria}" title="Editar {nombreGaleria}" 
+        $editar = '<a href="administrator/galerias/formulario/{idGaleria}" title="Editar {nombreGaleria}" 
         class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;</a>';
-        $estado = '<a href="administrator/productos/publicacion/{idGaleria}" title="Editar {nombreGaleria}" 
+        $estado = '<a href="administrator/galerias/publicacion/{idGaleria}" title="Editar {nombreGaleria}" 
         class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;</a>';
-        $eliminar = '<a href="administrator/productos/eliminar/{idGaleria}" title="Eliminar {nombreGaleria}" class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
+        $eliminar = '<a href="administrator/galerias/eliminar/{idGaleria}" title="Eliminar {nombreGaleria}" class="btn-accion" rel="{\'idGaleria\': {idGaleria}}">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>';
         $controles = $editar.$estado.$eliminar;
         $this->gridview->addControl('inIdFaqCtrl', array('face' => $controles, 'class' => 'acciones'));
 
@@ -123,18 +123,18 @@ class Galerias extends Ext_crud_Controller {
         $this->_inicReglas();
         if ($this->_validarReglas()) {
             $this->_inicReg((bool) $this->input->post('vcForm'));
-            $config = array(
-                'cantidad_imagenes' => count($_FILES['userfile']['name'])
-                , 'upload_path' => 'assets/images/galeria/'
-                , 'allowed_types' => 'jpg'
-                , 'max_size' => 3000
-                , 'create_thumb' => true
-                , 'thumbs' => array(
-                    array('thumb_marker' => '_thumb', 'width' => 200)
+                $config = array(
+                    'cantidad_imagenes' => count($_FILES['userfile']['name'])
+                    , 'upload_path' => 'assets/images/galeria/'
+                    , 'allowed_types' => 'jpg'
+                    , 'max_size' => 3000
+                    , 'create_thumb' => true
+                    , 'thumbs' => array(
+                        array('thumb_marker' => '_thumb', 'width' => 200)
                     )
                 );
-            $this->load->library('hits/uploads', array(), 'uploads');
-            $data = $this->uploads->do_upload($config);
+                $this->load->library('hits/uploads', array(), 'uploads');
+                $data = $this->uploads->do_upload($config);
             $this->_aEstadoOper['status'] = $this->galerias->guardar(
                 array(
                     ($this->_reg['idGaleria'] != '' && $this->_reg['idGaleria'] != 0)? $this->_reg['idGaleria'] : 0
@@ -145,17 +145,18 @@ class Galerias extends Ext_crud_Controller {
                     , 1
                 )
             );
+            if($this->_aEstadoOper['status'] > 0) {
+                $this->_aEstadoOper['message'] = 'El registro fue guardado correctamente.';
+            } 
+            else {
+                $this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
+            }
         }
         else {
             $this->_aEstadoOper['status'] = 0;
             $this->_aEstadoOper['message'] = validation_errors();
         }
-        if($this->_aEstadoOper['status'] > 0) {
-            $this->_aEstadoOper['message'] = 'El registro fue guardado correctamente.';
-        } 
-        else {
-            $this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
-        }
+        
         $this->_aEstadoOper['message'] = $this->messages->do_message(array('message'=>$this->_aEstadoOper['message'],'type'=> ($this->_aEstadoOper['status'] > 0)?'success':'alert'));
         if($this->_aEstadoOper['status'] > 0) {
             $this->listado();
@@ -163,51 +164,45 @@ class Galerias extends Ext_crud_Controller {
             $this->formulario();
         }
     }
-    function obtener() {
-        $data = $this->productos->obtenerUno($this->input->post('idProducto'));
-        echo json_encode($data);
+    public function publicacion($idGaleria) {
+        $galeria = $this->galerias->obtenerUno($idGaleria);
+        ($galeria['publicadoGaleria'] == 0)? $estado=1 : $estado=0;
+        $this->_aEstadoOper['status'] = $this->galerias->cambiarEstado(
+            array(
+                $estado
+                , $galeria['idGaleria']
+            )
+        );
+        if ($this->_aEstadoOper['status'] > 0) {
+            $this->_aEstadoOper['message'] = 'Se modifico el estado correctamente.';
+        } 
+        else {
+            $this->_aEstadoOper['message'] = $this->_obtenerMensajeErrorDB($this->_aEstadoOper['status']);
+        }
+        $this->_aEstadoOper['message'] = $this->messages->do_message(array('message' => $this->_aEstadoOper['message'], 'type' => ($this->_aEstadoOper['status'] > 0) ? 'success' : 'alert'));
+        if ($this->_aEstadoOper['status'] > 0) {
+            $this->listado();
+        } 
+        else {
+            $this->formulario();
+        }
     }
-
-    function do_upload() {
-        $cant = count($_FILES['userfile']['name']);
-        $config['upload_path'] = 'uploads/';
-        $config['allowed_types'] = 'jpg';
-        $config['max_size'] = '30000';
-        $this->load->library('upload', $config);
-        $upload_files = $_FILES;
-        for($i = 0; $i < count($upload_files['userfile']['name']); $i++) {
-            $_FILES['userfile'] = array(
-                'name' => $upload_files['userfile']['name'][$i],
-                'type' => $upload_files['userfile']['type'][$i],
-                'tmp_name' => $upload_files['userfile']['tmp_name'][$i],
-                'error' => $upload_files['userfile']['error'][$i],
-                'size' => $upload_files['userfile']['size'][$i]
-            );
-            if ( ! $this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
-                print_r($error);
-            } 
-            else {
-                $data = $this->upload->data();
-                print_r($data);
+    public function eliminar($idGaleria) {
+        $galeria = $this->galerias->obtenerUno($idGaleria);
+        if($galeria) {
+            $this->_aEstadoOper['status'] = $this->galerias->eliminar($galeria['idGaleria']);
+            if($this->_aEstadoOper['status']) {
+                $this->load->library('hits/uploads', array(), 'uploads');
+                $this->_aEstadoOper['message'] = $this->uploads->delete_image($galeria['pathGaleria']);
+                $this->_aEstadoOper['message'] = $this->uploads->delete_image($galeria['thumbGaleria']);
+                //$this->_aEstadoOper['message'] = 'Se elimino la imagen de galeria correctamente.';
             }
-        }  
-    }
-    function _create_thumbnail($filename, $width, $height){
-        $config['image_library'] = 'gd2';
-        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
-        $config['source_image'] = 'assets/images/productos/'.$filename;
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-        $config['new_image']='assets/images/productos/';
-        $config['width'] = $width;
-        $config['height'] = $height;
-        $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
-    }
-    function eliminarImagen($idProductoImagen) {
-        //$this->productos->eliminarImagen($idProductoImagen);
+            else {
+                $this->_aEstadoOper['message'] = 'No se pudo eliminar la imagen de galeria.';   
+            }
+        }
+        $this->_aEstadoOper['message'] = $this->messages->do_message(array('message' => $this->_aEstadoOper['message'], 'type' => ($this->_aEstadoOper['status'] > 0) ? 'success' : 'alert'));
+        $this->listado();
     }
 }
 

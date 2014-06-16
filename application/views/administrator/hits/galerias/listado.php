@@ -11,6 +11,6 @@ $vcMsjSrv = (!empty($vcMsjSrv))? $vcMsjSrv: '';
 ?>
 	<?= $vcMsjSrv; ?>
 	<div class="form-inline">
-		<a href="administrator/galerias/formulario" id="btn-nuevo" class="btn btn-primary btn-accion"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Agregar Nuevo</a>
+		<a href="administrator/galerias/formulario" id="btn-nuevo" class="btn btn-primary btn-accion"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Agregar Nueva Imagen</a>
 	</div>
 	<?= $vcGridView; ?>

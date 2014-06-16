@@ -19,15 +19,15 @@
         <div class="col-lg-12">
             <div class="col-lg-4">
                 <span class="glyphicon glyphicon-wrench"></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, ullam, ea, minus, iure laboriosam voluptates amet omnis iusto quibusdam consequuntur sit doloribus expedita dolores? A aliquid aperiam quae asperiores molestiae.</p>
+                <p>Más de 3000 diseños de muebles en placa computarizados, al menor costo en el menor tiempo posible. Acercate a nuestra oficina y encontrá el diseño que mas se adapte a tu necesidad.-</p>
             </div>
             <div class="col-lg-4">
-                <span class="glyphicon glyphicon-tag"></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, dignissimos iure ipsam sit odio pariatur amet asperiores in beatae rerum sunt aut. Quidem, quam, asperiores at architecto sint nisi laborum.</p>
+                <span class="glyphicon glyphicon-tags"></span>
+                <p>Conocé nuestras ofertas, nuestros productos, mirá nuestra galería de trabajos, consultános, solicitá un presupuesto. Estamos a tu disposición.</p>
             </div>
             <div class="col-lg-4">
                 <span class="glyphicon glyphicon-cog"></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, ipsa inventore totam atque modi quae quo vitae ullam consequuntur eaque repudiandae nobis saepe labore doloribus sint. Vel tenetur assumenda voluptas!</p>
+                <p><span class="importante">Nuevo! </span>Contamos con lo último en tecnología para el diseño y fabricación de muebles, disponemos de productos únicos y productos en serie.</p>
             </div>
         </div>
     </div>
@@ -58,14 +58,14 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br><br><br>
-            <a href="" class="btn btn-warning pull-right" role="button">Ver mas</a>
+            <!--<a href="" class="btn btn-warning pull-right" role="button">Ver mas</a>-->
         </div>
         <div class="col-lg-4 middle">
             <h5>Servicios</h5>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br><br>
-            <a href="" class="btn btn-warning pull-right" role="button">Ver mas</a>
+            <!--<a href="" class="btn btn-warning pull-right" role="button">Ver mas</a>-->
         </div>
         <div class="col-lg-4">
             <h5>Formas de Pago</h5>

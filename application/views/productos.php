@@ -9,32 +9,19 @@
 		<h3 class="titulo-section">Categorias</h3>
 		<hr class="titulo-section">
 		<ul class="nav nav-panel">
-            <li>
-            	<label label-default="" class="tree-toggle nav-header">Aberturas</label>
-            	<ul class="nav tree">
-	            	<li><a href="#">Puertas</a></li>
-                	<li><a href="#">Ventanas</a></li>
-				</ul>
-            </li>
-            <li>
-            	<label label-default="" class="tree-toggle nav-header">Muebles en placa</label>
-                <ul class="nav tree">
-                	<li><a href="#">Cocinas</a></li>
-                    <li><a href="#">Comedores</a></li>
-                    <li><a href="#">Dormitorios</a></li>
-                    <li><a href="#">Placards</a></li>
-				</ul>
-			</li>
-            <li>
-				<label label-default="" class="tree-toggle nav-header">Rústicos</label>
-                <ul class="nav tree">
-                	<li><a href="#">Puertas</a></li>
-					<li><a href="#">Ventanas</a></li>
-					<li><a href="#">Cocinas</a></li>
-					<li><a href="#">Comedores</a></li>
-					<li><a href="#">Dormitorios</a></li>
-                </ul>
-            </li>
+			<?php foreach ($categorias as $categoria) { ?>
+				<li>
+					<label label-default="" class="tree-toggle nav-header"><?=$categoria['nombreCategoria']?></label>
+					<?php $subcategorias = $this->layout->obtenerCategorias($categoria['idCategoria']);
+					if($subcategorias) { ?>
+						<ul class="nav tree">
+						<?php foreach ($subcategorias as $subcategoria) { ?>
+							<li><a href="#"><?=$subcategoria['nombreCategoria']?></a></li>		
+						<?php } ?>
+						</ul>
+					<?php } ?>
+				</li>
+			<?php }	?>
 		</ul>
 	</div>
 	<div class="col-lg-9">
@@ -59,7 +46,7 @@
 		<h3 class="titulo-section">
 			<?php if($busqueda != '') { echo 'Resultado para la busqueda:: "'.$busqueda.'"'; }?>
 			<?php if($busqueda != '') { echo '<span class="productos-link pull-right"><a href="productos">Ver todos los productos</a></span>'; }?>
-			<?php if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
+			<?php $categoria = '';//if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
 			<?=($categoria=='' && $busqueda == '')? 'Todos los productos':''?>
 		</h3>
 

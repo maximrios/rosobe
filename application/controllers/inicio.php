@@ -30,7 +30,7 @@ class Inicio extends Ext_Controller {
 	public function index() {
 		$aData = array();
 		$aData['slider'] = $this->layout->obtenerSlider();
-		$aData['productos'] = $this->layout->obtenerDestacados();
+		$aData['productos'] = $this->layout->obtenerDestacados(4);
 		$aData['breadcrumb'] = '<a href="#">Inicio</a>';
 		$this->_SiteInfo['title'] .= ' - Inicio';
 		$this->_menu = 'inicio';

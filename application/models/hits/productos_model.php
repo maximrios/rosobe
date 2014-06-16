@@ -24,7 +24,8 @@ class Productos_model extends CI_Model {
     }
 
     public function numRegs($vcBuscar) {
-        $sql = 'SELECT count(idProducto) AS inCant FROM hits_productos WHERE lower(nombreProducto) LIKE ?';
+        $sql = 'SELECT count(idProducto) AS inCant FROM hits_productos 
+        WHERE lower(nombreProducto) LIKE ? ';
         $result = $this->db->query($sql, array(strtolower('%' . strtolower($vcBuscar) . '%')))->result_array();
         return $result[0]['inCant'];
     }

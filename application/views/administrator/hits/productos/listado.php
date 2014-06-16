@@ -10,5 +10,5 @@ $vcNombreList = (!empty($vcNombreList))? $vcNombreList: 'Agentes';
 $vcMsjSrv = (!empty($vcMsjSrv))? $vcMsjSrv: '';
 ?>
 	<?= $vcMsjSrv; ?>
-	<a href="administrator/productos/formulario" id="btn-nuevo" class="btn btn-primary btn-accion"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Agregar Nuevo</a>
+	<a href="administrator/productos/formulario" id="btn-nuevo" class="btn btn-primary btn-accion"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Agregar Nuevo Producto</a>
 	<?= $vcGridView; ?>
