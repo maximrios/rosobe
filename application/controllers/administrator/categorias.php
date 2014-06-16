@@ -102,29 +102,12 @@ class Categorias extends Ext_crud_Controller {
         if ($this->_validarReglas()) {
         	$data = array();
             $this->_inicReg((bool) $this->input->post('vcForm'));
-            if($_FILES['userfile']['name'][0] != '') {
-                $config = array(
-                    'cantidad_imagenes' => count($_FILES['userfile']['name'])
-                    , 'upload_path' => 'assets/images/categorias/'
-                    , 'allowed_types' => 'jpg'
-                    , 'max_size' => 3000
-                    , 'create_thumb' => true
-                    , 'thumbs' => array(
-                    	array('thumb_marker' => '_thumb', 'width' => 472)
-                    )
-                );
-                $this->load->library('hits/uploads', array(), 'uploads');
-                $data = $this->uploads->do_upload($config);
-            }
-            else {
-            	$data[0]['thumbnails'][0]['pathThumbnail'] = '';
-            }
 			$this->_aEstadoOper['status'] = $this->categorias->guardar(
 				array(
 					($this->_reg['idCategoria'] != '' && $this->_reg['idCategoria'] != 0)? $this->_reg['idCategoria'] : 0
 					, $this->_reg['nombreCategoria']
 					, url_title(strtolower($this->_reg['nombreCategoria']))
-					, $data[0]['thumbnails'][0]['pathThumbnail']
+					//, $data[0]['thumbnails'][0]['pathThumbnail']
 				)
 			);
 			if($this->_aEstadoOper['status'] > 0) {

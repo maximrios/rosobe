@@ -37,7 +37,7 @@ class Galerias_model extends CI_Model {
                     , descripcionGaleria
                     , pathGaleria
                     , thumbGaleria
-                    , estadoGaleria) 
+                    , publicadoGaleria) 
                     VALUES
                     ("'.$aParms[1].'"
                     , "'.$aParms[2].'"
@@ -50,8 +50,6 @@ class Galerias_model extends CI_Model {
             $sql = 'UPDATE hits_galeria SET 
                     nombreGaleria = "'.$aParms[1].'"
                     , descripcionGaleria = "'.$aParms[2].'"
-                    , pathGaleria = '.$aParms[3].'
-                    , thumbGaleria = "'.$aParms[4].'"
                     WHERE idGaleria = '.$aParms[0].';';
             $type = 2;
         }
@@ -63,28 +61,14 @@ class Galerias_model extends CI_Model {
             return true;
         }
     }
-
     public function eliminar($id) {
-        $sql = 'SELECT ufn30tsisprovinciasborrar(?) AS result;';
-        $result = $this->db->query($sql, array($id))->result_array();
-        return $result[0]['result'];
+        $sql = 'DELETE FROM hits_galeria WHERE idGaleria = ?;';
+        $result = $this->db->query($sql, array($id));
+        return TRUE;
     }
-
     public function cambiarEstado($aParms) {
-        $sql = 'UPDATE rosobe_galeria SET estadoGaleria = ? WHERE idGaleria = ?;';
+        $sql = 'UPDATE hits_galeria SET publicadoGaleria = ? WHERE idGaleria = ?;';
         $result = $this->db->query($sql, $aParms);
         return TRUE;   
     }
-
-    public function dropdownProductos() {
-        $sql = 'SELECT * FROM diario_view_productos';
-        $query = $this->db->query($sql)->result();
-        $subgrupos[0] = 'Seleccione un producto ...';
-        foreach($query as $row) {
-            $subgrupos[$row->idProducto] = $row->nombreProducto;
-        }
-        return $subgrupos;
-    }
 }
-
-// EOF provincias_model.php

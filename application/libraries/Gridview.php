@@ -393,11 +393,9 @@ class Gridview {
 		return $sContent;
     }
     
-    protected function _doCell($index,$dataRow,$name,$def)
-    {
+    protected function _doCell($index,$dataRow,$name,$def) {
         $cellContent = '';
-        switch($def['type'])
-        {
+        switch($def['type']) {
             case 'text':
             case 'int':
             case 'double':
@@ -406,40 +404,32 @@ class Gridview {
             case 'date':
             case 'datetime':
             case 'time':
-                return $this->_doDataCell($dataRow,$name,$def['type'],$def['options']['stripTags'],$def['options']['numChars']);    
-                break;
+                return $this->_doDataCell($dataRow,$name,$def['type'],$def['options']['stripTags'],$def['options']['numChars']);
+            break;
             case 'tinyText':
-                //return $this->_doFunctionCell($index,$dataRow,$name,$def);
-                //return wordwrap($dataRow[$name], 5);
-                //return $this->_doDataCell($dataRow, $name,$ def['type'],$def['options']['stripTags'],$def['options']['numChars']);    
-                return word_limiter($dataRow[$name], 10);
-                //return $dataRow[$name];
-                break;
+                return htmlspecialchars_decode(word_limiter($dataRow[$name], 10));
+            break;
             case 'function':
                 return $this->_doFunctionCell($index,$dataRow,$name,$def);
-                break;
+            break;
             case 'control':
                 return $this->_doControlCell($index,$dataRow,$name,$def);
-                break;
+            break;
             default:
                 $cellContent = '!#ERROR';
-                break;
+            break;
         }
         return $cellContent;
     }
-    
-    protected function _doRow($index,$dataRow)
-    {
+    protected function _doRow($index,$dataRow) {
         if(sizeof($this->aCols)==0)
             return '';
         if(sizeof($dataRow)==0)
             return '';
         $sXHtml = '';
-        
         $sCellContainerOp = (!empty($this->_aTemplates['cellElement']))?'<'.$this->_aTemplates['cellElement'].'%s>':''; 
         $sCellContainerCl = (!empty($this->_aTemplates['cellElement']))?'</'.$this->_aTemplates['cellElement'].'>':'';
-        foreach($this->aCols as $name => $def)
-        {
+        foreach($this->aCols as $name => $def) {
             $cellContent = $this->_doCell($index,$dataRow,$name,$def);
             $cellProperties = ' '. trim(implode(' '
                                     , array(
@@ -452,53 +442,48 @@ class Gridview {
         $sRowContainerOp = (!empty($this->_aTemplates['rowElement']))?'<'.$this->_aTemplates['rowElement'].'%s %s>':''; 
         $sRowContainerCl = (!empty($this->_aTemplates['rowElement']))?'</'.$this->_aTemplates['rowElement'].'>':'';
         $idRow = ' id="'.$dataRow[$this->identificador].'" ';
-
         $sXHtml = sprintf($sRowContainerOp, $idRow, $sRowProps).$sXHtml.$sRowContainerCl;
         return $sXHtml;
     }
     
-    protected function _doHeads()
-    {
+    protected function _doHeads() {
         if(sizeof($this->aCols)==0)
             return '';
         if(empty($this->_aTemplates['headElement']))
             return '';    
-        
         $sXHtml = '';
-        
         $sHeadContainerOp = (!empty($this->_aTemplates['headElement']))?'<'.$this->_aTemplates['headElement'].'>':''; 
         $sHeadContainerCl = (!empty($this->_aTemplates['headElement']))?'</'.$this->_aTemplates['headElement'].'>':'';
         $cant = count($this->aCols);
-        foreach($this->aCols as $name => $def)
-        {
-            if(!$this->bOrder)
+        foreach($this->aCols as $name => $def) {
+            if(!$this->bOrder) {
                 $sXHtml.=$sHeadContainerOp.$def['columnCaption'].$sHeadContainerCl;
-            else
-            {
-            	if(!empty($def['columnCaption'])&&$def['type']!='control'){
+            }
+            else {
+            	if(!empty($def['columnCaption']) && $def['type']!='control') {
             		$orderType = '';
             		if(!empty($_REQUEST[$this->sResponseType][$this->sOrderParmName])) {
             			$jsonParmsOrd = $_REQUEST[$this->sResponseType][$this->sOrderParmName];
 	            		$aParmsOrd = json_decode($jsonParmsOrd);
 						$orderTypeClass = 'th-order-'.strtolower($aParmsOrd['orderType']);
-            		} else {
+            		} 
+                    else {
             			$jsonParmsOrd = urlencode(htmlspecialchars(json_encode(array('orderType'=>'asc','orderField'=>$name))));
             		}
-                    					$sXHtml .= $sHeadContainerOp.<<<th
+                    $sXHtml .= $sHeadContainerOp.<<<th
 <a href="$jsonParmsOrd" title="Ordenar por $def[columnCaption]" class="$orderType">$def[columnCaption]</a>
 th
 .$sHeadContainerCl;
-            	} else {
+            	} 
+                else {
             		$sXHtml.=$sHeadContainerOp.$def['columnCaption'].$sHeadContainerCl;
             	}
-				
 			}
-                
         }
-        if($this->_aTemplates['listElement']=='table'){
+        if($this->_aTemplates['listElement']=='table') {
         	$sXHtml = '<thead><tr><th colspan="'.count($this->aCols).'" class="hilite">'.$this->titulo.'</th></tr><tr>'.$sXHtml.'</tr></thead>';
         }
-        if($this->bOrder==TRUE){
+        if($this->bOrder==TRUE) {
 			$this->addParm($this->sOrderParmName, '');
 			$this->_set_client_order_by_controller();
         }

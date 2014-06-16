@@ -23,7 +23,7 @@
             </div>
         </div>
     	<?php if ($Reg['pathCategoria']) { ?>
-        <div class="col-lg-12">
+        <!--<div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Imagen asociada</div>
                 <div class="panel-body">
@@ -32,23 +32,27 @@
                     </figure>
                 </div>
             </div>
-        </div>
+        </div>-->
         <?php } ?>
-        <div class="form-group col-lg-12">
+        <!--<div class="form-group col-lg-12">
             <label for="descripcionProducto">Imagen Representativa</label>
             <input type="file" name="userfile[]" id="imagenes"/>
             <progress id="progressBar" value="0" max="100" style="width:300px;"></progress> 
             <output id="filesInfo"></output>
-        </div>
+        </div>-->
         <!--</div>-->
-		<input id="btnnuevo" type="submit" class="btn btn-primary btn-accion" value="Guardar"/>
+        <div class="col-lg-12">
+            <!--<input id="btnnuevo" type="submit" class="btn btn-primary btn-accion pull-right" value="Guardar"/>-->
+            <button class="btn btn-primary btn-accion pull-right"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;Guardar</button>
+        </div>
+		
 		<input type="hidden" id="idCategoria" name="idCategoria" value="<?php echo $Reg['idCategoria'];?>">
 		<input type="hidden" id="vcForm" name="vcForm" value="<?= $vcFormName; ?>" />
     </form>
 <script>
-    $('#uploadFilesBt').on('click', function() {
+    /*$('#uploadFilesBt').on('click', function() {
         var contenido = CKEDITOR.instances['descripcionNoticia'].getData();
         $('#descripcionNoticia').val(contenido);    
     });
-    document.getElementById('imagenes').addEventListener('change', fileSelect, false);
+    document.getElementById('imagenes').addEventListener('change', fileSelect, false);*/
 </script>

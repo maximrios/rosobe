@@ -10,23 +10,25 @@
     $vcFrmAction = (!empty($vcFrmAction))? $vcFrmAction: '';
     ($imagenes)? $mitad='col-lg-8':$mitad='';
 ?>
+
 <div class="row">
-<div class="forms">
     <?= $vcMsjSrv; ?>
+<div class="forms">
+    
     <form id="proba" name="<?= $vcFormName; ?>" action="<?= $vcFrmAction; ?>" method="post" target="contenido-abm">
         <div class="row">
         <div class="form-group col-lg-12">
             <label for="nombreProducto">Nombre del Producto</label>
             <input type="text" id="nombreProducto" name="nombreProducto" tabindex="1" class="form-control" placeholder="Nombre del Producto." value="<?php echo $Reg['nombreProducto']?>" autofocus>
         </div>
-        <div class="form-group col-lg-6">
+        <!--<div class="form-group col-lg-6">
             <label for="codigoProducto">Código de Producto</label>
             <input type="text" id="codigoProducto" name="codigoProducto" tabindex="1" class="form-control" placeholder="Código." value="<?php echo $Reg['codigoProducto']?>" autofocus>
         </div>
         <div class="form-group col-lg-6">
             <label for="precioProducto">Precio del Producto</label>
             <input type="text" id="precioProducto" name="precioProducto" tabindex="1" class="form-control" placeholder="00.00" value="<?php echo $Reg['precioProducto']?>" autofocus>
-        </div>
+        </div>-->
         <div class="form-group col-lg-12">
             <label for="descripcionProducto">Descripción del Producto</label>
             <textarea id="descripcionProducto" name="descripcionProducto" tabindex="2" class="form-control" placeholder="Descripción del Producto." rows="3"><?=$Reg['descripcionProducto']?></textarea>
@@ -53,19 +55,6 @@
                 </div>
             </div>
         </div>
-        <!--<div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Colores disponibles</div>
-                    <div class="panel-body">
-                        <ul class="colores">
-                            <?php foreach ($colores as $color) { ?>
-                            <li class="col-lg-4"><input type="checkbox" id="colorProducto_<?=$color['idColor']?>" name="colorProducto[]" value="<?=$color['idColor']?>" <?=($this->productos->obtenerColoresProducto($color['idColor'], $Reg['idProducto']))? 'checked':'';?>>&nbsp;<?=$color['nombreColor']?></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Imagenes asociadas</div>
@@ -87,6 +76,14 @@
                 </div>
             </div>
         </div>
+        <div class="form-group col-lg-6">
+            <label for="novedadProducto">Marcar producto como novedad</label>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="novedadProducto" name="novedadProducto" class="switch" <?=($Reg['novedadProducto'])? 'checked':''?>>
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="ofertaProducto">Marcar producto x mayor</label>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="ofertaProducto" name="ofertaProducto" class="switch" <?=($Reg['ofertaProducto'])? 'checked':''?>>
+        </div>
         <div class="form-group col-lg-12">
             <label for="descripcionProducto">Imagenes</label>
             <!--<input type="file" name="userfile[]" id="userfile" multiple/>-->
@@ -94,9 +91,11 @@
             <progress id="progressBar" value="0" max="100" style="width:300px;"></progress> 
             <output id="filesInfo"></output>
         </div>
+        <div class="col-lg-12">
+            <input type="submit" id="uploadFilesBtn" class="btn btn-primary btn-accion pull-right" value="Guardar" name="btnvo"/>
+        </div>
         
         
-        <input type="submit" id="uploadFilesBtn" class="btn btn-primary btn-accion" value="Guardar" name="btnvo"/>
         <input type="hidden" id="idProducto" name="idProducto" value="<?php echo $Reg['idProducto']?>">
         <input type="hidden" id="vcForm" name="vcForm" value="<?= $vcFormName; ?>" />
     </form>
@@ -106,6 +105,18 @@
 </div>
 <?php echo display_ckeditor($ckeditor); ?>
 <script>
+    $(".switch").bootstrapSwitch({
+        onText: 'Si'
+        , offText: 'No'
+        /*, onSwitchChange: function(event, state) {
+            if(state == true){
+                $(this).val() = 1;
+            }
+            else {
+                $(this).val() = 0;   
+            }
+        }*/
+    });
     $('#categorias > li > input[type=checkbox]').on('click', function() {
         if($(this).is(':checked')) {
             $(this).find('input').each(function() {

@@ -34,7 +34,7 @@ class Productos extends Ext_Controller {
 		$aData['busqueda'] = $this->input->post('busqueda');
 		$aData['categoria'] = '';
 		$aData['categorias'] = $this->layout->obtenerCategorias();
-		$aData['destacados'] = $this->layout->obtenerDestacados();
+		$aData['destacados'] = $this->layout->obtenerDestacados(3);
 		$aData['productos'] = $this->layout->obtenerProductos();	
 		$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 		parent::index();
@@ -113,7 +113,7 @@ class Productos extends Ext_Controller {
 			$aData['busqueda'] = $busqueda;
 			$aData['categoria'] = '';
 			$aData['categorias'] = $this->layout->obtenerCategorias();
-			$aData['destacados'] = $this->layout->obtenerDestacados();
+			$aData['destacados'] = $this->layout->obtenerDestacados(3);
 			$aData['productos'] = $this->layout->obtenerProductos($busqueda, 0, $config['per_page'], $page);
 			$this->_vcContentPlaceHolder = $this->load->view('productos', $aData, true);
 			parent::index();
@@ -140,6 +140,7 @@ class Productos extends Ext_Controller {
 		else {
 			$aData['imagenes'] = $this->layout->obtenerImagenes($aData['producto']['idProducto']);
 		}
+		$aData['destacados'] = $this->layout->obtenerDestacados(4);
 		$this->_SiteInfo['title'] .= ' - '.$aData['producto']['nombreProducto'];
 		$this->_menu = 'productos';
 		$this->_vcContentPlaceHolder = $this->load->view('producto', $aData, true);

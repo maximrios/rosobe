@@ -24,7 +24,8 @@ class Productos_model extends CI_Model {
     }
 
     public function numRegs($vcBuscar) {
-        $sql = 'SELECT count(idProducto) AS inCant FROM hits_productos WHERE lower(nombreProducto) LIKE ?';
+        $sql = 'SELECT count(idProducto) AS inCant FROM hits_productos 
+        WHERE lower(nombreProducto) LIKE ? ';
         $result = $this->db->query($sql, array(strtolower('%' . strtolower($vcBuscar) . '%')))->result_array();
         return $result[0]['inCant'];
     }
@@ -54,6 +55,8 @@ class Productos_model extends CI_Model {
                     , precioProducto
                     , descripcionProducto
                     , uriProducto
+                    , novedadProducto
+                    , ofertaProducto
                     , publicadoProducto
                     , estadoProducto) 
                     VALUES
@@ -62,6 +65,8 @@ class Productos_model extends CI_Model {
                     , '.$aParms[3].'
                     , "'.$aParms[4].'"
                     , "'.$aParms[5].'"
+                    , '.$aParms[6].'
+                    , '.$aParms[7].'
                     , 1
                     , 1);';
             $type = 1;
@@ -73,6 +78,8 @@ class Productos_model extends CI_Model {
                     , precioProducto = '.$aParms[3].'
                     , descripcionProducto = "'.$aParms[4].'"
                     , uriProducto = "'.$aParms[5].'"
+                    , novedadProducto = '.$aParms[6].'
+                    , ofertaProducto = '.$aParms[7].'
                     WHERE idProducto = '.$aParms[0].';';
             $type = 2;
         }
@@ -163,9 +170,9 @@ class Productos_model extends CI_Model {
     }
 
     public function eliminar($id) {
-        $sql = 'SELECT ufn30tsisprovinciasborrar(?) AS result;';
-        $result = $this->db->query($sql, array($id))->result_array();
-        return $result[0]['result'];
+        $sql = 'DELETE FROM hits_productos WHERE idProducto = ?';
+        $result = $this->db->query($sql, array($id));
+        return TRUE;
     }
     public function dropdownProductos() {
         $sql = 'SELECT * FROM diario_view_productos';

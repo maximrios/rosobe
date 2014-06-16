@@ -43,16 +43,17 @@
 	<div class="col-lg-6">
 		<h3 class="titulo-section">Datos de contacto</h3>
 		<hr class="titulo-section">
-		<ul class="col-lg-6">Oficina en Salta
+		<ul class="col-lg-12">
+			<li>Av. Ex Comb. de Malvinas 6201</li>
+			<li>(0387) 4010107 - 4290826</li>
+			<li><a href="mailto:info@industriasrosobe.com.ar" title="Industrias y Servicios Ro.So.Be.">info@industriasrosobe.com.ar</a></li>
+			<li>Salta - Argentina</li>
+		</ul>
+		<!--<ul class="col-lg-6">Oficina en Cordoba
 			<li>Direccion</li>
 			<li>Telefono</li>
 			<li>Correo electronico</li>
-		</ul>
-		<ul class="col-lg-6">Oficina en Cordoba
-			<li>Direccion</li>
-			<li>Telefono</li>
-			<li>Correo electronico</li>
-		</ul>
+		</ul>-->
 		<h3 class="titulo-section">Como llegar</h3>
 		<hr class="titulo-section">
 		<?php 

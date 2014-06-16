@@ -1,3 +1,4 @@
+<!--<link rel="stylesheet" href="assets/themes/base/css/jquery.simplyscroll.css" media="all" type="text/css">-->
 <div class="col-lg-9 container">
 	<div class="col-lg-12 breadcrumb">
 		<label><?=$breadcrumb?></label>
@@ -23,29 +24,40 @@ Contamos además con un Show Room, donde se puede encontrar mercaderías standar
 	<div class="col-lg-12">
 		<h5>Nuestros Objetivos</h5>
  		<p>RoSoBe tiene planteado objetivos claros destinados al servicio que brinda a sus clientes
- 		Brindar a nuestros clientes un amplio surtido en muebles y aberturas exclusivas.-
- 		Cumplir en tiempo y forma los trabajos encomendados por los clientes.-
- 		Lograr la satisfacción plena de la confienza depositada de nuestros clientes.-
- 		Crecer y ser mejores día a día sin olvidar de donde vinimos y hacia donde queremos llegar.-</p>
- 		<!--<ol>
+ 		<ol>
  			<li>1- Brindar a nuestros clientes un amplio surtido en muebles y aberturas exclusivas.-</li>
  			<li>2- Cumplir en tiempo y forma los trabajos encomendados por los clientes.-</li>
  			<li>3- Lograr la satisfacción plena de la confienza depositada de nuestros clientes.-</li>
  			<li>4- Contar con la capacitación y especialización necesaria para que el cliente encuentre en RoSoBe respuestas a sus necesidades.-</li>
  			<li>5- Crecer y ser mejores día a día sin olvidar de donde vinimos y hacia donde queremos llegar.-</li>
- 		</ol>	-->
+ 		</ol>
 	</div>
 	<div class="col-lg-12">
-		<h3 class="titulo-section">Empresas que confian en nosotros</h3>
+		<h3 class="titulo-section">Empresas que confían en nosotros</h3>
 		<hr class="titulo-section">
-		<ul>
-			<li></li>
+		<ul id="scroller">
+			<li><img src="assets/images/clientes/rosobe.png"></li>
+			<li><img src="assets/images/clientes/rosobe.png"></li>
+			<li><img src="assets/images/clientes/rosobe.png"></li>
+			<li><img src="assets/images/clientes/rosobe.png"></li>
+			<li><img src="assets/images/clientes/rosobe.png"></li>
+			<li><img src="assets/images/clientes/rosobe.png"></li>
 		</ul>
 	</div>
 </div>
+
+<!--<script type="text/javascript" src="assets/themes/base/js/jquery.simplyscroll.min.js"></script>-->
+
 <script type="text/javascript">
-$('#slider-empresa').nivoSlider({
-	directionNav: false,
-	controlNav: false,
-});
+  	var slide = function() {
+		$("#scroller").simplyScroll({
+			pauseOnHover: false,
+			speed: 3,
+		});
+	}
+	$(document).on('ready', slide); 
+	$('#slider-empresa').nivoSlider({
+		directionNav: false,
+		controlNav: false,
+	});
 </script>

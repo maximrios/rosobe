@@ -25,20 +25,17 @@ class Categorias_model extends CI_Model {
         if($aParms[0] == 'NULL' || $aParms[0] == 0) {
             $sql = 'INSERT INTO hits_categorias
                     (nombreCategoria
-                    , uriCategoria
-                    , pathCategoria) 
+                    , uriCategoria) 
                     VALUES
                     ("'.$aParms[1].'"
-                    , "'.$aParms[2].'"
-                    , "'.$aParms[3].'");';
+                    , "'.$aParms[2].'");';
             $type = 1;
         }
         else {
-            $imagen = ($aParms[3] != '')? ', pathCategoria = "'.$aParms[3].'"' : '';
+            //$imagen = ($aParms[3] != '')? ', pathCategoria = "'.$aParms[3].'"' : '';
             $sql = 'UPDATE hits_categorias SET 
                     nombreCategoria = "'.$aParms[1].'"
                     , uriCategoria = "'.$aParms[2].'"
-                    '.$imagen.'
                     WHERE idCategoria = '.$aParms[0].';';
             $type = 2;
         }

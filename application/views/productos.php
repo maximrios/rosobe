@@ -9,32 +9,19 @@
 		<h3 class="titulo-section">Categorias</h3>
 		<hr class="titulo-section">
 		<ul class="nav nav-panel">
-            <li>
-            	<label label-default="" class="tree-toggle nav-header">Aberturas</label>
-            	<ul class="nav tree">
-	            	<li><a href="#">Puertas</a></li>
-                	<li><a href="#">Ventanas</a></li>
-				</ul>
-            </li>
-            <li>
-            	<label label-default="" class="tree-toggle nav-header">Muebles en placa</label>
-                <ul class="nav tree">
-                	<li><a href="#">Cocinas</a></li>
-                    <li><a href="#">Comedores</a></li>
-                    <li><a href="#">Dormitorios</a></li>
-                    <li><a href="#">Placards</a></li>
-				</ul>
-			</li>
-            <li>
-				<label label-default="" class="tree-toggle nav-header">Rústicos</label>
-                <ul class="nav tree">
-                	<li><a href="#">Puertas</a></li>
-					<li><a href="#">Ventanas</a></li>
-					<li><a href="#">Cocinas</a></li>
-					<li><a href="#">Comedores</a></li>
-					<li><a href="#">Dormitorios</a></li>
-                </ul>
-            </li>
+			<?php foreach ($categorias as $categoria) { ?>
+				<li>
+					<label label-default="" class="tree-toggle nav-header"><?=$categoria['nombreCategoria']?></label>
+					<?php $subcategorias = $this->layout->obtenerCategorias($categoria['idCategoria']);
+					if($subcategorias) { ?>
+						<ul class="nav tree">
+						<?php foreach ($subcategorias as $subcategoria) { ?>
+							<li><a href="#"><?=$subcategoria['nombreCategoria']?></a></li>		
+						<?php } ?>
+						</ul>
+					<?php } ?>
+				</li>
+			<?php }	?>
 		</ul>
 	</div>
 	<div class="col-lg-9">
@@ -46,7 +33,11 @@
 			foreach ($destacados as $destacado) { ?>
 			<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
 				<figure>
+<<<<<<< HEAD
 					<?=($destacado['novedadProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
+=======
+					<?=($destacado['ofertaProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
+>>>>>>> 4213e134f1efad08a6a95ed014ea52d29fad3c24
 					<a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><img src="<?=$destacado['thumbProductoImagen']?>" alt="<?=$destacado['nombreProducto']?>"></a>
 					<figcaption>
 						<label><a href="producto/<?=$destacado['idProducto']?>/<?=$destacado['uriProducto']?>"><?=$destacado['nombreProducto']?></a></label>
@@ -58,15 +49,19 @@
 		</div>
 		<h3 class="titulo-section">
 			<?php if($busqueda != '') { echo 'Resultado para la busqueda:: "'.$busqueda.'"'; }?>
-			<?php if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
+			<?php if($busqueda != '') { echo '<span class="productos-link pull-right"><a href="productos">Ver todos los productos</a></span>'; }?>
+			<?php $categoria = '';//if($categoria!='') { echo 'Categoria:: "'.$busqueda.'"'; }?>
 			<?=($categoria=='' && $busqueda == '')? 'Todos los productos':''?>
 		</h3>
+
 		<hr class="titulo-section">
 		<div class="row">
+			<?php if($productos){ ?>
 			<ul class="productos">
 				<?php foreach ($productos as $producto) { ?>
 				<li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 					<figure>
+						<?=($producto['ofertaProducto'] == 1)? '<div class="ribbon-wrapper-green"><div class="ribbon-green">x Mayor</div></div>':''?>
 						<a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><img src="<?=$producto['thumbProductoImagen']?>" alt="<?=$producto['nombreProducto']?>"></a>
 						<figcaption>
 							<label><a href="producto/<?=$producto['idProducto']?>/<?=$producto['uriProducto']?>"><?=$producto['nombreProducto']?></a></label>
@@ -75,6 +70,9 @@
 				</li>
 				<?php } ?>	
 			</ul>
+			<?php } else { ?>
+				<h4 class="productos-sin-resultados">No hay resultados para la busqueda</h4>
+			<?php } ?>
 		</div>
 	</div>
 </div>

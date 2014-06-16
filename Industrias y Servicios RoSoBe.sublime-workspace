@@ -48,19 +48,35 @@
 	"buffers":
 	[
 		{
-			"file": "application/controllers/aut.php",
+			"file": "application/controllers/administrator/productos.php",
 			"settings":
 			{
-				"buffer_size": 9546,
+				"buffer_size": 15168,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "application/views/administrator/hits/usuarios/formulario_login.php",
+			"file": "application/models/hits/productos_model.php",
 			"settings":
 			{
-				"buffer_size": 1867,
-				"line_ending": "Windows"
+				"buffer_size": 7496,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/libraries/hits/mailer.php",
+			"settings":
+			{
+				"buffer_size": 1707,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/config/config.editable.php",
+			"settings":
+			{
+				"buffer_size": 2560,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -140,6 +156,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/config.editable 2.php",
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/config.editable.titulos.php",
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/config.php",
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/config.editable.php",
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/mailer 2.php",
+		"/C/Users/informatica/AppData/Local/Temp/fz3temp-1/mailer.php",
+		"/C/xampp/htdocs/rosobe/application/controllers/aut.php",
+		"/C/xampp/htdocs/rosobe/application/views/administrator/hits/usuarios/formulario_login.php",
 		"/C/xampp/htdocs/rosobe/application/views/productos.php",
 		"/C/xampp/htdocs/rosobe/application/config/database.php",
 		"/C/xampp/htdocs/rosobe/application/models/hits/usuarios_model.php",
@@ -178,9 +202,7 @@
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/slider.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/slider/formulario.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/agentes.php",
-		"/C/xampp/htdocs/rosobe/application/controllers/aut.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/hits/usuarios/principal.php",
-		"/C/xampp/htdocs/rosobe/application/views/administrator/hits/usuarios/formulario_login.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/dashboard/principal.php",
 		"/C/xampp/htdocs/rosobe/application/views/administrator/rosobe/slider/principal.php",
 		"/C/xampp/htdocs/rosobe/application/controllers/administrator/dashboard.php",
@@ -259,48 +281,23 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/aut.php",
+					"file": "application/controllers/administrator/productos.php",
 					"settings":
 					{
-						"buffer_size": 9546,
+						"buffer_size": 15168,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3164,
-								3164
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 69.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/views/administrator/hits/usuarios/formulario_login.php",
-					"settings":
-					{
-						"buffer_size": 1867,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1633,
-								1848
+								0,
+								0
 							]
 						],
 						"settings":
@@ -310,7 +307,89 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 4230.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/models/hits/productos_model.php",
+					"settings":
+					{
+						"buffer_size": 7496,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6255,
+								6255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2115.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/libraries/hits/mailer.php",
+					"settings":
+					{
+						"buffer_size": 1707,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/config/config.editable.php",
+					"settings":
+					{
+						"buffer_size": 2560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -55,5 +55,14 @@ class Uploads {
         }
         return $data;
 	}
+    public function delete_image($path) {
+        if(unlink($path)) {
+            $msg = 'Se ha eliminado la imagen correctamente';
+        }
+        else {
+            $msg = 'No se ha podido eliminar la imagen';
+        }
+        return $msg;
+    }
 }
 ?>
